@@ -11,6 +11,6 @@ openssl req -new -newkey rsa:2048 -keyout ./server/serverkey.pem \
 openssl ca -cert ./ca/root.pem -keyfile ./ca/rootkey.pem \
 -in ./server/server.csr -out ./server/servercert.pem -config ./ca/conf
 # Combinar certificados
-cat ./server/servercert.pem ./server/serverkey.pem > server.pem
+cat ./server/servercert.pem ./server/serverkey.pem ./ca/rootcert.pem > server.pem
 # Comprobacion certificado
 openssl x509 -subject -issuer -noout -in server.pem

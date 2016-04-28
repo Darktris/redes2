@@ -39,7 +39,7 @@ void repair_command(char* command) {
     *i='\0';
 }
 #define tcpsocket_snd __ssl_bridge_snd
-int __ssl_bridge_snd(int socketd, char* buf, int len) {
+int __ssl_bridge_snd(int socketd, char* buf, size_t len) {
     if(s_ssl) enviar_datos_SSL(socketd, buf, len);
 #undef tcpsocket_snd
     else tcpsocket_snd(socketd, buf, len);
@@ -437,7 +437,6 @@ int main(int argc, char** argv) {
 
     if(sscanf(argv[1],"%lu", &port)!=1) {
         printf("Use: %s <Port> [-ssl]", argv[0]);
-        printf("Use: %s <Port>", argv[0]);
         return 0;
     }
 
@@ -454,19 +453,20 @@ int main(int argc, char** argv) {
         printf(COLOR_RED "Critical error initializing structures\n" COLOR_RESET);
         return -2;
     }
-    set_do_on_disconnect(do_on_disconnect);
+    set_do_on_disconnect_SSL(do_on_disconnect);
     read_channels();
-    /*printf(COLOR_GREEN "<<Copying conf files in temporal files. Please be sure the directory /tmp/ exists>>\n" COLOR_RESET);
+    printf(COLOR_GREEN "<<Copying conf files in temporal files. Please be sure the directory /tmp/ exists>>\n" COLOR_RESET);
     if(fork()==0) {
         sprintf(sh_comm, "cp %s %s", IRCSVR_MOTDFILE, path_motd);
         system(sh_comm);
         return 0;
-    }*/
+    }
     if(pthread_create(&t_timeout, NULL, timeout_thread, NULL)!=0) {
         printf(COLOR_RED "Critical error initializing structures\n" COLOR_RESET);
         return -2;
     }
     printf(COLOR_GREEN "<<Launching server in daemon mode>>\n" COLOR_RESET);
+    sleep(2);
     //daemonize("G-2301-01-irc");
     ret = s_ssl? server_launch_SSL(port, handler, NULL):server_launch(port, handler, NULL);
     perror("ERROR");

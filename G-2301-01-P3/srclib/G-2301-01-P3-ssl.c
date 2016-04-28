@@ -37,19 +37,20 @@ int inicializar_nivel_SSL() {
   */
 int fijar_contexto_SSL(char* pk, char* cert) {
     sslctx = SSL_CTX_new( SSLv23_method());
-    if(!sslctx) return SSL_NOCTX;
+    if(!sslctx) {perror("No contex"); return SSL_NOCTX;}
     ERR_print_errors_fp(stderr);
-    if(!SSL_CTX_load_verify_locations(sslctx, FILE_CA_CERTIFICATE, PATH_CA_CERTIFICATE)) return SSL_VERLOCATION;
+    if(!SSL_CTX_load_verify_locations(sslctx, FILE_CA_CERTIFICATE, PATH_CA_CERTIFICATE)) {perror("Verify_locations"); return SSL_VERLOCATION;}
     ERR_print_errors_fp(stderr);
     SSL_CTX_set_default_verify_paths(sslctx);
     ERR_print_errors_fp(stderr);
-    if(SSL_CTX_use_certificate_chain_file(sslctx, cert)!=1) return SSL_CERT;
+    //if(SSL_CTX_use_certificate_chain_file(sslctx, cert)!=1) {perror("Certificate"); return SSL_CERT;}
+    SSL_CTX_use_certificate_file(sslctx, cert, SSL_FILETYPE_PEM);
     ERR_print_errors_fp(stderr);
-    if(SSL_CTX_use_PrivateKey_file(sslctx, pk, SSL_FILETYPE_PEM) != 1) return SSL_PKEY;
+    if(SSL_CTX_use_PrivateKey_file(sslctx, pk, SSL_FILETYPE_PEM) != 1) {perror("Private Key"); return SSL_PKEY;}
     ERR_print_errors_fp(stderr);
     SSL_CTX_set_verify(sslctx,SSL_VERIFY_PEER, NULL);
     ERR_print_errors_fp(stderr);
-    return 0;
+    return 1;
 }
 /**
   @brief Inicializa el nivel SSL
@@ -78,6 +79,7 @@ int enviar_datos_SSL(int socketd, void* buf, int len) {
     return SSL_write(s_sockets[socketd], buf, len);
 }
 int recibir_datos_SSL(int socketd, void* buf, int max_len, int* len) {
+    bzero(buf, max_len);
     *len = SSL_read(s_sockets[socketd], buf, max_len);
     if(*len<0) return TCPERR_RECV;
     return *len?TCPOK:TCPCONN_CLOSED;

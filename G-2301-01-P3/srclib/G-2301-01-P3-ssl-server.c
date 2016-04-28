@@ -173,7 +173,10 @@ int server_launch_SSL(uint16_t port, void*(*handler)(void*), void* more) {
 	}
 
     inicializar_nivel_SSL();
-    if(fijar_contexto_SSL(FILE_SERVER_PKEY, FILE_SERVER_CERTIFICATE)<0) {
+    if((set_size=fijar_contexto_SSL(FILE_SERVER_PKEY, FILE_SERVER_CERTIFICATE))<=-1) {
+        printf("Error while loading SSL contex\n");
+        printf("%d\n", set_size);
+        perror("Error2");
         ERR_print_errors_fp(stdout);
         return SERVERR_SOCKET;
     }

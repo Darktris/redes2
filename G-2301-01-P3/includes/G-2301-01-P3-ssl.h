@@ -4,11 +4,11 @@
 #include <openssl/bio.h> 
 #include <openssl/ssl.h> 
 #include <openssl/err.h> 
-#define FILE_CA_CERTIFICATE "cert/ca/rootcert.pem"
-#define FILE_SERVER_CERTIFICATE "cert/server.pem"
-#define FILE_SERVER_PKEY "cert/server.pem"
+#define FILE_CA_CERTIFICATE "./cert/ca/rootcert.pem"
+#define FILE_SERVER_CERTIFICATE "./cert/server/servercert.pem"
+#define FILE_SERVER_PKEY "./cert/server/serverkey.pem"
 #define FILE_CLIENT_CERTIFICATE "./cert/client.pem"
-#define FILE_CLIENT_PKEY "cert/client.pem"
+#define FILE_CLIENT_PKEY "./cert/client.pem"
 
 #define PATH_CA_CERTIFICATE NULL
 

@@ -15,7 +15,7 @@
 #include <G-2301-01-P3-ssl.h>
 extern int s_ssl;
 #define tcpsocket_snd _ssl_bridge_snd
-int _ssl_bridge_snd(int socketd, char* buf, int len) {
+int _ssl_bridge_snd(int socketd, char* buf, size_t len) {
     if(s_ssl) enviar_datos_SSL(socketd, buf, len);
 #undef tcpsocket_snd
     else tcpsocket_snd(socketd, buf, len);
