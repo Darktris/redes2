@@ -1,0 +1,313 @@
+\hypertarget{G-2301-01-P1-server_8c}{}\section{Referencia del Archivo srclib/\+G-\/2301-\/01-\/\+P1-\/server.c}
+\label{G-2301-01-P1-server_8c}\index{srclib/\+G-\/2301-\/01-\/\+P1-\/server.\+c@{srclib/\+G-\/2301-\/01-\/\+P1-\/server.\+c}}
+
+
+Libreria de manejo de un servidor de sockets.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+{\ttfamily \#include $<$sys/socket.\+h$>$}\\*
+{\ttfamily \#include $<$netinet/in.\+h$>$}\\*
+{\ttfamily \#include $<$sys/select.\+h$>$}\\*
+{\ttfamily \#include $<$sys/time.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$strings.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\\*
+{\ttfamily \#include $<$G-\/2301-\/01-\/\+P1-\/tcp.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}G-\/2301-\/01-\/\+P1-\/server.\+h\char`\"{}}\\*
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{G-2301-01-P1-server_8c_a0ea0fc1dac4ab7f138858ad206bf74f9}{connection\+\_\+add} (int socketd)
+\begin{DoxyCompactList}\small\item\em Añade una conexion al conjunto del select. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-server_8c_a185cd248a82f10518a5e7064e7e328d6}{connection\+\_\+rmv} (int socketd)
+\begin{DoxyCompactList}\small\item\em Borra una conexion del conjunto del select. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-server_8c_a450fc862cf1803d838128521627d0f11}{is\+\_\+connected} (int socketd)
+\begin{DoxyCompactList}\small\item\em Indica si hay una conexion abierta. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-server_8c_a871f4cd038820ee57fd76721d5ccc7c7}{is\+\_\+readable} (int socketd)
+\begin{DoxyCompactList}\small\item\em Indica si hay una conexion que requiere atencion. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-server_8c_ad1d153d3ac0e96e2186ebc2be9214ab3}{connection\+\_\+block} (int socketd)
+\begin{DoxyCompactList}\small\item\em Bloquea una conexion. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-server_8c_a6606674ddfef06318569d8c8cab9bdd5}{connection\+\_\+unblock} (int socketd)
+\begin{DoxyCompactList}\small\item\em Desbloquea una conexion. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-server_8c_a75bd7c31947615086b494f220e733e83}{connection\+\_\+isblocked} (int socketd)
+\begin{DoxyCompactList}\small\item\em Comprueba si una conexion esta bloqueada. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{G-2301-01-P1-server_8c_a4e4e41c2d359a3efd0a915d6798b0bf9}{get\+\_\+ip\+\_\+from\+\_\+connection} (int socketd)
+\begin{DoxyCompactList}\small\item\em Devuelve la ip asociada a un socked. \end{DoxyCompactList}\item 
+void \hyperlink{G-2301-01-P1-server_8c_a258e3b580e688a0cf46e4258525aeaf1}{sigint\+\_\+handler} (int sig)
+\begin{DoxyCompactList}\small\item\em Manejador de la señal. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-server_8c_ad5a9d9f33a4d6cc629a712fe80189e62}{server\+\_\+launch} (uint16\+\_\+t port, void $\ast$($\ast$\hyperlink{G-2301-01-P1-irc__server_8c_a65c3f29a112085899806687533f22b3e}{handler})(void $\ast$), void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Lanza un servidor que atiende cada mensaje recibido con la funcion handler. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-server_8c_a5d8d1e7de0b17fabdfb923ea0477a9d9}{server\+\_\+stop} ()
+\begin{DoxyCompactList}\small\item\em Para el servidor T\+C\+P. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-server_8c_ac66c08677a07f3d18bb3071bd486e13c}{set\+\_\+do\+\_\+on\+\_\+disconnect} (void($\ast$\hyperlink{G-2301-01-P1-irc__server_8c_a65c3f29a112085899806687533f22b3e}{handler})(void $\ast$))
+\begin{DoxyCompactList}\small\item\em Para el servidor T\+C\+P. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{G-2301-01-P1-server_8c_a3e20fc3c81d523926af308f1eda8c6ed}{}pthread\+\_\+mutex\+\_\+t {\bfseries mutex\+\_\+conn}\label{G-2301-01-P1-server_8c_a3e20fc3c81d523926af308f1eda8c6ed}
+
+\item 
+\hypertarget{G-2301-01-P1-server_8c_a6283fbbf9527feb09c480c58e599495b}{}fd\+\_\+set {\bfseries connections}\label{G-2301-01-P1-server_8c_a6283fbbf9527feb09c480c58e599495b}
+
+\item 
+\hypertarget{G-2301-01-P1-server_8c_a31beab6ddd8eda55ae837b29236bd9b1}{}fd\+\_\+set {\bfseries readable}\label{G-2301-01-P1-server_8c_a31beab6ddd8eda55ae837b29236bd9b1}
+
+\item 
+\hypertarget{G-2301-01-P1-server_8c_aec5ad857bd2eba81e93a95b22a26e3e8}{}fd\+\_\+set {\bfseries blocked}\label{G-2301-01-P1-server_8c_aec5ad857bd2eba81e93a95b22a26e3e8}
+
+\item 
+\hypertarget{G-2301-01-P1-server_8c_ad667f040f2932c8097435492fbd10d76}{}int {\bfseries loop}\label{G-2301-01-P1-server_8c_ad667f040f2932c8097435492fbd10d76}
+
+\item 
+\hypertarget{G-2301-01-P1-server_8c_a8657a01a43c08d4aa4e3f81fe5037ed7}{}char {\bfseries ips} \mbox{[}F\+D\+\_\+\+S\+E\+T\+S\+I\+Z\+E\mbox{]}\mbox{[}16\mbox{]}\label{G-2301-01-P1-server_8c_a8657a01a43c08d4aa4e3f81fe5037ed7}
+
+\item 
+\hypertarget{G-2301-01-P1-server_8c_a548ed1dfb87cfa9069558252488af26a}{}void($\ast$ {\bfseries handler\+\_\+disconnection} )(void $\ast$) = N\+U\+L\+L\label{G-2301-01-P1-server_8c_a548ed1dfb87cfa9069558252488af26a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Libreria de manejo de un servidor de sockets. 
+
+\begin{DoxyAuthor}{Autor}
+Sergio Fuentes \href{mailto:sergio.fuentesd@estudiante.uam.es}{\tt sergio.\+fuentesd@estudiante.\+uam.\+es} 
+
+Daniel Perdices \href{mailto:daniel.perdices@estudiante.uam.es}{\tt daniel.\+perdices@estudiante.\+uam.\+es} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+2016/02/01 
+\end{DoxyDate}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{G-2301-01-P1-server_8c_a0ea0fc1dac4ab7f138858ad206bf74f9}{}\index{G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}!connection\+\_\+add@{connection\+\_\+add}}
+\index{connection\+\_\+add@{connection\+\_\+add}!G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}}
+\subsubsection[{connection\+\_\+add}]{\setlength{\rightskip}{0pt plus 5cm}int connection\+\_\+add (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-server_8c_a0ea0fc1dac4ab7f138858ad206bf74f9}
+
+
+Añade una conexion al conjunto del select. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Descriptor del socket \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+S\+E\+R\+V\+O\+K 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-server_8c_ad1d153d3ac0e96e2186ebc2be9214ab3}{}\index{G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}!connection\+\_\+block@{connection\+\_\+block}}
+\index{connection\+\_\+block@{connection\+\_\+block}!G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}}
+\subsubsection[{connection\+\_\+block}]{\setlength{\rightskip}{0pt plus 5cm}int connection\+\_\+block (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-server_8c_ad1d153d3ac0e96e2186ebc2be9214ab3}
+
+
+Bloquea una conexion. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Descriptor del socket \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+S\+E\+R\+V\+O\+K 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-server_8c_a75bd7c31947615086b494f220e733e83}{}\index{G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}!connection\+\_\+isblocked@{connection\+\_\+isblocked}}
+\index{connection\+\_\+isblocked@{connection\+\_\+isblocked}!G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}}
+\subsubsection[{connection\+\_\+isblocked}]{\setlength{\rightskip}{0pt plus 5cm}int connection\+\_\+isblocked (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-server_8c_a75bd7c31947615086b494f220e733e83}
+
+
+Comprueba si una conexion esta bloqueada. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Descriptor del socket \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+0 si no esta bloqueada, otro valor si esta bloqueada 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-server_8c_a185cd248a82f10518a5e7064e7e328d6}{}\index{G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}!connection\+\_\+rmv@{connection\+\_\+rmv}}
+\index{connection\+\_\+rmv@{connection\+\_\+rmv}!G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}}
+\subsubsection[{connection\+\_\+rmv}]{\setlength{\rightskip}{0pt plus 5cm}int connection\+\_\+rmv (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-server_8c_a185cd248a82f10518a5e7064e7e328d6}
+
+
+Borra una conexion del conjunto del select. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Descriptor del socket \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+S\+E\+R\+V\+O\+K 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-server_8c_a6606674ddfef06318569d8c8cab9bdd5}{}\index{G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}!connection\+\_\+unblock@{connection\+\_\+unblock}}
+\index{connection\+\_\+unblock@{connection\+\_\+unblock}!G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}}
+\subsubsection[{connection\+\_\+unblock}]{\setlength{\rightskip}{0pt plus 5cm}int connection\+\_\+unblock (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-server_8c_a6606674ddfef06318569d8c8cab9bdd5}
+
+
+Desbloquea una conexion. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Descriptor del socket \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+S\+E\+R\+V\+O\+K 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-server_8c_a4e4e41c2d359a3efd0a915d6798b0bf9}{}\index{G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}!get\+\_\+ip\+\_\+from\+\_\+connection@{get\+\_\+ip\+\_\+from\+\_\+connection}}
+\index{get\+\_\+ip\+\_\+from\+\_\+connection@{get\+\_\+ip\+\_\+from\+\_\+connection}!G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}}
+\subsubsection[{get\+\_\+ip\+\_\+from\+\_\+connection}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\+\_\+ip\+\_\+from\+\_\+connection (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-server_8c_a4e4e41c2d359a3efd0a915d6798b0bf9}
+
+
+Devuelve la ip asociada a un socked. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Descriptor del socket \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+La ip del socket en decimal 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-server_8c_a450fc862cf1803d838128521627d0f11}{}\index{G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}!is\+\_\+connected@{is\+\_\+connected}}
+\index{is\+\_\+connected@{is\+\_\+connected}!G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}}
+\subsubsection[{is\+\_\+connected}]{\setlength{\rightskip}{0pt plus 5cm}int is\+\_\+connected (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-server_8c_a450fc862cf1803d838128521627d0f11}
+
+
+Indica si hay una conexion abierta. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Descriptor del socket \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+0 si esta cerrada, cualquier valor en otro caso 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-server_8c_a871f4cd038820ee57fd76721d5ccc7c7}{}\index{G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}!is\+\_\+readable@{is\+\_\+readable}}
+\index{is\+\_\+readable@{is\+\_\+readable}!G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}}
+\subsubsection[{is\+\_\+readable}]{\setlength{\rightskip}{0pt plus 5cm}int is\+\_\+readable (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-server_8c_a871f4cd038820ee57fd76721d5ccc7c7}
+
+
+Indica si hay una conexion que requiere atencion. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Descriptor del socket \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+0 si esta cerrada, cualquier valor en otro caso 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-server_8c_ad5a9d9f33a4d6cc629a712fe80189e62}{}\index{G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}!server\+\_\+launch@{server\+\_\+launch}}
+\index{server\+\_\+launch@{server\+\_\+launch}!G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}}
+\subsubsection[{server\+\_\+launch}]{\setlength{\rightskip}{0pt plus 5cm}int server\+\_\+launch (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{port, }
+\item[{void $\ast$($\ast$)(void $\ast$)}]{handler, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-server_8c_ad5a9d9f33a4d6cc629a712fe80189e62}
+
+
+Lanza un servidor que atiende cada mensaje recibido con la funcion handler. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em port} & Puerto en el que abrir el servidor \\
+\hline
+{\em handler} & Rutina de atencion de los mensajes \\
+\hline
+{\em more} & Parametros adicionales que se necesiten en la rutina de atencion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+S\+E\+R\+V\+O\+K en caso de que el servidor termine correctamente un numero negativo en caso de error 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-server_8c_a5d8d1e7de0b17fabdfb923ea0477a9d9}{}\index{G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}!server\+\_\+stop@{server\+\_\+stop}}
+\index{server\+\_\+stop@{server\+\_\+stop}!G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}}
+\subsubsection[{server\+\_\+stop}]{\setlength{\rightskip}{0pt plus 5cm}int server\+\_\+stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-server_8c_a5d8d1e7de0b17fabdfb923ea0477a9d9}
+
+
+Para el servidor T\+C\+P. 
+
+\begin{DoxyReturn}{Devuelve}
+S\+E\+R\+V\+O\+K si el servidor se para, S\+E\+R\+V\+E\+R\+R\+\_\+\+N\+R\+U\+N si no hay servidor 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-server_8c_ac66c08677a07f3d18bb3071bd486e13c}{}\index{G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}!set\+\_\+do\+\_\+on\+\_\+disconnect@{set\+\_\+do\+\_\+on\+\_\+disconnect}}
+\index{set\+\_\+do\+\_\+on\+\_\+disconnect@{set\+\_\+do\+\_\+on\+\_\+disconnect}!G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}}
+\subsubsection[{set\+\_\+do\+\_\+on\+\_\+disconnect}]{\setlength{\rightskip}{0pt plus 5cm}int set\+\_\+do\+\_\+on\+\_\+disconnect (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)(void $\ast$)}]{handler}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-server_8c_ac66c08677a07f3d18bb3071bd486e13c}
+
+
+Para el servidor T\+C\+P. 
+
+\begin{DoxyReturn}{Devuelve}
+S\+E\+R\+V\+O\+K si el servidor se para, S\+E\+R\+V\+E\+R\+R\+\_\+\+N\+R\+U\+N si no hay servidor 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-server_8c_a258e3b580e688a0cf46e4258525aeaf1}{}\index{G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}!sigint\+\_\+handler@{sigint\+\_\+handler}}
+\index{sigint\+\_\+handler@{sigint\+\_\+handler}!G-\/2301-\/01-\/\+P1-\/server.\+c@{G-\/2301-\/01-\/\+P1-\/server.\+c}}
+\subsubsection[{sigint\+\_\+handler}]{\setlength{\rightskip}{0pt plus 5cm}void sigint\+\_\+handler (
+\begin{DoxyParamCaption}
+\item[{int}]{sig}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-server_8c_a258e3b580e688a0cf46e4258525aeaf1}
+
+
+Manejador de la señal. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em sig} & señal recibido \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+0 si no esta bloqueada, otro valor si esta bloqueada 
+\end{DoxyReturn}

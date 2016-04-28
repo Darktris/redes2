@@ -1,0 +1,89 @@
+\hypertarget{G-2301-01-P1-tools_8c}{}\section{Referencia del Archivo srclib/\+G-\/2301-\/01-\/\+P1-\/tools.c}
+\label{G-2301-01-P1-tools_8c}\index{srclib/\+G-\/2301-\/01-\/\+P1-\/tools.\+c@{srclib/\+G-\/2301-\/01-\/\+P1-\/tools.\+c}}
+
+
+Libreria de utilidades.  
+
+
+{\ttfamily \#include \char`\"{}G-\/2301-\/01-\/\+P1-\/tcp.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$netdb.\+h$>$}\\*
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+{\ttfamily \#include $<$strings.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$syslog.\+h$>$}\\*
+\subsection*{\textquotesingle{}defines\textquotesingle{}}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{G-2301-01-P1-tools_8c_a417fef1b5cd577cfc9a2836bb40fa885}{}\#define {\bfseries strlen}~\hyperlink{G-2301-01-P1-tools_8c_a6a6c1526db46f96786401e9dd46b35f7}{\+\_\+strlen}\label{G-2301-01-P1-tools_8c_a417fef1b5cd577cfc9a2836bb40fa885}
+
+\item 
+\hypertarget{G-2301-01-P1-tools_8c_a6b5d9a1031ac2602e31df1ba551bfafe}{}\#define {\bfseries strcmp}~\hyperlink{G-2301-01-P1-tools_8c_a32a248aed136dc3eac34cfb119642b6f}{\+\_\+strcmp}\label{G-2301-01-P1-tools_8c_a6b5d9a1031ac2602e31df1ba551bfafe}
+
+\end{DoxyCompactItemize}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \hyperlink{G-2301-01-P1-tools_8c_a6a6c1526db46f96786401e9dd46b35f7}{\+\_\+strlen} (const char $\ast$s)
+\begin{DoxyCompactList}\small\item\em Funcion strlen de strings.\+h. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-tools_8c_a32a248aed136dc3eac34cfb119642b6f}{\+\_\+strcmp} (const char $\ast$a, const char $\ast$b)
+\begin{DoxyCompactList}\small\item\em Funcion strcmp de strings.\+h. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Libreria de utilidades. 
+
+\begin{DoxyAuthor}{Autor}
+Sergio Fuentes \href{mailto:sergio.fuentesd@estudiante.uam.es}{\tt sergio.\+fuentesd@estudiante.\+uam.\+es} 
+
+Daniel Perdices \href{mailto:daniel.perdices@estudiante.uam.es}{\tt daniel.\+perdices@estudiante.\+uam.\+es} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+2016/02/01 
+\end{DoxyDate}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{G-2301-01-P1-tools_8c_a32a248aed136dc3eac34cfb119642b6f}{}\index{G-\/2301-\/01-\/\+P1-\/tools.\+c@{G-\/2301-\/01-\/\+P1-\/tools.\+c}!\+\_\+strcmp@{\+\_\+strcmp}}
+\index{\+\_\+strcmp@{\+\_\+strcmp}!G-\/2301-\/01-\/\+P1-\/tools.\+c@{G-\/2301-\/01-\/\+P1-\/tools.\+c}}
+\subsubsection[{\+\_\+strcmp}]{\setlength{\rightskip}{0pt plus 5cm}int \+\_\+strcmp (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{a, }
+\item[{const char $\ast$}]{b}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-tools_8c_a32a248aed136dc3eac34cfb119642b6f}
+
+
+Funcion strcmp de strings.\+h. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em a} & Puntero a la cadena de caracteres \\
+\hline
+{\em b} & Puntero a la cadena de caracteres \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+la diferencia entre ambas cadenas 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-tools_8c_a6a6c1526db46f96786401e9dd46b35f7}{}\index{G-\/2301-\/01-\/\+P1-\/tools.\+c@{G-\/2301-\/01-\/\+P1-\/tools.\+c}!\+\_\+strlen@{\+\_\+strlen}}
+\index{\+\_\+strlen@{\+\_\+strlen}!G-\/2301-\/01-\/\+P1-\/tools.\+c@{G-\/2301-\/01-\/\+P1-\/tools.\+c}}
+\subsubsection[{\+\_\+strlen}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t \+\_\+strlen (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{s}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-tools_8c_a6a6c1526db46f96786401e9dd46b35f7}
+
+
+Funcion strlen de strings.\+h. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em s} & Puntero a la cadena de caracteres \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+la longitud 
+\end{DoxyReturn}

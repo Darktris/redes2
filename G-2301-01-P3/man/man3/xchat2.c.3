@@ -1,0 +1,465 @@
+.TH "src/xchat2.c" 3 "Miércoles, 20 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/xchat2.c \- Programa principal del cliente IRC\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <redes2/ircxchat\&.h>\fP
+.br
+\fC#include <G\-2301\-01\-P2\-client\&.h>\fP
+.br
+\fC#include <G\-2301\-01\-P2\-ucomm\&.h>\fP
+.br
+\fC#include <G\-2301\-01\-P2\-ccomm\&.h>\fP
+.br
+\fC#include <G\-2301\-01\-P1\-tools\&.h>\fP
+.br
+\fC#include <G\-2301\-01\-P1\-tcp\&.h>\fP
+.br
+\fC#include <G\-2301\-01\-P2\-rtp\&.h>\fP
+.br
+\fC#include <syslog\&.h>\fP
+.br
+\fC#include <sys/socket\&.h>\fP
+.br
+\fC#include <netdb\&.h>\fP
+.br
+\fC#include <ifaddrs\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+
+.SS "Estructuras de datos"
+
+.in +1c
+.ti -1c
+.RI "struct \fB_thread_file\fP"
+.br
+.in -1c
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "char * \fBget_unick\fP ()"
+.br
+.RI "\fIDevuelve el nick del usuario\&. Requiere liberar memoria\&. \fP"
+.ti -1c
+.RI "void \fBset_audio_host\fP (char *c)"
+.br
+.RI "\fIConfigura el host destino de la comunicacion de audio\&. \fP"
+.ti -1c
+.RI "void \fBset_audio_port\fP (unsigned long p)"
+.br
+.RI "\fIConfigura el puerto destino de la comunicacion de audio\&. \fP"
+.ti -1c
+.RI "void \fBunlock_audio\fP ()"
+.br
+.RI "\fIDesbloquea el audio\&. \fP"
+.ti -1c
+.RI "char * \fBget_uhost\fP ()"
+.br
+.RI "\fIDevuelve la IP propia de la interfaz\&. \fP"
+.ti -1c
+.RI "int \fB_client_socketsnd\fP (char *msg)"
+.br
+.RI "\fIEnvia el comando del cliente\&. Es segura para concurrencia\&. \fP"
+.ti -1c
+.RI "int \fB_client_socketrcv\fP (char *msg, size_t size)"
+.br
+.RI "\fIRecibe el comando en msg\&. \fP"
+.ti -1c
+.RI "int \fBclient_socketsnd\fP (char *msg)"
+.br
+.RI "\fIEnvia el comando del cliente\&. Es segura para concurrencia\&. \fP"
+.ti -1c
+.RI "int \fBclient_socketsnd_thread\fP (char *msg)"
+.br
+.RI "\fIEnvia el comando del cliente\&. Es segura para concurrencia y es la version para ser llamada desde hilos\&. \fP"
+.ti -1c
+.RI "int \fBclient_socketrcv\fP (char *msg, size_t size)"
+.br
+.RI "\fIRecibe el comando en msg\&. \fP"
+.ti -1c
+.RI "int \fBclient_socketrcv_thread\fP (char *msg, size_t size)"
+.br
+.RI "\fIRecibe el comando en msg\&. \fP"
+.ti -1c
+.RI "void * \fBfileThread\fP (void *d)"
+.br
+.RI "\fIEl hilo del envio de fichero\&. \fP"
+.ti -1c
+.RI "void * \fBaudiosnd_t\fP (void *d)"
+.br
+.RI "\fIGraba y envia audio para la funcionalidad de chat de voz\&. \fP"
+.ti -1c
+.RI "void * \fBaudiorcv_t\fP (void *d)"
+.br
+.RI "\fIRecibe y reproduce audio para la funcionalidad de chat de voz\&. \fP"
+.ti -1c
+.RI "void * \fBrcv_thread\fP (void *d)"
+.br
+.RI "\fIRecibe y atiende comandos IRC\&. \fP"
+.ti -1c
+.RI "void \fBdisconnect_client\fP ()"
+.br
+.RI "\fIDesconecta el cliente\&. \fP"
+.ti -1c
+.RI "void * \fBtimeout_t\fP (void *a)"
+.br
+.RI "\fIHilo de timeout\&. \fP"
+.ti -1c
+.RI "int \fBmain\fP (int argc, char *argv[])"
+.br
+.RI "\fI: Funcion principal del programa \fP"
+.in -1c
+.SH "Descripción detallada"
+.PP 
+Programa principal del cliente IRC\&. 
+
+
+.PP
+\fBAutor:\fP
+.RS 4
+Sergio Fuentes sergio.fuentesd@estudiante.uam.es 
+.PP
+Daniel Perdices daniel.perdices@estudiante.uam.es 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2016/04/19 
+.RE
+.PP
+
+.PP
+Definición en el archivo \fBxchat2\&.c\fP\&.
+.SH "Documentación de las funciones"
+.PP 
+.SS "int _client_socketrcv (char * msg, size_t size)"
+
+.PP
+Recibe el comando en msg\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fImsg\fP El mensaje IRC 
+.br
+\fIsize\fP El tamaño maximo de recepcion 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningun valor concreto 
+.RE
+.PP
+
+.PP
+Definición en la línea 153 del archivo xchat2\&.c\&.
+.PP
+Hace referencia a tcpsocket_rcv()\&.
+.SS "int _client_socketsnd (char * msg)"
+
+.PP
+Envia el comando del cliente\&. Es segura para concurrencia\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fImsg\fP El mensaje IRC 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningun valor concreto 
+.RE
+.PP
+
+.PP
+Definición en la línea 140 del archivo xchat2\&.c\&.
+.PP
+Hace referencia a tcpsocket_snd()\&.
+.SS "void* audiorcv_t (void * d)"
+
+.PP
+Recibe y reproduce audio para la funcionalidad de chat de voz\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fId\fP Nada 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+NULL 
+.RE
+.PP
+
+.PP
+Definición en la línea 1244 del archivo xchat2\&.c\&.
+.PP
+Hace referencia a audiosnd_t(), client_socketsnd(), client_tcpsocket_open(), disconnect_client(), get_uhost(), get_unick(), rcv_thread() y rtp_rcvpkg()\&.
+.SS "void* audiosnd_t (void * d)"
+
+.PP
+Graba y envia audio para la funcionalidad de chat de voz\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fId\fP Nada 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+NULL 
+.RE
+.PP
+
+.PP
+Definición en la línea 1222 del archivo xchat2\&.c\&.
+.PP
+Hace referencia a rtp_sndpkg()\&.
+.SS "int client_socketrcv (char * msg, size_t size)"
+
+.PP
+Recibe el comando en msg\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fImsg\fP El mensaje IRC 
+.br
+\fIsize\fP El tamaño maximo de recepcion 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningun valor concreto 
+.RE
+.PP
+
+.PP
+Definición en la línea 187 del archivo xchat2\&.c\&.
+.PP
+Hace referencia a _client_socketrcv()\&.
+.SS "int client_socketrcv_thread (char * msg, size_t size)"
+
+.PP
+Recibe el comando en msg\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fImsg\fP El mensaje IRC 
+.br
+\fIsize\fP El tamaño maximo de recepcion 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningun valor concreto 
+.RE
+.PP
+
+.PP
+Definición en la línea 200 del archivo xchat2\&.c\&.
+.PP
+Hace referencia a _client_socketrcv(), client_socketsnd() y get_unick()\&.
+.SS "int client_socketsnd (char * msg)"
+
+.PP
+Envia el comando del cliente\&. Es segura para concurrencia\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fImsg\fP El mensaje IRC 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningun valor concreto 
+.RE
+.PP
+
+.PP
+Definición en la línea 166 del archivo xchat2\&.c\&.
+.PP
+Hace referencia a _client_socketsnd()\&.
+.SS "int client_socketsnd_thread (char * msg)"
+
+.PP
+Envia el comando del cliente\&. Es segura para concurrencia y es la version para ser llamada desde hilos\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fImsg\fP El mensaje IRC 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningun valor concreto 
+.RE
+.PP
+
+.PP
+Definición en la línea 176 del archivo xchat2\&.c\&.
+.PP
+Hace referencia a _client_socketsnd()\&.
+.SS "void disconnect_client ()"
+
+.PP
+Desconecta el cliente\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fId\fP Nada 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+NULL 
+.RE
+.PP
+
+.PP
+Definición en la línea 1542 del archivo xchat2\&.c\&.
+.PP
+Hace referencia a tcpsocket_close()\&.
+.SS "void* fileThread (void * d)"
+
+.PP
+El hilo del envio de fichero\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fId\fP argumentos del hilo 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+NULL 
+.RE
+.PP
+
+.PP
+Definición en la línea 1144 del archivo xchat2\&.c\&.
+.PP
+Hace referencia a client_socketsnd(), get_uhost(), get_unick(), tcpsocket_accept() y tcpsocket_snd()\&.
+.SS "char* get_uhost ()"
+
+.PP
+Devuelve la IP propia de la interfaz\&. 
+.PP
+\fBDevuelve:\fP
+.RS 4
+el host 
+.RE
+.PP
+
+.PP
+Definición en la línea 90 del archivo xchat2\&.c\&.
+.SS "char* get_unick ()"
+
+.PP
+Devuelve el nick del usuario\&. Requiere liberar memoria\&. 
+.PP
+\fBDevuelve:\fP
+.RS 4
+el nick 
+.RE
+.PP
+
+.PP
+Definición en la línea 52 del archivo xchat2\&.c\&.
+.SS "int main (int argc, char * argv[])"
+
+.PP
+: Funcion principal del programa MMMMMMMMMM MMMMM AAAAAAA IIIIIII NNNNNNNNNN NNNNNN MMMMMMMMMM MMMMM AAAAAAAA IIIII NNNNNNNNNN NNNN MMMMM MMMM MM MM AAAAA AA III NNNNN NNNN NN MMMMM MMMM MM MM AAAAA AA III NNNNN NNNN NN MMMMM MMMM MM MM AAAAA AA III NNNNN NNNN NN MMMMM MMMM MM MM AAAAA AA III NNNNN NNNN NN MMMMM MMMM MM MM AAAAA AA III NNNNN NNNN NN MMMMM MMMM MM MM AAAAAAAAAAAAAA III NNNNN NNNN NN MMMMM MMMMM MM AAAAA AA III NNNNN NNNN NN MMMMM MMM MM AAAAA AA III NNNNN NNNN NN MMMMM MM AAAAA AA III NNNNN NNNN NN MMMMM MM AAAAA AA III NNNNN NNNN NN MMMMMMM MMMM AAAAAA AAAA IIIII NNNNNN NNNNNNN MMMMMMMMM MMMMMM AAAAAAAA AAAAAA IIIIIII NNNNNNN NNNNNNN 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIargc\fP numero de argumentos 
+.br
+\fIargv\fP parametros 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+0 
+.RE
+.PP
+
+.PP
+Definición en la línea 1599 del archivo xchat2\&.c\&.
+.PP
+Hace referencia a init_ccomm() y timeout_t()\&.
+.SS "void* rcv_thread (void * d)"
+
+.PP
+Recibe y atiende comandos IRC\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fId\fP Nada 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+NULL 
+.RE
+.PP
+
+.PP
+Definición en la línea 1510 del archivo xchat2\&.c\&.
+.PP
+Hace referencia a cdefault() y client_socketrcv_thread()\&.
+.SS "void set_audio_host (char * c)"
+
+.PP
+Configura el host destino de la comunicacion de audio\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIc\fP IP destino de la comunicacion 
+.RE
+.PP
+
+.PP
+Definición en la línea 67 del archivo xchat2\&.c\&.
+.SS "void set_audio_port (unsigned long p)"
+
+.PP
+Configura el puerto destino de la comunicacion de audio\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIc\fP puerto destino 
+.RE
+.PP
+
+.PP
+Definición en la línea 75 del archivo xchat2\&.c\&.
+.SS "void* timeout_t (void * a)"
+
+.PP
+Hilo de timeout\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fId\fP Nada 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+NULL 
+.RE
+.PP
+
+.PP
+Definición en la línea 1556 del archivo xchat2\&.c\&.
+.PP
+Hace referencia a client_socketsnd_thread() y disconnect_client()\&.
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Practica 2 - Redes de Comunicaciones II del código fuente\&.

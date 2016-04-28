@@ -1,0 +1,108 @@
+.TH "srclib/G-2301-01-P1-tools.c" 3 "Martes, 15 de Marzo de 2016" "Practica 1 - Redes de Comunicaciones II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srclib/G-2301-01-P1-tools.c \- Libreria de utilidades\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'G-2301-01-P1-tcp\&.h'\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <netdb\&.h>\fP
+.br
+\fC#include <pthread\&.h>\fP
+.br
+\fC#include <strings\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+\fC#include <syslog\&.h>\fP
+.br
+
+.SS "'defines'"
+
+.in +1c
+.ti -1c
+.RI "#define \fBstrlen\fP   \fB_strlen\fP"
+.br
+.ti -1c
+.RI "#define \fBstrcmp\fP   \fB_strcmp\fP"
+.br
+.in -1c
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "size_t \fB_strlen\fP (const char *s)"
+.br
+.RI "\fIFuncion strlen de strings\&.h\&. \fP"
+.ti -1c
+.RI "int \fB_strcmp\fP (const char *a, const char *b)"
+.br
+.RI "\fIFuncion strcmp de strings\&.h\&. \fP"
+.in -1c
+.SH "Descripción detallada"
+.PP 
+Libreria de utilidades\&. 
+
+
+.PP
+\fBAutor:\fP
+.RS 4
+Sergio Fuentes sergio.fuentesd@estudiante.uam.es 
+.PP
+Daniel Perdices daniel.perdices@estudiante.uam.es 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2016/02/01 
+.RE
+.PP
+
+.SH "Documentación de las funciones"
+.PP 
+.SS "int _strcmp (const char * a, const char * b)"
+
+.PP
+Funcion strcmp de strings\&.h\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIa\fP Puntero a la cadena de caracteres 
+.br
+\fIb\fP Puntero a la cadena de caracteres 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+la diferencia entre ambas cadenas 
+.RE
+.PP
+
+.SS "size_t _strlen (const char * s)"
+
+.PP
+Funcion strlen de strings\&.h\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIs\fP Puntero a la cadena de caracteres 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+la longitud 
+.RE
+.PP
+
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Practica 1 - Redes de Comunicaciones II del código fuente\&.

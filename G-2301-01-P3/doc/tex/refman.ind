@@ -1,0 +1,256 @@
+\begin{theindex}
+
+  \item {\+\_\+strcmp}
+    \subitem {G-\/2301-\/01-\/\+P1-\/tools.\+c}, \hyperpage{23}
+  \item {\+\_\+strlen}
+    \subitem {G-\/2301-\/01-\/\+P1-\/tools.\+c}, \hyperpage{23}
+
+  \indexspace
+
+  \item {away}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{10}
+
+  \indexspace
+
+  \item {client\+\_\+tcpsocket\+\_\+open}
+    \subitem {G-\/2301-\/01-\/\+P1-\/tcp.\+c}, \hyperpage{20}
+  \item {client\+\_\+udpsocket\+\_\+open}
+    \subitem {G-\/2301-\/01-\/\+P1-\/udp.\+c}, \hyperpage{24}
+  \item {connection\+\_\+add}
+    \subitem {G-\/2301-\/01-\/\+P1-\/server.\+c}, \hyperpage{16}
+  \item {connection\+\_\+block}
+    \subitem {G-\/2301-\/01-\/\+P1-\/server.\+c}, \hyperpage{16}
+  \item {connection\+\_\+isblocked}
+    \subitem {G-\/2301-\/01-\/\+P1-\/server.\+c}, \hyperpage{17}
+  \item {connection\+\_\+rmv}
+    \subitem {G-\/2301-\/01-\/\+P1-\/server.\+c}, \hyperpage{17}
+  \item {connection\+\_\+unblock}
+    \subitem {G-\/2301-\/01-\/\+P1-\/server.\+c}, \hyperpage{17}
+
+  \indexspace
+
+  \item {daemonize}
+    \subitem {G-\/2301-\/01-\/\+P1-\/daemon.\+c}, \hyperpage{8}
+
+  \indexspace
+
+  \item {G-\/2301-\/01-\/\+P1-\/daemon.\+c}
+    \subitem {daemonize}, \hyperpage{8}
+  \item {G-\/2301-\/01-\/\+P1-\/irc.\+c}
+    \subitem {away}, \hyperpage{10}
+    \subitem {join}, \hyperpage{10}
+    \subitem {kick}, \hyperpage{10}
+    \subitem {list}, \hyperpage{11}
+    \subitem {mode}, \hyperpage{11}
+    \subitem {motd}, \hyperpage{11}
+    \subitem {names}, \hyperpage{11}
+    \subitem {nick}, \hyperpage{12}
+    \subitem {no\+\_\+command}, \hyperpage{12}
+    \subitem {notice}, \hyperpage{12}
+    \subitem {part}, \hyperpage{12}
+    \subitem {ping}, \hyperpage{13}
+    \subitem {pong}, \hyperpage{13}
+    \subitem {privmsg}, \hyperpage{13}
+    \subitem {quit}, \hyperpage{13}
+    \subitem {time\+\_\+c}, \hyperpage{14}
+    \subitem {topic}, \hyperpage{14}
+    \subitem {user}, \hyperpage{14}
+    \subitem {version}, \hyperpage{14}
+    \subitem {whois}, \hyperpage{15}
+  \item {G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}
+    \subitem {get\+\_\+motd\+\_\+path}, \hyperpage{4}
+    \subitem {get\+\_\+nick}, \hyperpage{4}
+    \subitem {get\+\_\+socketd\+\_\+bynick}, \hyperpage{5}
+    \subitem {get\+\_\+socketd\+\_\+byuser}, \hyperpage{5}
+    \subitem {get\+\_\+user}, \hyperpage{5}
+    \subitem {handler}, \hyperpage{5}
+    \subitem {main}, \hyperpage{5}
+    \subitem {process\+\_\+command}, \hyperpage{7}
+    \subitem {set\+\_\+nick}, \hyperpage{7}
+    \subitem {set\+\_\+user}, \hyperpage{7}
+    \subitem {timeout\+\_\+thread}, \hyperpage{7}
+    \subitem {update\+\_\+timeout}, \hyperpage{8}
+  \item {G-\/2301-\/01-\/\+P1-\/server.\+c}
+    \subitem {connection\+\_\+add}, \hyperpage{16}
+    \subitem {connection\+\_\+block}, \hyperpage{16}
+    \subitem {connection\+\_\+isblocked}, \hyperpage{17}
+    \subitem {connection\+\_\+rmv}, \hyperpage{17}
+    \subitem {connection\+\_\+unblock}, \hyperpage{17}
+    \subitem {get\+\_\+ip\+\_\+from\+\_\+connection}, \hyperpage{17}
+    \subitem {is\+\_\+connected}, \hyperpage{17}
+    \subitem {is\+\_\+readable}, \hyperpage{19}
+    \subitem {server\+\_\+launch}, \hyperpage{19}
+    \subitem {server\+\_\+stop}, \hyperpage{19}
+    \subitem {set\+\_\+do\+\_\+on\+\_\+disconnect}, \hyperpage{19}
+    \subitem {sigint\+\_\+handler}, \hyperpage{19}
+  \item {G-\/2301-\/01-\/\+P1-\/tcp.\+c}
+    \subitem {client\+\_\+tcpsocket\+\_\+open}, \hyperpage{20}
+    \subitem {server\+\_\+tcpsocket\+\_\+open}, \hyperpage{21}
+    \subitem {tcpsocket\+\_\+accept}, \hyperpage{21}
+    \subitem {tcpsocket\+\_\+close}, \hyperpage{21}
+    \subitem {tcpsocket\+\_\+rcv}, \hyperpage{21}
+    \subitem {tcpsocket\+\_\+snd}, \hyperpage{22}
+  \item {G-\/2301-\/01-\/\+P1-\/tools.\+c}
+    \subitem {\+\_\+strcmp}, \hyperpage{23}
+    \subitem {\+\_\+strlen}, \hyperpage{23}
+  \item {G-\/2301-\/01-\/\+P1-\/udp.\+c}
+    \subitem {client\+\_\+udpsocket\+\_\+open}, \hyperpage{24}
+    \subitem {server\+\_\+udpsocket\+\_\+open}, \hyperpage{24}
+    \subitem {udpsocket\+\_\+rcv}, \hyperpage{24}
+    \subitem {udpsocket\+\_\+snd}, \hyperpage{24}
+  \item {get\+\_\+ip\+\_\+from\+\_\+connection}
+    \subitem {G-\/2301-\/01-\/\+P1-\/server.\+c}, \hyperpage{17}
+  \item {get\+\_\+motd\+\_\+path}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}, 
+		\hyperpage{4}
+  \item {get\+\_\+nick}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}, 
+		\hyperpage{4}
+  \item {get\+\_\+socketd\+\_\+bynick}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}, 
+		\hyperpage{5}
+  \item {get\+\_\+socketd\+\_\+byuser}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}, 
+		\hyperpage{5}
+  \item {get\+\_\+user}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}, 
+		\hyperpage{5}
+
+  \indexspace
+
+  \item {handler}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}, 
+		\hyperpage{5}
+
+  \indexspace
+
+  \item {is\+\_\+connected}
+    \subitem {G-\/2301-\/01-\/\+P1-\/server.\+c}, \hyperpage{17}
+  \item {is\+\_\+readable}
+    \subitem {G-\/2301-\/01-\/\+P1-\/server.\+c}, \hyperpage{19}
+
+  \indexspace
+
+  \item {join}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{10}
+
+  \indexspace
+
+  \item {kick}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{10}
+
+  \indexspace
+
+  \item {list}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{11}
+
+  \indexspace
+
+  \item {main}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}, 
+		\hyperpage{5}
+  \item {mode}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{11}
+  \item {motd}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{11}
+
+  \indexspace
+
+  \item {names}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{11}
+  \item {nick}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{12}
+  \item {no\+\_\+command}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{12}
+  \item {notice}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{12}
+
+  \indexspace
+
+  \item {part}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{12}
+  \item {ping}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{13}
+  \item {pong}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{13}
+  \item {privmsg}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{13}
+  \item {process\+\_\+command}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}, 
+		\hyperpage{7}
+
+  \indexspace
+
+  \item {quit}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{13}
+
+  \indexspace
+
+  \item {server\+\_\+launch}
+    \subitem {G-\/2301-\/01-\/\+P1-\/server.\+c}, \hyperpage{19}
+  \item {server\+\_\+stop}
+    \subitem {G-\/2301-\/01-\/\+P1-\/server.\+c}, \hyperpage{19}
+  \item {server\+\_\+tcpsocket\+\_\+open}
+    \subitem {G-\/2301-\/01-\/\+P1-\/tcp.\+c}, \hyperpage{21}
+  \item {server\+\_\+udpsocket\+\_\+open}
+    \subitem {G-\/2301-\/01-\/\+P1-\/udp.\+c}, \hyperpage{24}
+  \item {set\+\_\+do\+\_\+on\+\_\+disconnect}
+    \subitem {G-\/2301-\/01-\/\+P1-\/server.\+c}, \hyperpage{19}
+  \item {set\+\_\+nick}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}, 
+		\hyperpage{7}
+  \item {set\+\_\+user}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}, 
+		\hyperpage{7}
+  \item {sigint\+\_\+handler}
+    \subitem {G-\/2301-\/01-\/\+P1-\/server.\+c}, \hyperpage{19}
+  \item {src/\+G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}, 
+		\hyperpage{3}
+  \item {srclib/\+G-\/2301-\/01-\/\+P1-\/daemon.\+c}, \hyperpage{8}
+  \item {srclib/\+G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{9}
+  \item {srclib/\+G-\/2301-\/01-\/\+P1-\/server.\+c}, \hyperpage{15}
+  \item {srclib/\+G-\/2301-\/01-\/\+P1-\/tcp.\+c}, \hyperpage{20}
+  \item {srclib/\+G-\/2301-\/01-\/\+P1-\/tools.\+c}, \hyperpage{22}
+  \item {srclib/\+G-\/2301-\/01-\/\+P1-\/udp.\+c}, \hyperpage{23}
+
+  \indexspace
+
+  \item {tcpsocket\+\_\+accept}
+    \subitem {G-\/2301-\/01-\/\+P1-\/tcp.\+c}, \hyperpage{21}
+  \item {tcpsocket\+\_\+close}
+    \subitem {G-\/2301-\/01-\/\+P1-\/tcp.\+c}, \hyperpage{21}
+  \item {tcpsocket\+\_\+rcv}
+    \subitem {G-\/2301-\/01-\/\+P1-\/tcp.\+c}, \hyperpage{21}
+  \item {tcpsocket\+\_\+snd}
+    \subitem {G-\/2301-\/01-\/\+P1-\/tcp.\+c}, \hyperpage{22}
+  \item {time\+\_\+c}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{14}
+  \item {timeout\+\_\+thread}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}, 
+		\hyperpage{7}
+  \item {topic}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{14}
+
+  \indexspace
+
+  \item {udpsocket\+\_\+rcv}
+    \subitem {G-\/2301-\/01-\/\+P1-\/udp.\+c}, \hyperpage{24}
+  \item {udpsocket\+\_\+snd}
+    \subitem {G-\/2301-\/01-\/\+P1-\/udp.\+c}, \hyperpage{24}
+  \item {update\+\_\+timeout}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}, 
+		\hyperpage{8}
+  \item {user}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{14}
+
+  \indexspace
+
+  \item {version}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{14}
+
+  \indexspace
+
+  \item {whois}
+    \subitem {G-\/2301-\/01-\/\+P1-\/irc.\+c}, \hyperpage{15}
+
+\end{theindex}

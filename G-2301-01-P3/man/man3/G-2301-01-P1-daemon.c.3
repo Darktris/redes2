@@ -1,0 +1,74 @@
+.TH "srclib/G-2301-01-P1-daemon.c" 3 "Martes, 15 de Marzo de 2016" "Practica 1 - Redes de Comunicaciones II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srclib/G-2301-01-P1-daemon.c \- Libreria de creacion de un daemon\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <syslog\&.h>\fP
+.br
+\fC#include <sys/types\&.h>\fP
+.br
+\fC#include <sys/stat\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include 'G-2301-01-P1-daemon\&.h'\fP
+.br
+
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "int \fBdaemonize\fP (char *srvcid)"
+.br
+.RI "\fICrea un servicio daemon identificado\&. \fP"
+.in -1c
+.SH "Descripción detallada"
+.PP 
+Libreria de creacion de un daemon\&. 
+
+
+.PP
+\fBAutor:\fP
+.RS 4
+Sergio Fuentes sergio.fuentesd@estudiante.uam.es 
+.PP
+Daniel Perdices daniel.perdices@estudiante.uam.es 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2016/02/10 
+.RE
+.PP
+
+.SH "Documentación de las funciones"
+.PP 
+.SS "int daemonize (char * srvcid)"
+
+.PP
+Crea un servicio daemon identificado\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsrvcid\fP Identificacion del daemon 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+DMNOK o DMNERR_* en caso de error 
+.RE
+.PP
+
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Practica 1 - Redes de Comunicaciones II del código fuente\&.

@@ -1,0 +1,134 @@
+\hypertarget{G-2301-01-P1-udp_8c}{}\section{Referencia del Archivo srclib/\+G-\/2301-\/01-\/\+P1-\/udp.c}
+\label{G-2301-01-P1-udp_8c}\index{srclib/\+G-\/2301-\/01-\/\+P1-\/udp.\+c@{srclib/\+G-\/2301-\/01-\/\+P1-\/udp.\+c}}
+
+
+Libreria de manejo de sockets U\+D\+P.  
+
+
+{\ttfamily \#include $<$G-\/2301-\/01-\/\+P1-\/udp.\+h$>$}\\*
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{G-2301-01-P1-udp_8c_a2e2c02bdf6bcf2f209668a8043bf6bd2}{server\+\_\+udpsocket\+\_\+open} (uint16\+\_\+t port, int $\ast$socketd)
+\begin{DoxyCompactList}\small\item\em Abre un socket U\+D\+P para servidor. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-udp_8c_ae7f255a6718aa72c2e989f67141d3b04}{client\+\_\+udpsocket\+\_\+open} (uint16\+\_\+t port, int $\ast$socketd)
+\begin{DoxyCompactList}\small\item\em Abre un socket U\+D\+P para cliente. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-udp_8c_aa3986001dc3af37c0ef0b456a1fcbb15}{udpsocket\+\_\+snd} (int socketd, void $\ast$data, size\+\_\+t len, udpsocket\+\_\+side $\ast$dst)
+\begin{DoxyCompactList}\small\item\em Envia los datos a traves del socket U\+D\+P. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-udp_8c_a3c19ed0babf0c0e6d734440552fef2bd}{udpsocket\+\_\+rcv} (int socketd, void $\ast$data, size\+\_\+t max, size\+\_\+t $\ast$len, udpsocket\+\_\+side $\ast$src)
+\begin{DoxyCompactList}\small\item\em Recibe a traves del socket U\+D\+P. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Libreria de manejo de sockets U\+D\+P. 
+
+\begin{DoxyAuthor}{Autor}
+Sergio Fuentes \href{mailto:sergio.fuentesd@estudiante.uam.es}{\tt sergio.\+fuentesd@estudiante.\+uam.\+es} 
+
+Daniel Perdices \href{mailto:daniel.perdices@estudiante.uam.es}{\tt daniel.\+perdices@estudiante.\+uam.\+es} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+2016/02/01 
+\end{DoxyDate}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{G-2301-01-P1-udp_8c_ae7f255a6718aa72c2e989f67141d3b04}{}\index{G-\/2301-\/01-\/\+P1-\/udp.\+c@{G-\/2301-\/01-\/\+P1-\/udp.\+c}!client\+\_\+udpsocket\+\_\+open@{client\+\_\+udpsocket\+\_\+open}}
+\index{client\+\_\+udpsocket\+\_\+open@{client\+\_\+udpsocket\+\_\+open}!G-\/2301-\/01-\/\+P1-\/udp.\+c@{G-\/2301-\/01-\/\+P1-\/udp.\+c}}
+\subsubsection[{client\+\_\+udpsocket\+\_\+open}]{\setlength{\rightskip}{0pt plus 5cm}int client\+\_\+udpsocket\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{port, }
+\item[{int $\ast$}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-udp_8c_ae7f255a6718aa72c2e989f67141d3b04}
+
+
+Abre un socket U\+D\+P para cliente. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em port} & Puerto desde el que se desea escuchar \\
+\hline
+{\em socketd} & Puntero al descriptor del socket \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+U\+D\+P\+O\+K si todo fue correcto U\+D\+P\+E\+R\+R\+\_\+\+A\+R\+G\+S/\+S\+O\+C\+K\+E\+T/\+B\+I\+N\+D/\+L\+I\+S\+T\+E\+N en caso de error con estas funciones 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-udp_8c_a2e2c02bdf6bcf2f209668a8043bf6bd2}{}\index{G-\/2301-\/01-\/\+P1-\/udp.\+c@{G-\/2301-\/01-\/\+P1-\/udp.\+c}!server\+\_\+udpsocket\+\_\+open@{server\+\_\+udpsocket\+\_\+open}}
+\index{server\+\_\+udpsocket\+\_\+open@{server\+\_\+udpsocket\+\_\+open}!G-\/2301-\/01-\/\+P1-\/udp.\+c@{G-\/2301-\/01-\/\+P1-\/udp.\+c}}
+\subsubsection[{server\+\_\+udpsocket\+\_\+open}]{\setlength{\rightskip}{0pt plus 5cm}int server\+\_\+udpsocket\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{port, }
+\item[{int $\ast$}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-udp_8c_a2e2c02bdf6bcf2f209668a8043bf6bd2}
+
+
+Abre un socket U\+D\+P para servidor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em port} & Puerto desde el que se desea escuchar \\
+\hline
+{\em socketd} & Puntero al descriptor del socket \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+U\+D\+P\+O\+K si todo funciono correctamente U\+D\+P\+E\+R\+R\+\_\+\+A\+R\+G\+S/\+S\+O\+C\+K\+E\+T/\+B\+I\+N\+D en caso de error con estas funciones 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-udp_8c_a3c19ed0babf0c0e6d734440552fef2bd}{}\index{G-\/2301-\/01-\/\+P1-\/udp.\+c@{G-\/2301-\/01-\/\+P1-\/udp.\+c}!udpsocket\+\_\+rcv@{udpsocket\+\_\+rcv}}
+\index{udpsocket\+\_\+rcv@{udpsocket\+\_\+rcv}!G-\/2301-\/01-\/\+P1-\/udp.\+c@{G-\/2301-\/01-\/\+P1-\/udp.\+c}}
+\subsubsection[{udpsocket\+\_\+rcv}]{\setlength{\rightskip}{0pt plus 5cm}int udpsocket\+\_\+rcv (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd, }
+\item[{void $\ast$}]{data, }
+\item[{size\+\_\+t}]{max, }
+\item[{size\+\_\+t $\ast$}]{len, }
+\item[{udpsocket\+\_\+side $\ast$}]{src}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-udp_8c_a3c19ed0babf0c0e6d734440552fef2bd}
+
+
+Recibe a traves del socket U\+D\+P. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Descriptor del socket escuchado \\
+\hline
+{\em data} & puntero a donde se almacenan los datos \\
+\hline
+{\em max} & tamaño de la zona de memoria \\
+\hline
+{\em len} & puntero a la variable de longitud recibida \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+U\+D\+P\+O\+K si todo fue correcto U\+D\+P\+E\+R\+R\+\_\+\+A\+R\+G\+S/\+R\+E\+C\+V en caso de error con estas funciones 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-udp_8c_aa3986001dc3af37c0ef0b456a1fcbb15}{}\index{G-\/2301-\/01-\/\+P1-\/udp.\+c@{G-\/2301-\/01-\/\+P1-\/udp.\+c}!udpsocket\+\_\+snd@{udpsocket\+\_\+snd}}
+\index{udpsocket\+\_\+snd@{udpsocket\+\_\+snd}!G-\/2301-\/01-\/\+P1-\/udp.\+c@{G-\/2301-\/01-\/\+P1-\/udp.\+c}}
+\subsubsection[{udpsocket\+\_\+snd}]{\setlength{\rightskip}{0pt plus 5cm}int udpsocket\+\_\+snd (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd, }
+\item[{void $\ast$}]{data, }
+\item[{size\+\_\+t}]{len, }
+\item[{udpsocket\+\_\+side $\ast$}]{dst}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-udp_8c_aa3986001dc3af37c0ef0b456a1fcbb15}
+
+
+Envia los datos a traves del socket U\+D\+P. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Descriptor del socket escuchado \\
+\hline
+{\em data} & puntero a los datos que se han de enviar \\
+\hline
+{\em len} & tamano de los datos a enviar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+U\+D\+P\+O\+K si todo fue correcto U\+D\+P\+E\+R\+R\+\_\+\+A\+R\+G\+S/\+S\+E\+N\+D en caso de error con estas funciones 
+\end{DoxyReturn}

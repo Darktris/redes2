@@ -1,0 +1,490 @@
+.TH "srclib/G-2301-01-P1-irc.c" 3 "Martes, 15 de Marzo de 2016" "Practica 1 - Redes de Comunicaciones II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srclib/G-2301-01-P1-irc.c \- Libreria de manejo de mensajes IRC\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <G-2301-01-P1-irc\&.h>\fP
+.br
+\fC#include <redes2/irc\&.h>\fP
+.br
+\fC#include <syslog\&.h>\fP
+.br
+\fC#include <G-2301-01-P1-server\&.h>\fP
+.br
+\fC#include <G-2301-01-P1-tools\&.h>\fP
+.br
+\fC#include 'G-2301-01-P1-irc_server\&.h'\fP
+.br
+
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "int \fBnick\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando NICK\&. \fP"
+.ti -1c
+.RI "int \fBuser\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando USER\&. \fP"
+.ti -1c
+.RI "int \fBlist\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando LIST\&. \fP"
+.ti -1c
+.RI "int \fBping\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando PING\&. \fP"
+.ti -1c
+.RI "int \fBpong\fP (char *command, void *more)"
+.br
+.RI "\fI'Atiende' el comando PONG \fP"
+.ti -1c
+.RI "int \fBjoin\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando JOIN\&. \fP"
+.ti -1c
+.RI "int \fBprivmsg\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando PRIVMSG\&. \fP"
+.ti -1c
+.RI "int \fBmode\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando MODE\&. \fP"
+.ti -1c
+.RI "int \fBpart\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando PART\&. \fP"
+.ti -1c
+.RI "int \fBnames\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando NAMES\&. \fP"
+.ti -1c
+.RI "int \fBno_command\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende comandos desconocidos\&. \fP"
+.ti -1c
+.RI "int \fBtopic\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando TOPIC\&. \fP"
+.ti -1c
+.RI "int \fBwhois\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando WHOIS\&. \fP"
+.ti -1c
+.RI "int \fBquit\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando QUIT\&. \fP"
+.ti -1c
+.RI "int \fBmotd\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando MOTD\&. \fP"
+.ti -1c
+.RI "int \fBaway\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando AWAY\&. \fP"
+.ti -1c
+.RI "int \fBkick\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando KICK\&. \fP"
+.ti -1c
+.RI "int \fBtime_c\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando TIME\&. \fP"
+.ti -1c
+.RI "int \fBversion\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando VERSION\&. \fP"
+.ti -1c
+.RI "int \fBnotice\fP (char *command, void *more)"
+.br
+.RI "\fIAtiende el comando NOTICE\&. \fP"
+.in -1c
+.SH "Descripción detallada"
+.PP 
+Libreria de manejo de mensajes IRC\&. 
+
+
+.PP
+\fBAutor:\fP
+.RS 4
+Sergio Fuentes sergio.fuentesd@estudiante.uam.es 
+.PP
+Daniel Perdices daniel.perdices@estudiante.uam.es 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2016/02/10 
+.RE
+.PP
+
+.SH "Documentación de las funciones"
+.PP 
+.SS "int away (char * command, void * more)"
+
+.PP
+Atiende el comando AWAY\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int join (char * command, void * more)"
+
+.PP
+Atiende el comando JOIN\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int kick (char * command, void * more)"
+
+.PP
+Atiende el comando KICK\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int list (char * command, void * more)"
+
+.PP
+Atiende el comando LIST\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int mode (char * command, void * more)"
+
+.PP
+Atiende el comando MODE\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int motd (char * command, void * more)"
+
+.PP
+Atiende el comando MOTD\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int names (char * command, void * more)"
+
+.PP
+Atiende el comando NAMES\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int nick (char * command, void * more)"
+
+.PP
+Atiende el comando NICK\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int no_command (char * command, void * more)"
+
+.PP
+Atiende comandos desconocidos\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int notice (char * command, void * more)"
+
+.PP
+Atiende el comando NOTICE\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int part (char * command, void * more)"
+
+.PP
+Atiende el comando PART\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int ping (char * command, void * more)"
+
+.PP
+Atiende el comando PING\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int pong (char * command, void * more)"
+
+.PP
+'Atiende' el comando PONG 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int privmsg (char * command, void * more)"
+
+.PP
+Atiende el comando PRIVMSG\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int quit (char * command, void * more)"
+
+.PP
+Atiende el comando QUIT\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int time_c (char * command, void * more)"
+
+.PP
+Atiende el comando TIME\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int topic (char * command, void * more)"
+
+.PP
+Atiende el comando TOPIC\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int user (char * command, void * more)"
+
+.PP
+Atiende el comando USER\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int version (char * command, void * more)"
+
+.PP
+Atiende el comando VERSION\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SS "int whois (char * command, void * more)"
+
+.PP
+Atiende el comando WHOIS\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.br
+\fImore\fP Puntero a estructura conn_data auxiliar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+Ningún valor definido, la función controlan el error de manera interna 
+.RE
+.PP
+
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Practica 1 - Redes de Comunicaciones II del código fuente\&.

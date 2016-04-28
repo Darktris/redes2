@@ -1,0 +1,183 @@
+\hypertarget{G-2301-01-P1-tcp_8c}{}\section{Referencia del Archivo srclib/\+G-\/2301-\/01-\/\+P1-\/tcp.c}
+\label{G-2301-01-P1-tcp_8c}\index{srclib/\+G-\/2301-\/01-\/\+P1-\/tcp.\+c@{srclib/\+G-\/2301-\/01-\/\+P1-\/tcp.\+c}}
+
+
+Libreria de manejo de sockets T\+C\+P.  
+
+
+{\ttfamily \#include \char`\"{}G-\/2301-\/01-\/\+P1-\/tcp.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$netdb.\+h$>$}\\*
+{\ttfamily \#include $<$pthread.\+h$>$}\\*
+{\ttfamily \#include $<$strings.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$syslog.\+h$>$}\\*
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{G-2301-01-P1-tcp_8c_a61264c8cd27594410ae2dfb47636f0df}{server\+\_\+tcpsocket\+\_\+open} (uint16\+\_\+t port, int $\ast$socketd)
+\begin{DoxyCompactList}\small\item\em Abre un socket T\+C\+P para servidor. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-tcp_8c_a165425a589b956da5b412cd800b9fdd0}{client\+\_\+tcpsocket\+\_\+open} (uint16\+\_\+t port, int $\ast$socketd, char $\ast$hostname)
+\begin{DoxyCompactList}\small\item\em Abre un socket T\+C\+P para cliente. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-tcp_8c_ad4435ff2d726b9709f16cd83b422a2af}{tcpsocket\+\_\+accept} (int socketd, tcpsocket\+\_\+args $\ast$args)
+\begin{DoxyCompactList}\small\item\em Acepta una conexion a socket T\+C\+P. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-tcp_8c_a2679468c1d7867805267820ef3fcc768}{tcpsocket\+\_\+snd} (int socketd, void $\ast$data, size\+\_\+t len)
+\begin{DoxyCompactList}\small\item\em Envia los datos a traves del socket T\+C\+P. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-tcp_8c_aa05a2884a00c4137853da3543673a75c}{tcpsocket\+\_\+rcv} (int socketd, void $\ast$data, size\+\_\+t max, size\+\_\+t $\ast$len)
+\begin{DoxyCompactList}\small\item\em Recibe a traves del socket T\+C\+P. \end{DoxyCompactList}\item 
+void \hyperlink{G-2301-01-P1-tcp_8c_a167d4c9cfbe1179c55caa9ef515ef288}{tcpsocket\+\_\+close} (int socketd)
+\begin{DoxyCompactList}\small\item\em Cierra un socket T\+C\+P. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Libreria de manejo de sockets T\+C\+P. 
+
+\begin{DoxyAuthor}{Autor}
+Sergio Fuentes \href{mailto:sergio.fuentesd@estudiante.uam.es}{\tt sergio.\+fuentesd@estudiante.\+uam.\+es} 
+
+Daniel Perdices \href{mailto:daniel.perdices@estudiante.uam.es}{\tt daniel.\+perdices@estudiante.\+uam.\+es} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+2016/02/01 
+\end{DoxyDate}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{G-2301-01-P1-tcp_8c_a165425a589b956da5b412cd800b9fdd0}{}\index{G-\/2301-\/01-\/\+P1-\/tcp.\+c@{G-\/2301-\/01-\/\+P1-\/tcp.\+c}!client\+\_\+tcpsocket\+\_\+open@{client\+\_\+tcpsocket\+\_\+open}}
+\index{client\+\_\+tcpsocket\+\_\+open@{client\+\_\+tcpsocket\+\_\+open}!G-\/2301-\/01-\/\+P1-\/tcp.\+c@{G-\/2301-\/01-\/\+P1-\/tcp.\+c}}
+\subsubsection[{client\+\_\+tcpsocket\+\_\+open}]{\setlength{\rightskip}{0pt plus 5cm}int client\+\_\+tcpsocket\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{port, }
+\item[{int $\ast$}]{socketd, }
+\item[{char $\ast$}]{hostname}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-tcp_8c_a165425a589b956da5b412cd800b9fdd0}
+
+
+Abre un socket T\+C\+P para cliente. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em port} & Puerto desde el que se desea escuchar \\
+\hline
+{\em socketd} & Puntero al descriptor del socket \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+T\+C\+P\+O\+K si todo fue correcto T\+C\+P\+E\+R\+R\+\_\+\+A\+R\+G\+S/\+S\+O\+C\+K\+E\+T/\+B\+I\+N\+D/\+L\+I\+S\+T\+E\+N en caso de error con estas funciones 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-tcp_8c_a61264c8cd27594410ae2dfb47636f0df}{}\index{G-\/2301-\/01-\/\+P1-\/tcp.\+c@{G-\/2301-\/01-\/\+P1-\/tcp.\+c}!server\+\_\+tcpsocket\+\_\+open@{server\+\_\+tcpsocket\+\_\+open}}
+\index{server\+\_\+tcpsocket\+\_\+open@{server\+\_\+tcpsocket\+\_\+open}!G-\/2301-\/01-\/\+P1-\/tcp.\+c@{G-\/2301-\/01-\/\+P1-\/tcp.\+c}}
+\subsubsection[{server\+\_\+tcpsocket\+\_\+open}]{\setlength{\rightskip}{0pt plus 5cm}int server\+\_\+tcpsocket\+\_\+open (
+\begin{DoxyParamCaption}
+\item[{uint16\+\_\+t}]{port, }
+\item[{int $\ast$}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-tcp_8c_a61264c8cd27594410ae2dfb47636f0df}
+
+
+Abre un socket T\+C\+P para servidor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em port} & Puerto desde el que se desea escuchar \\
+\hline
+{\em socketd} & Puntero al descriptor del socket \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+T\+C\+P\+O\+K si todo funciono correctamente T\+C\+P\+E\+R\+R\+\_\+\+A\+R\+G\+S/\+S\+O\+C\+K\+E\+T/\+B\+I\+N\+D/\+L\+I\+S\+T\+E\+N en caso de error con estas funciones 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-tcp_8c_ad4435ff2d726b9709f16cd83b422a2af}{}\index{G-\/2301-\/01-\/\+P1-\/tcp.\+c@{G-\/2301-\/01-\/\+P1-\/tcp.\+c}!tcpsocket\+\_\+accept@{tcpsocket\+\_\+accept}}
+\index{tcpsocket\+\_\+accept@{tcpsocket\+\_\+accept}!G-\/2301-\/01-\/\+P1-\/tcp.\+c@{G-\/2301-\/01-\/\+P1-\/tcp.\+c}}
+\subsubsection[{tcpsocket\+\_\+accept}]{\setlength{\rightskip}{0pt plus 5cm}int tcpsocket\+\_\+accept (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd, }
+\item[{tcpsocket\+\_\+args $\ast$}]{args}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-tcp_8c_ad4435ff2d726b9709f16cd83b422a2af}
+
+
+Acepta una conexion a socket T\+C\+P. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Descriptor del socket escuchado \\
+\hline
+{\em args} & estructura de datos de la conexion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+T\+C\+P\+O\+K si todo fue correcto T\+C\+P\+E\+R\+R\+\_\+\+A\+R\+G\+S/\+A\+C\+C\+E\+P\+T/\+P\+T\+H\+R\+E\+A\+D en caso de error con estas funciones 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-tcp_8c_a167d4c9cfbe1179c55caa9ef515ef288}{}\index{G-\/2301-\/01-\/\+P1-\/tcp.\+c@{G-\/2301-\/01-\/\+P1-\/tcp.\+c}!tcpsocket\+\_\+close@{tcpsocket\+\_\+close}}
+\index{tcpsocket\+\_\+close@{tcpsocket\+\_\+close}!G-\/2301-\/01-\/\+P1-\/tcp.\+c@{G-\/2301-\/01-\/\+P1-\/tcp.\+c}}
+\subsubsection[{tcpsocket\+\_\+close}]{\setlength{\rightskip}{0pt plus 5cm}void tcpsocket\+\_\+close (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-tcp_8c_a167d4c9cfbe1179c55caa9ef515ef288}
+
+
+Cierra un socket T\+C\+P. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & descriptor del socket \\
+\hline
+\end{DoxyParams}
+\hypertarget{G-2301-01-P1-tcp_8c_aa05a2884a00c4137853da3543673a75c}{}\index{G-\/2301-\/01-\/\+P1-\/tcp.\+c@{G-\/2301-\/01-\/\+P1-\/tcp.\+c}!tcpsocket\+\_\+rcv@{tcpsocket\+\_\+rcv}}
+\index{tcpsocket\+\_\+rcv@{tcpsocket\+\_\+rcv}!G-\/2301-\/01-\/\+P1-\/tcp.\+c@{G-\/2301-\/01-\/\+P1-\/tcp.\+c}}
+\subsubsection[{tcpsocket\+\_\+rcv}]{\setlength{\rightskip}{0pt plus 5cm}int tcpsocket\+\_\+rcv (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd, }
+\item[{void $\ast$}]{data, }
+\item[{size\+\_\+t}]{max, }
+\item[{size\+\_\+t $\ast$}]{len}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-tcp_8c_aa05a2884a00c4137853da3543673a75c}
+
+
+Recibe a traves del socket T\+C\+P. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Descriptor del socket escuchado \\
+\hline
+{\em data} & puntero a donde se almacenan los datos \\
+\hline
+{\em max} & tamaño de la zona de memoria \\
+\hline
+{\em len} & puntero a la variable de longitud recibida \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+T\+C\+P\+O\+K si todo fue correcto T\+C\+P\+E\+R\+R\+\_\+\+A\+R\+G\+S/\+R\+E\+C\+V en caso de error con estas funciones 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-tcp_8c_a2679468c1d7867805267820ef3fcc768}{}\index{G-\/2301-\/01-\/\+P1-\/tcp.\+c@{G-\/2301-\/01-\/\+P1-\/tcp.\+c}!tcpsocket\+\_\+snd@{tcpsocket\+\_\+snd}}
+\index{tcpsocket\+\_\+snd@{tcpsocket\+\_\+snd}!G-\/2301-\/01-\/\+P1-\/tcp.\+c@{G-\/2301-\/01-\/\+P1-\/tcp.\+c}}
+\subsubsection[{tcpsocket\+\_\+snd}]{\setlength{\rightskip}{0pt plus 5cm}int tcpsocket\+\_\+snd (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd, }
+\item[{void $\ast$}]{data, }
+\item[{size\+\_\+t}]{len}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-tcp_8c_a2679468c1d7867805267820ef3fcc768}
+
+
+Envia los datos a traves del socket T\+C\+P. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Descriptor del socket escuchado \\
+\hline
+{\em data} & puntero a los datos que se han de enviar \\
+\hline
+{\em len} & tamano de los datos a enviar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+T\+C\+P\+O\+K si todo fue correcto T\+C\+P\+E\+R\+R\+\_\+\+A\+R\+G\+S/\+S\+E\+N\+D en caso de error con estas funciones 
+\end{DoxyReturn}

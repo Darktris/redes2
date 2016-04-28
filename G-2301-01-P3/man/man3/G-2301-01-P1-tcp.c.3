@@ -1,0 +1,187 @@
+.TH "srclib/G-2301-01-P1-tcp.c" 3 "Martes, 15 de Marzo de 2016" "Practica 1 - Redes de Comunicaciones II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srclib/G-2301-01-P1-tcp.c \- Libreria de manejo de sockets TCP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'G-2301-01-P1-tcp\&.h'\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <netdb\&.h>\fP
+.br
+\fC#include <pthread\&.h>\fP
+.br
+\fC#include <strings\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+\fC#include <syslog\&.h>\fP
+.br
+
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "int \fBserver_tcpsocket_open\fP (uint16_t port, int *socketd)"
+.br
+.RI "\fIAbre un socket TCP para servidor\&. \fP"
+.ti -1c
+.RI "int \fBclient_tcpsocket_open\fP (uint16_t port, int *socketd, char *hostname)"
+.br
+.RI "\fIAbre un socket TCP para cliente\&. \fP"
+.ti -1c
+.RI "int \fBtcpsocket_accept\fP (int socketd, tcpsocket_args *args)"
+.br
+.RI "\fIAcepta una conexion a socket TCP\&. \fP"
+.ti -1c
+.RI "int \fBtcpsocket_snd\fP (int socketd, void *data, size_t len)"
+.br
+.RI "\fIEnvia los datos a traves del socket TCP\&. \fP"
+.ti -1c
+.RI "int \fBtcpsocket_rcv\fP (int socketd, void *data, size_t max, size_t *len)"
+.br
+.RI "\fIRecibe a traves del socket TCP\&. \fP"
+.ti -1c
+.RI "void \fBtcpsocket_close\fP (int socketd)"
+.br
+.RI "\fICierra un socket TCP\&. \fP"
+.in -1c
+.SH "Descripción detallada"
+.PP 
+Libreria de manejo de sockets TCP\&. 
+
+
+.PP
+\fBAutor:\fP
+.RS 4
+Sergio Fuentes sergio.fuentesd@estudiante.uam.es 
+.PP
+Daniel Perdices daniel.perdices@estudiante.uam.es 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2016/02/01 
+.RE
+.PP
+
+.SH "Documentación de las funciones"
+.PP 
+.SS "int client_tcpsocket_open (uint16_t port, int * socketd, char * hostname)"
+
+.PP
+Abre un socket TCP para cliente\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIport\fP Puerto desde el que se desea escuchar 
+.br
+\fIsocketd\fP Puntero al descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+TCPOK si todo fue correcto TCPERR_ARGS/SOCKET/BIND/LISTEN en caso de error con estas funciones 
+.RE
+.PP
+
+.SS "int server_tcpsocket_open (uint16_t port, int * socketd)"
+
+.PP
+Abre un socket TCP para servidor\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIport\fP Puerto desde el que se desea escuchar 
+.br
+\fIsocketd\fP Puntero al descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+TCPOK si todo funciono correctamente TCPERR_ARGS/SOCKET/BIND/LISTEN en caso de error con estas funciones 
+.RE
+.PP
+
+.SS "int tcpsocket_accept (int socketd, tcpsocket_args * args)"
+
+.PP
+Acepta una conexion a socket TCP\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket escuchado 
+.br
+\fIargs\fP estructura de datos de la conexion 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+TCPOK si todo fue correcto TCPERR_ARGS/ACCEPT/PTHREAD en caso de error con estas funciones 
+.RE
+.PP
+
+.SS "void tcpsocket_close (int socketd)"
+
+.PP
+Cierra un socket TCP\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP descriptor del socket 
+.RE
+.PP
+
+.SS "int tcpsocket_rcv (int socketd, void * data, size_t max, size_t * len)"
+
+.PP
+Recibe a traves del socket TCP\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket escuchado 
+.br
+\fIdata\fP puntero a donde se almacenan los datos 
+.br
+\fImax\fP tamaño de la zona de memoria 
+.br
+\fIlen\fP puntero a la variable de longitud recibida 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+TCPOK si todo fue correcto TCPERR_ARGS/RECV en caso de error con estas funciones 
+.RE
+.PP
+
+.SS "int tcpsocket_snd (int socketd, void * data, size_t len)"
+
+.PP
+Envia los datos a traves del socket TCP\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket escuchado 
+.br
+\fIdata\fP puntero a los datos que se han de enviar 
+.br
+\fIlen\fP tamano de los datos a enviar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+TCPOK si todo fue correcto TCPERR_ARGS/SEND en caso de error con estas funciones 
+.RE
+.PP
+
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Practica 1 - Redes de Comunicaciones II del código fuente\&.

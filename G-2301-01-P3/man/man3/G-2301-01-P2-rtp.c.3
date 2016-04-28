@@ -1,0 +1,130 @@
+.TH "srclib/G-2301-01-P2-rtp.c" 3 "Miércoles, 20 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srclib/G-2301-01-P2-rtp.c \- Libreria de manejo de paquetes RTP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <G\-2301\-01\-P2\-rtp\&.h>\fP
+.br
+\fC#include <G\-2301\-01\-P1\-udp\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <pthread\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <strings\&.h>\fP
+.br
+\fC#include <sys/types\&.h>\fP
+.br
+\fC#include <sys/socket\&.h>\fP
+.br
+\fC#include <arpa/inet\&.h>\fP
+.br
+\fC#include <netinet/in\&.h>\fP
+.br
+
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "int \fBrtp_sndpkg\fP (int socketd, char *dst, uint16_t port, rtpargs_t args, void *data, size_t len)"
+.br
+.RI "\fIEnvia un paquete RTP\&. \fP"
+.ti -1c
+.RI "int \fBrtp_rcvpkg\fP (int socketd, char *src, uint16_t port, rtpargs_t *args, void *data, size_t *len)"
+.br
+.RI "\fIRecibe un paquete RTP\&. \fP"
+.in -1c
+.SH "Descripción detallada"
+.PP 
+Libreria de manejo de paquetes RTP\&. 
+
+
+.PP
+\fBAutor:\fP
+.RS 4
+Sergio Fuentes sergio.fuentesd@estudiante.uam.es 
+.PP
+Daniel Perdices daniel.perdices@estudiante.uam.es 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2016/04/16 
+.RE
+.PP
+
+.PP
+Definición en el archivo \fBG\-2301\-01\-P2\-rtp\&.c\fP\&.
+.SH "Documentación de las funciones"
+.PP 
+.SS "int rtp_rcvpkg (int socketd, char * src, uint16_t port, rtpargs_t * args, void * data, size_t * len)"
+
+.PP
+Recibe un paquete RTP\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Puntero al descriptor del socket 
+.br
+\fIsrc\fP direccion INET de origen 
+.br
+\fIport\fP puerto INET de origen 
+.br
+\fIargs\fP puntero a argumentos RTP 
+.br
+\fIdata\fP puntero a donde se almacenan los datos 
+.br
+\fIlen\fP puntero a la longitud recibida 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+RTPOK si todo funciono correctamente RTPERR en caso de error 
+.RE
+.PP
+
+.PP
+Definición en la línea 70 del archivo G\-2301\-01\-P2\-rtp\&.c\&.
+.PP
+Hace referencia a udpsocket_rcv()\&.
+.SS "int rtp_sndpkg (int socketd, char * dst, uint16_t port, rtpargs_t args, void * data, size_t len)"
+
+.PP
+Envia un paquete RTP\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Puntero al descriptor del socket 
+.br
+\fIdst\fP direccion INET de destino 
+.br
+\fIport\fP puerto INET de destino 
+.br
+\fIargs\fP argumentos RTP 
+.br
+\fIdata\fP puntero a los datos que se han de enviar 
+.br
+\fIlen\fP tamano de los datos a enviar 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+RTPOK si todo funciono correctamente RTPERR en caso de error 
+.RE
+.PP
+
+.PP
+Definición en la línea 32 del archivo G\-2301\-01\-P2\-rtp\&.c\&.
+.PP
+Hace referencia a udpsocket_snd()\&.
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Practica 2 - Redes de Comunicaciones II del código fuente\&.

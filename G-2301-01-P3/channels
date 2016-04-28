@@ -1,0 +1,4 @@
+%channel    mode    pass    limit   topic
+#soper       %       %        10  HRRNinteractivo
+#redes2      t       eloy     42  leyendoRFCs
+#cirel       %      %         %   11>10

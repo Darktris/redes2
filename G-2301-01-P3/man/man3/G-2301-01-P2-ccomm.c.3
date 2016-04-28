@@ -1,0 +1,780 @@
+.TH "srclib/G-2301-01-P2-ccomm.c" 3 "Miércoles, 20 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srclib/G-2301-01-P2-ccomm.c \- Libreria de manejo de mensajes IRC\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <redes2/irc\&.h>\fP
+.br
+\fC#include <redes2/ircxchat\&.h>\fP
+.br
+\fC#include <syslog\&.h>\fP
+.br
+\fC#include <G\-2301\-01\-P1\-tools\&.h>\fP
+.br
+\fC#include <G\-2301\-01\-P1\-tcp\&.h>\fP
+.br
+\fC#include <G\-2301\-01\-P2\-client\&.h>\fP
+.br
+\fC#include <G\-2301\-01\-P2\-ccomm\&.h>\fP
+.br
+
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "void \fBcNick\fP (char *command)"
+.br
+.RI "\fIAtiende el comando NICK\&. \fP"
+.ti -1c
+.RI "void \fBcRplMotd\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_MOTD\&. \fP"
+.ti -1c
+.RI "void \fBcRplEndOfMotd\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_ENDOFMOTD\&. \fP"
+.ti -1c
+.RI "void \fBcdefault\fP (char *command)"
+.br
+.RI "\fIAtiende el comando con una accion por defecto\&. \fP"
+.ti -1c
+.RI "void \fBcRplList\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_LIST\&. \fP"
+.ti -1c
+.RI "void \fBcRplListEnd\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_LISTEND\&. \fP"
+.ti -1c
+.RI "void \fBcJoin\fP (char *command)"
+.br
+.RI "\fIAtiende el comando JOIN\&. \fP"
+.ti -1c
+.RI "void \fBcPrivMsg\fP (char *command)"
+.br
+.RI "\fIAtiende el comando PRIVMSG\&. \fP"
+.ti -1c
+.RI "void \fBcRplWhoisUser\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_WHOISUSER\&. \fP"
+.ti -1c
+.RI "void \fBcRplWhoisChannels\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_WHOISCHANNELS\&. \fP"
+.ti -1c
+.RI "void \fBcRplWhoisOperator\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_WHOISOPERATOR\&. \fP"
+.ti -1c
+.RI "void \fBcRplWhoisServer\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_WHOISSERVER\&. \fP"
+.ti -1c
+.RI "void \fBcRplWhoisIdle\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_WHOISIDLE\&. \fP"
+.ti -1c
+.RI "void \fBcRplEndOfWhois\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_ENDOFWHOIS\&. \fP"
+.ti -1c
+.RI "void \fBcTopic\fP (char *command)"
+.br
+.RI "\fIAtiende el comando TOPIC\&. \fP"
+.ti -1c
+.RI "void \fBcPing\fP (char *command)"
+.br
+.RI "\fIAtiende el comandoi PING\&. \fP"
+.ti -1c
+.RI "void \fBcRplTopic\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_TOPIC\&. \fP"
+.ti -1c
+.RI "void \fBcRplTopicWhoTime\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_TOPICWHOTIME\&. \fP"
+.ti -1c
+.RI "void \fBcRplWelcome\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_WELCOME\&. \fP"
+.ti -1c
+.RI "void \fBcRplMotdStart\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_MOTDSTART\&. \fP"
+.ti -1c
+.RI "void \fBcRplNamReply\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_NAMREPLY\&. \fP"
+.ti -1c
+.RI "void \fBcRplWhoReply\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_WHORPLY\&. \fP"
+.ti -1c
+.RI "void \fBcPart\fP (char *command)"
+.br
+.RI "\fIAtiende el comando PART\&. \fP"
+.ti -1c
+.RI "void \fBcRplAway\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_AWAY\&. \fP"
+.ti -1c
+.RI "void \fBcRplNowAway\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_NOWAWAY\&. \fP"
+.ti -1c
+.RI "void \fBcRplUnAway\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_UNAWAY\&. \fP"
+.ti -1c
+.RI "void \fBcRplNoTopic\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_NOTOPIC\&. \fP"
+.ti -1c
+.RI "void \fBcRplEndOfNames\fP ()"
+.br
+.RI "\fIAtiende el comando RPL_ENDOFNAMES\&. \fP"
+.ti -1c
+.RI "void \fBcKick\fP (char *command)"
+.br
+.RI "\fIAtiende el comando KICK\&. \fP"
+.ti -1c
+.RI "void \fBcErrChanOpPrivIsNeeded\fP (char *command)"
+.br
+.RI "\fIAtiende el comando ERR_CHANOPPRIVISNEEDED\&. \fP"
+.ti -1c
+.RI "void \fBcRplEndOfWho\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_ENDOFWHO\&. \fP"
+.ti -1c
+.RI "void * \fBrcvThread_file\fP (void *msg)"
+.br
+.RI "\fIHilo de recepcion del fichero\&. \fP"
+.ti -1c
+.RI "void \fBcNotice\fP (char *command)"
+.br
+.RI "\fIAtiende el comando NOTICE\&. \fP"
+.ti -1c
+.RI "void \fBcErrBadChannelKey\fP (char *command)"
+.br
+.RI "\fIAtiende el comando NICK\&. \fP"
+.ti -1c
+.RI "void \fBcErrConnection\fP (char *command)"
+.br
+.RI "\fIAtiende el comandos de error en la conexion\&. \fP"
+.ti -1c
+.RI "void \fBcErrNoSuchNick\fP (char *command)"
+.br
+.RI "\fIAtiende el comando ERR_NOSUCHNICK\&. \fP"
+.ti -1c
+.RI "void \fBcErrNoSuchChannel\fP (char *command)"
+.br
+.RI "\fIAtiende el comando ERR_NOSUCHCHANNEL\&. \fP"
+.ti -1c
+.RI "void \fBcErrBannedFromChannel\fP (char *command)"
+.br
+.RI "\fIAtiende el comando ERR_BANNEDFROMCHANNEL\&. \fP"
+.ti -1c
+.RI "void \fBcQuit\fP (char *command)"
+.br
+.RI "\fIAtiende el comando QUIT\&. \fP"
+.ti -1c
+.RI "void \fBcMode\fP (char *command)"
+.br
+.RI "\fIAtiende el comando MODE\&. \fP"
+.ti -1c
+.RI "void \fBcRplChannelModeIs\fP (char *command)"
+.br
+.RI "\fIAtiende el comando RPL_CHANNELMODEIS\&. \fP"
+.ti -1c
+.RI "void \fBcDoNothing\fP (char *command)"
+.br
+.RI "\fIIgnora el comando\&. \fP"
+.ti -1c
+.RI "void \fBinit_ccomm\fP ()"
+.br
+.RI "\fIInicializa los comandos\&. \fP"
+.in -1c
+.SH "Descripción detallada"
+.PP 
+Libreria de manejo de mensajes IRC\&. 
+
+
+.PP
+\fBAutor:\fP
+.RS 4
+Sergio Fuentes sergio.fuentesd@estudiante.uam.es 
+.PP
+Daniel Perdices daniel.perdices@estudiante.uam.es 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2016/02/10 
+.RE
+.PP
+
+.PP
+Definición en el archivo \fBG\-2301\-01\-P2\-ccomm\&.c\fP\&.
+.SH "Documentación de las funciones"
+.PP 
+.SS "void cdefault (char * command)"
+
+.PP
+Atiende el comando con una accion por defecto\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 88 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cDoNothing (char * command)"
+
+.PP
+Ignora el comando\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 871 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cErrBadChannelKey (char * command)"
+
+.PP
+Atiende el comando NICK\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 670 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cErrBannedFromChannel (char * command)"
+
+.PP
+Atiende el comando ERR_BANNEDFROMCHANNEL\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 730 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cErrChanOpPrivIsNeeded (char * command)"
+
+.PP
+Atiende el comando ERR_CHANOPPRIVISNEEDED\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 586 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cErrConnection (char * command)"
+
+.PP
+Atiende el comandos de error en la conexion\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 681 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cErrNoSuchChannel (char * command)"
+
+.PP
+Atiende el comando ERR_NOSUCHCHANNEL\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 710 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cErrNoSuchNick (char * command)"
+
+.PP
+Atiende el comando ERR_NOSUCHNICK\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 690 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cJoin (char * command)"
+
+.PP
+Atiende el comando JOIN\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 132 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.PP
+Hace referencia a client_socketsnd_thread()\&.
+.SS "void cKick (char * command)"
+
+.PP
+Atiende el comando KICK\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 545 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cMode (char * command)"
+
+.PP
+Atiende el comando MODE\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 778 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cNick (char * command)"
+
+.PP
+Atiende el comando NICK\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 24 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cNotice (char * command)"
+
+.PP
+Atiende el comando NOTICE\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 638 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.PP
+Hace referencia a rcvThread_file(), set_audio_host(), set_audio_port() y unlock_audio()\&.
+.SS "void cPart (char * command)"
+
+.PP
+Atiende el comando PART\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 443 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cPing (char * command)"
+
+.PP
+Atiende el comandoi PING\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 317 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.PP
+Hace referencia a client_socketsnd_thread()\&.
+.SS "void cPrivMsg (char * command)"
+
+.PP
+Atiende el comando PRIVMSG\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 165 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cQuit (char * command)"
+
+.PP
+Atiende el comando QUIT\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 751 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplAway (char * command)"
+
+.PP
+Atiende el comando RPL_AWAY\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 477 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplChannelModeIs (char * command)"
+
+.PP
+Atiende el comando RPL_CHANNELMODEIS\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 853 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplEndOfMotd (char * command)"
+
+.PP
+Atiende el comando RPL_ENDOFMOTD\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 74 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplEndOfNames ()"
+
+.PP
+Atiende el comando RPL_ENDOFNAMES\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 537 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplEndOfWho (char * command)"
+
+.PP
+Atiende el comando RPL_ENDOFWHO\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 600 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplEndOfWhois (char * command)"
+
+.PP
+Atiende el comando RPL_ENDOFWHOIS\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 285 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplList (char * command)"
+
+.PP
+Atiende el comando RPL_LIST\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 101 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplListEnd (char * command)"
+
+.PP
+Atiende el comando RPL_LISTEND\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 119 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplMotd (char * command)"
+
+.PP
+Atiende el comando RPL_MOTD\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 60 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplMotdStart (char * command)"
+
+.PP
+Atiende el comando RPL_MOTDSTART\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 376 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplNamReply (char * command)"
+
+.PP
+Atiende el comando RPL_NAMREPLY\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 384 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplNoTopic (char * command)"
+
+.PP
+Atiende el comando RPL_NOTOPIC\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 520 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplNowAway (char * command)"
+
+.PP
+Atiende el comando RPL_NOWAWAY\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 493 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplTopic (char * command)"
+
+.PP
+Atiende el comando RPL_TOPIC\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 337 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplTopicWhoTime (char * command)"
+
+.PP
+Atiende el comando RPL_TOPICWHOTIME\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 353 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplUnAway (char * command)"
+
+.PP
+Atiende el comando RPL_UNAWAY\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 509 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplWelcome (char * command)"
+
+.PP
+Atiende el comando RPL_WELCOME\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 361 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplWhoisChannels (char * command)"
+
+.PP
+Atiende el comando RPL_WHOISCHANNELS\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 212 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplWhoisIdle (char * command)"
+
+.PP
+Atiende el comando RPL_WHOISIDLE\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 265 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplWhoisOperator (char * command)"
+
+.PP
+Atiende el comando RPL_WHOISOPERATOR\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 230 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplWhoisServer (char * command)"
+
+.PP
+Atiende el comando RPL_WHOISSERVER\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 246 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplWhoisUser (char * command)"
+
+.PP
+Atiende el comando RPL_WHOISUSER\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 191 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplWhoReply (char * command)"
+
+.PP
+Atiende el comando RPL_WHORPLY\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 419 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cTopic (char * command)"
+
+.PP
+Atiende el comando TOPIC\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 302 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void* rcvThread_file (void * msg)"
+
+.PP
+Hilo de recepcion del fichero\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fImsg\fP El mensaje recibido 
+.RE
+.PP
+
+.PP
+Definición en la línea 608 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.PP
+Hace referencia a client_tcpsocket_open(), tcpsocket_close() y tcpsocket_rcv()\&.
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Practica 2 - Redes de Comunicaciones II del código fuente\&.

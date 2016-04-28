@@ -1,0 +1,363 @@
+.TH "src/G-2301-01-P1-irc_server.c" 3 "Martes, 15 de Marzo de 2016" "Practica 1 - Redes de Comunicaciones II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/G-2301-01-P1-irc_server.c \- Servidor IRC\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'G-2301-01-P1-server\&.h'\fP
+.br
+\fC#include 'G-2301-01-P1-irc_server\&.h'\fP
+.br
+\fC#include <G-2301-01-P1-irc\&.h>\fP
+.br
+\fC#include <G-2301-01-P1-tools\&.h>\fP
+.br
+\fC#include <G-2301-01-P1-daemon\&.h>\fP
+.br
+\fC#include <redes2/irc\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <syslog\&.h>\fP
+.br
+
+.SS "'typedefs'"
+
+.in +1c
+.ti -1c
+.RI "typedef int(* \fBcomm_t\fP) (char *, void *)"
+.br
+.in -1c
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "void \fBrepair_command\fP (char *command)"
+.br
+.ti -1c
+.RI "char * \fBget_motd_path\fP ()"
+.br
+.RI "\fIDevuelve el path del MOTD\&. \fP"
+.ti -1c
+.RI "int \fBset_user\fP (int socketd, char *\fBuser\fP)"
+.br
+.RI "\fIAsocia a un socketd el usuario\&. \fP"
+.ti -1c
+.RI "int \fBset_nick\fP (int socketd, char *\fBnick\fP)"
+.br
+.RI "\fIAsocia a un socketd el nick\&. \fP"
+.ti -1c
+.RI "int \fBget_socketd_byuser\fP (char *\fBuser\fP)"
+.br
+.RI "\fIAsocia a un socketd el nick\&. \fP"
+.ti -1c
+.RI "int \fBget_socketd_bynick\fP (char *\fBnick\fP)"
+.br
+.RI "\fIBusca el socket de un usuario por nick\&. \fP"
+.ti -1c
+.RI "char * \fBget_nick\fP (int socketd)"
+.br
+.RI "\fIDevuelve el nick de un usuario\&. \fP"
+.ti -1c
+.RI "char * \fBget_user\fP (int socketd)"
+.br
+.RI "\fIDevuelve el user de un usuario\&. \fP"
+.ti -1c
+.RI "int \fBupdate_timeout\fP (int socketd)"
+.br
+.RI "\fIActualiza el contador de timeout de un socketd\&. \fP"
+.ti -1c
+.RI "void * \fBhandler\fP (void *data)"
+.br
+.RI "\fIManejador de las conexiones\&. \fP"
+.ti -1c
+.RI "void \fBdo_on_disconnect\fP (void *data)"
+.br
+.ti -1c
+.RI "int \fBinit_commands\fP ()"
+.br
+.RI "\fIInicializa las llamadas de atencion de los comandos\&. \fP"
+.ti -1c
+.RI "int \fBinit_memspace\fP ()"
+.br
+.RI "\fIInicializa las estructuras\&. \fP"
+.ti -1c
+.RI "int \fBfree_memspace\fP ()"
+.br
+.RI "\fIBorra las estructuras auxiliares del servidor\&. \fP"
+.ti -1c
+.RI "int \fBprocess_command\fP (char *command, void *data)"
+.br
+.RI "\fIProcesa un comando\&. \fP"
+.ti -1c
+.RI "void * \fBtimeout_thread\fP (void *data)"
+.br
+.RI "\fIHilo de desconexion por timeout\&. \fP"
+.ti -1c
+.RI "int \fBread_channels\fP ()"
+.br
+.ti -1c
+.RI "int \fBmain\fP (int argc, char **argv)"
+.br
+.RI "\fILlamada principal del servidor\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "comm_t \fBcommands\fP [NCOMMANDS]"
+.br
+.ti -1c
+.RI "char ** \fBusers\fP"
+.br
+.ti -1c
+.RI "char ** \fBnicks\fP"
+.br
+.ti -1c
+.RI "char * \fBtimeout\fP"
+.br
+.ti -1c
+.RI "char \fBrunning\fP =1"
+.br
+.ti -1c
+.RI "char \fBpath_motd\fP [256] ='/tmp/irc_tmp'"
+.br
+.ti -1c
+.RI "pthread_t \fBt_timeout\fP"
+.br
+.ti -1c
+.RI "pthread_mutex_t \fBm_users\fP"
+.br
+.ti -1c
+.RI "pthread_mutex_t \fBm_nicks\fP"
+.br
+.ti -1c
+.RI "pthread_mutex_t \fBm_timeout\fP"
+.br
+.in -1c
+.SH "Descripción detallada"
+.PP 
+Servidor IRC\&. 
+
+
+.PP
+\fBAutor:\fP
+.RS 4
+Sergio Fuentes sergio.fuentesd@estudiante.uam.es 
+.PP
+Daniel Perdices daniel.perdices@estudiante.uam.es 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2016/02/10 
+.RE
+.PP
+
+.SH "Documentación de las funciones"
+.PP 
+.SS "char* get_motd_path ()"
+
+.PP
+Devuelve el path del MOTD\&. 
+.PP
+\fBDevuelve:\fP
+.RS 4
+Dicho path al fichero 
+.RE
+.PP
+
+.SS "char* get_nick (int socketd)"
+
+.PP
+Devuelve el nick de un usuario\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP El socket del usuario 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+El nick del usuario 
+.RE
+.PP
+
+.SS "int get_socketd_bynick (char * nick)"
+
+.PP
+Busca el socket de un usuario por nick\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fInick\fP Nick del usuario 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+el socket del usuario 
+.RE
+.PP
+
+.SS "int get_socketd_byuser (char * user)"
+
+.PP
+Asocia a un socketd el nick\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Socket del usuario 
+.br
+\fIuser\fP Nick del usuario 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+IRCSVROK en caso adecuado, IRCSVERR (<0) en otro caso 
+.RE
+.PP
+
+.SS "char* get_user (int socketd)"
+
+.PP
+Devuelve el user de un usuario\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP El socket del usuario 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+El user del usuario 
+.RE
+.PP
+
+.SS "void* handler (void * data)"
+
+.PP
+Manejador de las conexiones\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIdata\fP Datos de la conexion y el mensaje TCP 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+IRCSVR_OK 
+.RE
+.PP
+
+.SS "int main (int argc, char ** argv)"
+
+.PP
+Llamada principal del servidor\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIargc\fP Num de argumentos 
+.br
+\fIargv\fP Argumentos 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+0 
+.RE
+.PP
+
+.SS "int process_command (char * command, void * data)"
+
+.PP
+Procesa un comando\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIcommand\fP El comando 
+.br
+\fIdata\fP Datos de las conexion 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+IRCSVROK en caso adecuado, IRCSVERR (<0) en otro caso 
+.RE
+.PP
+
+.SS "int set_nick (int socketd, char * nick)"
+
+.PP
+Asocia a un socketd el nick\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Socket del usuario 
+.br
+\fIuser\fP Nick del usuario 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+IRCSVROK en caso adecuado, IRCSVERR (<0) en otro caso 
+.RE
+.PP
+
+.SS "int set_user (int socketd, char * user)"
+
+.PP
+Asocia a un socketd el usuario\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Socket del usuario 
+.br
+\fIuser\fP Nombre del usuario 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+IRCSVROK en caso adecuado, IRCSVERR (<0) en otro caso 
+.RE
+.PP
+
+.SS "void* timeout_thread (void * data)"
+
+.PP
+Hilo de desconexion por timeout\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIdata\fP NULL 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+No devuelve ningun valor 
+.RE
+.PP
+
+.SS "int update_timeout (int socketd)"
+
+.PP
+Actualiza el contador de timeout de un socketd\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP El socket del usuario 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+IRCSVROK 
+.RE
+.PP
+
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Practica 1 - Redes de Comunicaciones II del código fuente\&.

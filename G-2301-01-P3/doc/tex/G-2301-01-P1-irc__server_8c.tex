@@ -1,0 +1,353 @@
+\hypertarget{G-2301-01-P1-irc__server_8c}{}\section{Referencia del Archivo src/\+G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.c}
+\label{G-2301-01-P1-irc__server_8c}\index{src/\+G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{src/\+G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}}
+
+
+Servidor I\+R\+C.  
+
+
+{\ttfamily \#include \char`\"{}G-\/2301-\/01-\/\+P1-\/server.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$G-\/2301-\/01-\/\+P1-\/irc.\+h$>$}\\*
+{\ttfamily \#include $<$G-\/2301-\/01-\/\+P1-\/tools.\+h$>$}\\*
+{\ttfamily \#include $<$G-\/2301-\/01-\/\+P1-\/daemon.\+h$>$}\\*
+{\ttfamily \#include $<$redes2/irc.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$syslog.\+h$>$}\\*
+\subsection*{\textquotesingle{}typedefs\textquotesingle{}}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_a43c12d298c196cd56d8a2a1eaefac5c1}{}typedef int($\ast$ {\bfseries comm\+\_\+t}) (char $\ast$, void $\ast$)\label{G-2301-01-P1-irc__server_8c_a43c12d298c196cd56d8a2a1eaefac5c1}
+
+\end{DoxyCompactItemize}
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_a3b4f3d7a0636aace2e0a3a5cb567fac3}{}void {\bfseries repair\+\_\+command} (char $\ast$command)\label{G-2301-01-P1-irc__server_8c_a3b4f3d7a0636aace2e0a3a5cb567fac3}
+
+\item 
+char $\ast$ \hyperlink{G-2301-01-P1-irc__server_8c_a90d571ba3e74485d7abe3af70438aeab}{get\+\_\+motd\+\_\+path} ()
+\begin{DoxyCompactList}\small\item\em Devuelve el path del M\+O\+T\+D. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc__server_8c_a71be0be6792712a1516302ce66227cb8}{set\+\_\+user} (int socketd, char $\ast$\hyperlink{G-2301-01-P1-irc_8c_a199bfa961df8d05a8aa4d9a0737a0c2b}{user})
+\begin{DoxyCompactList}\small\item\em Asocia a un socketd el usuario. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc__server_8c_a19f08dad4bf96965302e73d10b15011f}{set\+\_\+nick} (int socketd, char $\ast$\hyperlink{G-2301-01-P1-irc_8c_ab60b803c6ebb88356d689183be9d2e34}{nick})
+\begin{DoxyCompactList}\small\item\em Asocia a un socketd el nick. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc__server_8c_aa5f9477e9a1ddd8f86558b161eaa8b46}{get\+\_\+socketd\+\_\+byuser} (char $\ast$\hyperlink{G-2301-01-P1-irc_8c_a199bfa961df8d05a8aa4d9a0737a0c2b}{user})
+\begin{DoxyCompactList}\small\item\em Asocia a un socketd el nick. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc__server_8c_a52b8b3170ab4c384312ddb1c71678008}{get\+\_\+socketd\+\_\+bynick} (char $\ast$\hyperlink{G-2301-01-P1-irc_8c_ab60b803c6ebb88356d689183be9d2e34}{nick})
+\begin{DoxyCompactList}\small\item\em Busca el socket de un usuario por nick. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{G-2301-01-P1-irc__server_8c_aa3349e4f305bf79f00ca290220f8eba6}{get\+\_\+nick} (int socketd)
+\begin{DoxyCompactList}\small\item\em Devuelve el nick de un usuario. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{G-2301-01-P1-irc__server_8c_ac4440aef92f908bd8efb73a1b2e0198e}{get\+\_\+user} (int socketd)
+\begin{DoxyCompactList}\small\item\em Devuelve el user de un usuario. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc__server_8c_a30562243bab7c3ba21af7a673c085748}{update\+\_\+timeout} (int socketd)
+\begin{DoxyCompactList}\small\item\em Actualiza el contador de timeout de un socketd. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{G-2301-01-P1-irc__server_8c_a65c3f29a112085899806687533f22b3e}{handler} (void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Manejador de las conexiones. \end{DoxyCompactList}\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_a7a48a7d5c815970d546cb8d11f0f4f28}{}void {\bfseries do\+\_\+on\+\_\+disconnect} (void $\ast$data)\label{G-2301-01-P1-irc__server_8c_a7a48a7d5c815970d546cb8d11f0f4f28}
+
+\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_a3ba8a297e9ee4dae232c9328cabac358}{}int \hyperlink{G-2301-01-P1-irc__server_8c_a3ba8a297e9ee4dae232c9328cabac358}{init\+\_\+commands} ()\label{G-2301-01-P1-irc__server_8c_a3ba8a297e9ee4dae232c9328cabac358}
+
+\begin{DoxyCompactList}\small\item\em Inicializa las llamadas de atencion de los comandos. \end{DoxyCompactList}\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_a9de005a0e561ec6a8db39e95a0866ee9}{}int \hyperlink{G-2301-01-P1-irc__server_8c_a9de005a0e561ec6a8db39e95a0866ee9}{init\+\_\+memspace} ()\label{G-2301-01-P1-irc__server_8c_a9de005a0e561ec6a8db39e95a0866ee9}
+
+\begin{DoxyCompactList}\small\item\em Inicializa las estructuras. \end{DoxyCompactList}\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_a9d4a691668dc93686f563fbb475914a4}{}int \hyperlink{G-2301-01-P1-irc__server_8c_a9d4a691668dc93686f563fbb475914a4}{free\+\_\+memspace} ()\label{G-2301-01-P1-irc__server_8c_a9d4a691668dc93686f563fbb475914a4}
+
+\begin{DoxyCompactList}\small\item\em Borra las estructuras auxiliares del servidor. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc__server_8c_a4368473e26707adc533f3b2288c1c707}{process\+\_\+command} (char $\ast$command, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Procesa un comando. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{G-2301-01-P1-irc__server_8c_a99921717fca83a9d189862f57dc47b9f}{timeout\+\_\+thread} (void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Hilo de desconexion por timeout. \end{DoxyCompactList}\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_ad07e9f920658326d364140c1a0ec2ae4}{}int {\bfseries read\+\_\+channels} ()\label{G-2301-01-P1-irc__server_8c_ad07e9f920658326d364140c1a0ec2ae4}
+
+\item 
+int \hyperlink{G-2301-01-P1-irc__server_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Llamada principal del servidor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_acfddd784bea647bd026d2bd394a3b6f6}{}comm\+\_\+t {\bfseries commands} \mbox{[}N\+C\+O\+M\+M\+A\+N\+D\+S\mbox{]}\label{G-2301-01-P1-irc__server_8c_acfddd784bea647bd026d2bd394a3b6f6}
+
+\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_a6ae2c7a383f917d118d3da486df676a6}{}char $\ast$$\ast$ {\bfseries users}\label{G-2301-01-P1-irc__server_8c_a6ae2c7a383f917d118d3da486df676a6}
+
+\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_aa479d574f30eaead2ff90718e57bbf84}{}char $\ast$$\ast$ {\bfseries nicks}\label{G-2301-01-P1-irc__server_8c_aa479d574f30eaead2ff90718e57bbf84}
+
+\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_ae5d87749ba74b510c676e8182185a71c}{}char $\ast$ {\bfseries timeout}\label{G-2301-01-P1-irc__server_8c_ae5d87749ba74b510c676e8182185a71c}
+
+\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_a522cfaec64c9d8fcb626c0be8d8f7079}{}char {\bfseries running} =1\label{G-2301-01-P1-irc__server_8c_a522cfaec64c9d8fcb626c0be8d8f7079}
+
+\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_a885e12002bebc5fc78e424462134357c}{}char {\bfseries path\+\_\+motd} \mbox{[}256\mbox{]} =\char`\"{}/tmp/irc\+\_\+tmp\char`\"{}\label{G-2301-01-P1-irc__server_8c_a885e12002bebc5fc78e424462134357c}
+
+\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_a6a8db7f06775e12aa08f9b42385ca07b}{}pthread\+\_\+t {\bfseries t\+\_\+timeout}\label{G-2301-01-P1-irc__server_8c_a6a8db7f06775e12aa08f9b42385ca07b}
+
+\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_a0dea934fa8395f37890ade78aaf73a8a}{}pthread\+\_\+mutex\+\_\+t {\bfseries m\+\_\+users}\label{G-2301-01-P1-irc__server_8c_a0dea934fa8395f37890ade78aaf73a8a}
+
+\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_a7457b46c54b693945d40649bc0d7c855}{}pthread\+\_\+mutex\+\_\+t {\bfseries m\+\_\+nicks}\label{G-2301-01-P1-irc__server_8c_a7457b46c54b693945d40649bc0d7c855}
+
+\item 
+\hypertarget{G-2301-01-P1-irc__server_8c_ac92df69481bc8f15e3bc59dc3513e45d}{}pthread\+\_\+mutex\+\_\+t {\bfseries m\+\_\+timeout}\label{G-2301-01-P1-irc__server_8c_ac92df69481bc8f15e3bc59dc3513e45d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Servidor I\+R\+C. 
+
+\begin{DoxyAuthor}{Autor}
+Sergio Fuentes \href{mailto:sergio.fuentesd@estudiante.uam.es}{\tt sergio.\+fuentesd@estudiante.\+uam.\+es} 
+
+Daniel Perdices \href{mailto:daniel.perdices@estudiante.uam.es}{\tt daniel.\+perdices@estudiante.\+uam.\+es} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+2016/02/10 
+\end{DoxyDate}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{G-2301-01-P1-irc__server_8c_a90d571ba3e74485d7abe3af70438aeab}{}\index{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}!get\+\_\+motd\+\_\+path@{get\+\_\+motd\+\_\+path}}
+\index{get\+\_\+motd\+\_\+path@{get\+\_\+motd\+\_\+path}!G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}}
+\subsubsection[{get\+\_\+motd\+\_\+path}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\+\_\+motd\+\_\+path (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc__server_8c_a90d571ba3e74485d7abe3af70438aeab}
+
+
+Devuelve el path del M\+O\+T\+D. 
+
+\begin{DoxyReturn}{Devuelve}
+Dicho path al fichero 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc__server_8c_aa3349e4f305bf79f00ca290220f8eba6}{}\index{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}!get\+\_\+nick@{get\+\_\+nick}}
+\index{get\+\_\+nick@{get\+\_\+nick}!G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}}
+\subsubsection[{get\+\_\+nick}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\+\_\+nick (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc__server_8c_aa3349e4f305bf79f00ca290220f8eba6}
+
+
+Devuelve el nick de un usuario. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & El socket del usuario \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+El nick del usuario 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc__server_8c_a52b8b3170ab4c384312ddb1c71678008}{}\index{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}!get\+\_\+socketd\+\_\+bynick@{get\+\_\+socketd\+\_\+bynick}}
+\index{get\+\_\+socketd\+\_\+bynick@{get\+\_\+socketd\+\_\+bynick}!G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}}
+\subsubsection[{get\+\_\+socketd\+\_\+bynick}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+socketd\+\_\+bynick (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{nick}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc__server_8c_a52b8b3170ab4c384312ddb1c71678008}
+
+
+Busca el socket de un usuario por nick. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em nick} & Nick del usuario \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+el socket del usuario 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc__server_8c_aa5f9477e9a1ddd8f86558b161eaa8b46}{}\index{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}!get\+\_\+socketd\+\_\+byuser@{get\+\_\+socketd\+\_\+byuser}}
+\index{get\+\_\+socketd\+\_\+byuser@{get\+\_\+socketd\+\_\+byuser}!G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}}
+\subsubsection[{get\+\_\+socketd\+\_\+byuser}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+socketd\+\_\+byuser (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{user}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc__server_8c_aa5f9477e9a1ddd8f86558b161eaa8b46}
+
+
+Asocia a un socketd el nick. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Socket del usuario \\
+\hline
+{\em user} & Nick del usuario \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+I\+R\+C\+S\+V\+R\+O\+K en caso adecuado, I\+R\+C\+S\+V\+E\+R\+R ($<$0) en otro caso 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc__server_8c_ac4440aef92f908bd8efb73a1b2e0198e}{}\index{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}!get\+\_\+user@{get\+\_\+user}}
+\index{get\+\_\+user@{get\+\_\+user}!G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}}
+\subsubsection[{get\+\_\+user}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ get\+\_\+user (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc__server_8c_ac4440aef92f908bd8efb73a1b2e0198e}
+
+
+Devuelve el user de un usuario. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & El socket del usuario \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+El user del usuario 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc__server_8c_a65c3f29a112085899806687533f22b3e}{}\index{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}!handler@{handler}}
+\index{handler@{handler}!G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}}
+\subsubsection[{handler}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ handler (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc__server_8c_a65c3f29a112085899806687533f22b3e}
+
+
+Manejador de las conexiones. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em data} & Datos de la conexion y el mensaje T\+C\+P \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+I\+R\+C\+S\+V\+R\+\_\+\+O\+K 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc__server_8c_a3c04138a5bfe5d72780bb7e82a18e627}{}\index{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}!main@{main}}
+\index{main@{main}!G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc__server_8c_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+Llamada principal del servidor. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em argc} & Num de argumentos \\
+\hline
+{\em argv} & Argumentos \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+0 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc__server_8c_a4368473e26707adc533f3b2288c1c707}{}\index{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}!process\+\_\+command@{process\+\_\+command}}
+\index{process\+\_\+command@{process\+\_\+command}!G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}}
+\subsubsection[{process\+\_\+command}]{\setlength{\rightskip}{0pt plus 5cm}int process\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc__server_8c_a4368473e26707adc533f3b2288c1c707}
+
+
+Procesa un comando. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando \\
+\hline
+{\em data} & Datos de las conexion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+I\+R\+C\+S\+V\+R\+O\+K en caso adecuado, I\+R\+C\+S\+V\+E\+R\+R ($<$0) en otro caso 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc__server_8c_a19f08dad4bf96965302e73d10b15011f}{}\index{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}!set\+\_\+nick@{set\+\_\+nick}}
+\index{set\+\_\+nick@{set\+\_\+nick}!G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}}
+\subsubsection[{set\+\_\+nick}]{\setlength{\rightskip}{0pt plus 5cm}int set\+\_\+nick (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd, }
+\item[{char $\ast$}]{nick}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc__server_8c_a19f08dad4bf96965302e73d10b15011f}
+
+
+Asocia a un socketd el nick. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Socket del usuario \\
+\hline
+{\em user} & Nick del usuario \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+I\+R\+C\+S\+V\+R\+O\+K en caso adecuado, I\+R\+C\+S\+V\+E\+R\+R ($<$0) en otro caso 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc__server_8c_a71be0be6792712a1516302ce66227cb8}{}\index{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}!set\+\_\+user@{set\+\_\+user}}
+\index{set\+\_\+user@{set\+\_\+user}!G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}}
+\subsubsection[{set\+\_\+user}]{\setlength{\rightskip}{0pt plus 5cm}int set\+\_\+user (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd, }
+\item[{char $\ast$}]{user}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc__server_8c_a71be0be6792712a1516302ce66227cb8}
+
+
+Asocia a un socketd el usuario. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & Socket del usuario \\
+\hline
+{\em user} & Nombre del usuario \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+I\+R\+C\+S\+V\+R\+O\+K en caso adecuado, I\+R\+C\+S\+V\+E\+R\+R ($<$0) en otro caso 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc__server_8c_a99921717fca83a9d189862f57dc47b9f}{}\index{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}!timeout\+\_\+thread@{timeout\+\_\+thread}}
+\index{timeout\+\_\+thread@{timeout\+\_\+thread}!G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}}
+\subsubsection[{timeout\+\_\+thread}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ timeout\+\_\+thread (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc__server_8c_a99921717fca83a9d189862f57dc47b9f}
+
+
+Hilo de desconexion por timeout. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em data} & N\+U\+L\+L \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+No devuelve ningun valor 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc__server_8c_a30562243bab7c3ba21af7a673c085748}{}\index{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}!update\+\_\+timeout@{update\+\_\+timeout}}
+\index{update\+\_\+timeout@{update\+\_\+timeout}!G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c@{G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+c}}
+\subsubsection[{update\+\_\+timeout}]{\setlength{\rightskip}{0pt plus 5cm}int update\+\_\+timeout (
+\begin{DoxyParamCaption}
+\item[{int}]{socketd}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc__server_8c_a30562243bab7c3ba21af7a673c085748}
+
+
+Actualiza el contador de timeout de un socketd. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em socketd} & El socket del usuario \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+I\+R\+C\+S\+V\+R\+O\+K 
+\end{DoxyReturn}

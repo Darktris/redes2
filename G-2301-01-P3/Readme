@@ -1,0 +1,16 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;Avisos de la Práctica 2 de Redes de Comunicaciones II:;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+-La funcionalidad de envio de ficheros y la funcionalidad de chat de audio
+solo funcionan en la misma LAN a falta de implementar un mecanismo
+para ser capaces de superar NAT.
+-Para el chat del audio, abrir la ventana en ambos clientes con el nick de la
+parte contraria y simplemente darle a comenzar. Ambos clientes han de estar
+conectados obviamente al mismo servidor IRC.
+-Para leer las entradas de manual es necesario actualizar la variable de
+entorno MANPATH. Para ello basta ejecutar 
+    source man.sh
+en la terminal. El cambio es temporal, en caso de querer hacerlo permanente
+se puede modificar la variable de entorno directamente al igual que se
+podría instalar el programa en PATH.

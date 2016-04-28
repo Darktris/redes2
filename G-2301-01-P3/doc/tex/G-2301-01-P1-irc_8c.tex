@@ -1,0 +1,512 @@
+\hypertarget{G-2301-01-P1-irc_8c}{}\section{Referencia del Archivo srclib/\+G-\/2301-\/01-\/\+P1-\/irc.c}
+\label{G-2301-01-P1-irc_8c}\index{srclib/\+G-\/2301-\/01-\/\+P1-\/irc.\+c@{srclib/\+G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+
+
+Libreria de manejo de mensajes I\+R\+C.  
+
+
+{\ttfamily \#include $<$G-\/2301-\/01-\/\+P1-\/irc.\+h$>$}\\*
+{\ttfamily \#include $<$redes2/irc.\+h$>$}\\*
+{\ttfamily \#include $<$syslog.\+h$>$}\\*
+{\ttfamily \#include $<$G-\/2301-\/01-\/\+P1-\/server.\+h$>$}\\*
+{\ttfamily \#include $<$G-\/2301-\/01-\/\+P1-\/tools.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}G-\/2301-\/01-\/\+P1-\/irc\+\_\+server.\+h\char`\"{}}\\*
+\subsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{G-2301-01-P1-irc_8c_ab60b803c6ebb88356d689183be9d2e34}{nick} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando N\+I\+C\+K. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_a199bfa961df8d05a8aa4d9a0737a0c2b}{user} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando U\+S\+E\+R. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_ac881ae8dcf7537a78812d39bf22623f5}{list} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando L\+I\+S\+T. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_a6cb3c8b40a00e2bdce33b67465868fbb}{ping} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando P\+I\+N\+G. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_a77d91916f85b9b3646ae5ac325d823a3}{pong} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em \char`\"{}\+Atiende\char`\"{} el comando P\+O\+N\+G \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_afa23724442e58e093da96c9e15f01100}{join} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando J\+O\+I\+N. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_a6aa2fba4850500569d2cead5b33056ea}{privmsg} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando P\+R\+I\+V\+M\+S\+G. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_acf0a22b987d84e40e761be7e8890b1d8}{mode} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando M\+O\+D\+E. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_ab4883f7a980b3abfb6aa96c00f3dcdba}{part} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando P\+A\+R\+T. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_a06b78ae62a4b7cebfff1d57e06f0d608}{names} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando N\+A\+M\+E\+S. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_a62d6e584670627b2ff2e3012aaa615b0}{no\+\_\+command} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende comandos desconocidos. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_a794e39cc731b5facd32b37af09f1ce7a}{topic} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando T\+O\+P\+I\+C. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_a8aef52731434e5afb95607d57ab248ab}{whois} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando W\+H\+O\+I\+S. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_a7770fb823845c97fc6cdfa2e369b1f88}{quit} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando Q\+U\+I\+T. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_aaf2eed4ecab1d18f39a05c4f528783b5}{motd} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando M\+O\+T\+D. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_a886e10d26c2d183442290b64b3904c40}{away} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando A\+W\+A\+Y. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_a2b61c26ada599f2335e38acdda7f0577}{kick} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando K\+I\+C\+K. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_a7e1f50601df112beab6bac8a9b4043a3}{time\+\_\+c} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando T\+I\+M\+E. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_a3f0501306323927fed4a21c13e7191d2}{version} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando V\+E\+R\+S\+I\+O\+N. \end{DoxyCompactList}\item 
+int \hyperlink{G-2301-01-P1-irc_8c_acda2ab982ae98fa27f49ce891e2fcef0}{notice} (char $\ast$command, void $\ast$more)
+\begin{DoxyCompactList}\small\item\em Atiende el comando N\+O\+T\+I\+C\+E. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descripción detallada}
+Libreria de manejo de mensajes I\+R\+C. 
+
+\begin{DoxyAuthor}{Autor}
+Sergio Fuentes \href{mailto:sergio.fuentesd@estudiante.uam.es}{\tt sergio.\+fuentesd@estudiante.\+uam.\+es} 
+
+Daniel Perdices \href{mailto:daniel.perdices@estudiante.uam.es}{\tt daniel.\+perdices@estudiante.\+uam.\+es} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Fecha}
+2016/02/10 
+\end{DoxyDate}
+
+
+\subsection{Documentación de las funciones}
+\hypertarget{G-2301-01-P1-irc_8c_a886e10d26c2d183442290b64b3904c40}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!away@{away}}
+\index{away@{away}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{away}]{\setlength{\rightskip}{0pt plus 5cm}int away (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_a886e10d26c2d183442290b64b3904c40}
+
+
+Atiende el comando A\+W\+A\+Y. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_afa23724442e58e093da96c9e15f01100}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!join@{join}}
+\index{join@{join}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{join}]{\setlength{\rightskip}{0pt plus 5cm}int join (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_afa23724442e58e093da96c9e15f01100}
+
+
+Atiende el comando J\+O\+I\+N. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_a2b61c26ada599f2335e38acdda7f0577}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!kick@{kick}}
+\index{kick@{kick}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{kick}]{\setlength{\rightskip}{0pt plus 5cm}int kick (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_a2b61c26ada599f2335e38acdda7f0577}
+
+
+Atiende el comando K\+I\+C\+K. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_ac881ae8dcf7537a78812d39bf22623f5}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!list@{list}}
+\index{list@{list}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{list}]{\setlength{\rightskip}{0pt plus 5cm}int list (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_ac881ae8dcf7537a78812d39bf22623f5}
+
+
+Atiende el comando L\+I\+S\+T. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_acf0a22b987d84e40e761be7e8890b1d8}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!mode@{mode}}
+\index{mode@{mode}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{mode}]{\setlength{\rightskip}{0pt plus 5cm}int mode (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_acf0a22b987d84e40e761be7e8890b1d8}
+
+
+Atiende el comando M\+O\+D\+E. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_aaf2eed4ecab1d18f39a05c4f528783b5}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!motd@{motd}}
+\index{motd@{motd}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{motd}]{\setlength{\rightskip}{0pt plus 5cm}int motd (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_aaf2eed4ecab1d18f39a05c4f528783b5}
+
+
+Atiende el comando M\+O\+T\+D. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_a06b78ae62a4b7cebfff1d57e06f0d608}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!names@{names}}
+\index{names@{names}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{names}]{\setlength{\rightskip}{0pt plus 5cm}int names (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_a06b78ae62a4b7cebfff1d57e06f0d608}
+
+
+Atiende el comando N\+A\+M\+E\+S. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_ab60b803c6ebb88356d689183be9d2e34}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!nick@{nick}}
+\index{nick@{nick}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{nick}]{\setlength{\rightskip}{0pt plus 5cm}int nick (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_ab60b803c6ebb88356d689183be9d2e34}
+
+
+Atiende el comando N\+I\+C\+K. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_a62d6e584670627b2ff2e3012aaa615b0}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!no\+\_\+command@{no\+\_\+command}}
+\index{no\+\_\+command@{no\+\_\+command}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{no\+\_\+command}]{\setlength{\rightskip}{0pt plus 5cm}int no\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_a62d6e584670627b2ff2e3012aaa615b0}
+
+
+Atiende comandos desconocidos. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_acda2ab982ae98fa27f49ce891e2fcef0}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!notice@{notice}}
+\index{notice@{notice}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{notice}]{\setlength{\rightskip}{0pt plus 5cm}int notice (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_acda2ab982ae98fa27f49ce891e2fcef0}
+
+
+Atiende el comando N\+O\+T\+I\+C\+E. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_ab4883f7a980b3abfb6aa96c00f3dcdba}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!part@{part}}
+\index{part@{part}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{part}]{\setlength{\rightskip}{0pt plus 5cm}int part (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_ab4883f7a980b3abfb6aa96c00f3dcdba}
+
+
+Atiende el comando P\+A\+R\+T. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_a6cb3c8b40a00e2bdce33b67465868fbb}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!ping@{ping}}
+\index{ping@{ping}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{ping}]{\setlength{\rightskip}{0pt plus 5cm}int ping (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_a6cb3c8b40a00e2bdce33b67465868fbb}
+
+
+Atiende el comando P\+I\+N\+G. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_a77d91916f85b9b3646ae5ac325d823a3}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!pong@{pong}}
+\index{pong@{pong}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{pong}]{\setlength{\rightskip}{0pt plus 5cm}int pong (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_a77d91916f85b9b3646ae5ac325d823a3}
+
+
+\char`\"{}\+Atiende\char`\"{} el comando P\+O\+N\+G 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_a6aa2fba4850500569d2cead5b33056ea}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!privmsg@{privmsg}}
+\index{privmsg@{privmsg}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{privmsg}]{\setlength{\rightskip}{0pt plus 5cm}int privmsg (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_a6aa2fba4850500569d2cead5b33056ea}
+
+
+Atiende el comando P\+R\+I\+V\+M\+S\+G. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_a7770fb823845c97fc6cdfa2e369b1f88}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!quit@{quit}}
+\index{quit@{quit}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{quit}]{\setlength{\rightskip}{0pt plus 5cm}int quit (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_a7770fb823845c97fc6cdfa2e369b1f88}
+
+
+Atiende el comando Q\+U\+I\+T. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_a7e1f50601df112beab6bac8a9b4043a3}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!time\+\_\+c@{time\+\_\+c}}
+\index{time\+\_\+c@{time\+\_\+c}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{time\+\_\+c}]{\setlength{\rightskip}{0pt plus 5cm}int time\+\_\+c (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_a7e1f50601df112beab6bac8a9b4043a3}
+
+
+Atiende el comando T\+I\+M\+E. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_a794e39cc731b5facd32b37af09f1ce7a}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!topic@{topic}}
+\index{topic@{topic}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{topic}]{\setlength{\rightskip}{0pt plus 5cm}int topic (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_a794e39cc731b5facd32b37af09f1ce7a}
+
+
+Atiende el comando T\+O\+P\+I\+C. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_a199bfa961df8d05a8aa4d9a0737a0c2b}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!user@{user}}
+\index{user@{user}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{user}]{\setlength{\rightskip}{0pt plus 5cm}int user (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_a199bfa961df8d05a8aa4d9a0737a0c2b}
+
+
+Atiende el comando U\+S\+E\+R. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_a3f0501306323927fed4a21c13e7191d2}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!version@{version}}
+\index{version@{version}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{version}]{\setlength{\rightskip}{0pt plus 5cm}int version (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_a3f0501306323927fed4a21c13e7191d2}
+
+
+Atiende el comando V\+E\+R\+S\+I\+O\+N. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}
+\hypertarget{G-2301-01-P1-irc_8c_a8aef52731434e5afb95607d57ab248ab}{}\index{G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}!whois@{whois}}
+\index{whois@{whois}!G-\/2301-\/01-\/\+P1-\/irc.\+c@{G-\/2301-\/01-\/\+P1-\/irc.\+c}}
+\subsubsection[{whois}]{\setlength{\rightskip}{0pt plus 5cm}int whois (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{command, }
+\item[{void $\ast$}]{more}
+\end{DoxyParamCaption}
+)}\label{G-2301-01-P1-irc_8c_a8aef52731434e5afb95607d57ab248ab}
+
+
+Atiende el comando W\+H\+O\+I\+S. 
+
+
+\begin{DoxyParams}{Parámetros}
+{\em command} & El comando recibido \\
+\hline
+{\em more} & Puntero a estructura conn\+\_\+data auxiliar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Devuelve}
+Ningún valor definido, la función controlan el error de manera interna 
+\end{DoxyReturn}

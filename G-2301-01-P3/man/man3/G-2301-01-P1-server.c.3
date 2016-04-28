@@ -1,0 +1,327 @@
+.TH "srclib/G-2301-01-P1-server.c" 3 "Martes, 15 de Marzo de 2016" "Practica 1 - Redes de Comunicaciones II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srclib/G-2301-01-P1-server.c \- Libreria de manejo de un servidor de sockets\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <pthread\&.h>\fP
+.br
+\fC#include <sys/types\&.h>\fP
+.br
+\fC#include <sys/socket\&.h>\fP
+.br
+\fC#include <netinet/in\&.h>\fP
+.br
+\fC#include <sys/select\&.h>\fP
+.br
+\fC#include <sys/time\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+\fC#include <strings\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <signal\&.h>\fP
+.br
+\fC#include <arpa/inet\&.h>\fP
+.br
+\fC#include <G-2301-01-P1-tcp\&.h>\fP
+.br
+\fC#include 'G-2301-01-P1-server\&.h'\fP
+.br
+
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "int \fBconnection_add\fP (int socketd)"
+.br
+.RI "\fIAñade una conexion al conjunto del select\&. \fP"
+.ti -1c
+.RI "int \fBconnection_rmv\fP (int socketd)"
+.br
+.RI "\fIBorra una conexion del conjunto del select\&. \fP"
+.ti -1c
+.RI "int \fBis_connected\fP (int socketd)"
+.br
+.RI "\fIIndica si hay una conexion abierta\&. \fP"
+.ti -1c
+.RI "int \fBis_readable\fP (int socketd)"
+.br
+.RI "\fIIndica si hay una conexion que requiere atencion\&. \fP"
+.ti -1c
+.RI "int \fBconnection_block\fP (int socketd)"
+.br
+.RI "\fIBloquea una conexion\&. \fP"
+.ti -1c
+.RI "int \fBconnection_unblock\fP (int socketd)"
+.br
+.RI "\fIDesbloquea una conexion\&. \fP"
+.ti -1c
+.RI "int \fBconnection_isblocked\fP (int socketd)"
+.br
+.RI "\fIComprueba si una conexion esta bloqueada\&. \fP"
+.ti -1c
+.RI "char * \fBget_ip_from_connection\fP (int socketd)"
+.br
+.RI "\fIDevuelve la ip asociada a un socked\&. \fP"
+.ti -1c
+.RI "void \fBsigint_handler\fP (int sig)"
+.br
+.RI "\fIManejador de la señal\&. \fP"
+.ti -1c
+.RI "int \fBserver_launch\fP (uint16_t port, void *(*\fBhandler\fP)(void *), void *more)"
+.br
+.RI "\fILanza un servidor que atiende cada mensaje recibido con la funcion handler\&. \fP"
+.ti -1c
+.RI "int \fBserver_stop\fP ()"
+.br
+.RI "\fIPara el servidor TCP\&. \fP"
+.ti -1c
+.RI "int \fBset_do_on_disconnect\fP (void(*\fBhandler\fP)(void *))"
+.br
+.RI "\fIPara el servidor TCP\&. \fP"
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "pthread_mutex_t \fBmutex_conn\fP"
+.br
+.ti -1c
+.RI "fd_set \fBconnections\fP"
+.br
+.ti -1c
+.RI "fd_set \fBreadable\fP"
+.br
+.ti -1c
+.RI "fd_set \fBblocked\fP"
+.br
+.ti -1c
+.RI "int \fBloop\fP"
+.br
+.ti -1c
+.RI "char \fBips\fP [FD_SETSIZE][16]"
+.br
+.ti -1c
+.RI "void(* \fBhandler_disconnection\fP )(void *) = NULL"
+.br
+.in -1c
+.SH "Descripción detallada"
+.PP 
+Libreria de manejo de un servidor de sockets\&. 
+
+
+.PP
+\fBAutor:\fP
+.RS 4
+Sergio Fuentes sergio.fuentesd@estudiante.uam.es 
+.PP
+Daniel Perdices daniel.perdices@estudiante.uam.es 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2016/02/01 
+.RE
+.PP
+
+.SH "Documentación de las funciones"
+.PP 
+.SS "int connection_add (int socketd)"
+
+.PP
+Añade una conexion al conjunto del select\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK 
+.RE
+.PP
+
+.SS "int connection_block (int socketd)"
+
+.PP
+Bloquea una conexion\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK 
+.RE
+.PP
+
+.SS "int connection_isblocked (int socketd)"
+
+.PP
+Comprueba si una conexion esta bloqueada\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+0 si no esta bloqueada, otro valor si esta bloqueada 
+.RE
+.PP
+
+.SS "int connection_rmv (int socketd)"
+
+.PP
+Borra una conexion del conjunto del select\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK 
+.RE
+.PP
+
+.SS "int connection_unblock (int socketd)"
+
+.PP
+Desbloquea una conexion\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK 
+.RE
+.PP
+
+.SS "char* get_ip_from_connection (int socketd)"
+
+.PP
+Devuelve la ip asociada a un socked\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+La ip del socket en decimal 
+.RE
+.PP
+
+.SS "int is_connected (int socketd)"
+
+.PP
+Indica si hay una conexion abierta\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+0 si esta cerrada, cualquier valor en otro caso 
+.RE
+.PP
+
+.SS "int is_readable (int socketd)"
+
+.PP
+Indica si hay una conexion que requiere atencion\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+0 si esta cerrada, cualquier valor en otro caso 
+.RE
+.PP
+
+.SS "int server_launch (uint16_t port, void *(*)(void *) handler, void * more)"
+
+.PP
+Lanza un servidor que atiende cada mensaje recibido con la funcion handler\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIport\fP Puerto en el que abrir el servidor 
+.br
+\fIhandler\fP Rutina de atencion de los mensajes 
+.br
+\fImore\fP Parametros adicionales que se necesiten en la rutina de atencion 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK en caso de que el servidor termine correctamente un numero negativo en caso de error 
+.RE
+.PP
+
+.SS "int server_stop ()"
+
+.PP
+Para el servidor TCP\&. 
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK si el servidor se para, SERVERR_NRUN si no hay servidor 
+.RE
+.PP
+
+.SS "int set_do_on_disconnect (void(*)(void *) handler)"
+
+.PP
+Para el servidor TCP\&. 
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK si el servidor se para, SERVERR_NRUN si no hay servidor 
+.RE
+.PP
+
+.SS "void sigint_handler (int sig)"
+
+.PP
+Manejador de la señal\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsig\fP señal recibido 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+0 si no esta bloqueada, otro valor si esta bloqueada 
+.RE
+.PP
+
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Practica 1 - Redes de Comunicaciones II del código fuente\&.
