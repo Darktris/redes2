@@ -1,10 +1,10 @@
 /* vim: set ts=4 sw=4 et: */
 /**
-  @file G-2301-01-P1-server.c
+  @file G-2301-01-P3-ssl-server.c
   @brief Libreria de manejo de un servidor de sockets SSL
   @author Sergio Fuentes  <sergio.fuentesd@estudiante.uam.es>
   @author Daniel Perdices <daniel.perdices@estudiante.uam.es>
-  @date 2016/02/01
+  @date 2016/04/21
   */
 #include <stdlib.h>
 #include <stdio.h>
@@ -173,10 +173,8 @@ int server_launch_SSL(uint16_t port, void*(*handler)(void*), void* more) {
 	}
 
     inicializar_nivel_SSL();
-    if((set_size=fijar_contexto_SSL(FILE_SERVER_PKEY, FILE_SERVER_CERTIFICATE))<=-1) {
+    if(fijar_contexto_SSL(FILE_SERVER_PKEY, FILE_SERVER_CERTIFICATE)<0) {
         printf("Error while loading SSL contex\n");
-        printf("%d\n", set_size);
-        perror("Error2");
         ERR_print_errors_fp(stdout);
         return SERVERR_SOCKET;
     }
@@ -212,11 +210,12 @@ int server_launch_SSL(uint16_t port, void*(*handler)(void*), void* more) {
                         printf("Error al abrir el canal seguro\n");
                         ERR_print_errors_fp(stdout);
                     }
-    if(evaluar_post_connectar_SSL(socketd)) {
-     
-	printf("Error del certificador\n");
-        ERR_print_errors_fp(stderr);
-    }
+                    if(evaluar_post_connectar_SSL(socketd)) {
+
+                        printf("Error del certificado\n");
+                        ERR_print_errors_fp(stderr);
+                        perror("Error certificado");
+                    }
  
                     strcpy(ips[args.acceptd], inet_ntoa(args.client.sin_addr));
 					connection_add_SSL(args.acceptd);
@@ -286,8 +285,9 @@ int server_stop_SSL() {
 }
 
 /**
-  @brief Para el servidor TCP
-  @return SERVOK si el servidor se para, SERVERR_NRUN si no hay servidor
+  @brief Agrega un handler para desconexiones
+  @param handler El handler
+  @return SERVOK
 */
 int set_do_on_disconnect_SSL(void(*handler)(void*)) {
     handler_disconnection_SSL = handler;
