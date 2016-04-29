@@ -1,13 +1,29 @@
-.TH "srclib/G-2301-01-P1-udp.c" 3 "Martes, 15 de Marzo de 2016" "Practica 1 - Redes de Comunicaciones II" \" -*- nroff -*-
+.TH "srclib/G-2301-01-P1-udp.c" 3 "Viernes, 29 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-srclib/G-2301-01-P1-udp.c \- Libreria de manejo de sockets UDP\&.  
+srclib/G-2301-01-P1-udp.c \- 
+.PP
+Libreria de manejo de sockets UDP\&.  
 
 .SH SYNOPSIS
 .br
 .PP
 \fC#include <G-2301-01-P1-udp\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <sys/types\&.h>\fP
+.br
+\fC#include <sys/socket\&.h>\fP
+.br
+\fC#include <arpa/inet\&.h>\fP
+.br
+\fC#include <netinet/in\&.h>\fP
 .br
 
 .SS "Funciones"
@@ -22,11 +38,11 @@ srclib/G-2301-01-P1-udp.c \- Libreria de manejo de sockets UDP\&.
 .br
 .RI "\fIAbre un socket UDP para cliente\&. \fP"
 .ti -1c
-.RI "int \fBudpsocket_snd\fP (int socketd, void *data, size_t len, udpsocket_side *dst)"
+.RI "int \fBudpsocket_snd\fP (int socketd, char *dst, uint16_t port, void *data, size_t len)"
 .br
 .RI "\fIEnvia los datos a traves del socket UDP\&. \fP"
 .ti -1c
-.RI "int \fBudpsocket_rcv\fP (int socketd, void *data, size_t max, size_t *len, udpsocket_side *src)"
+.RI "int \fBudpsocket_rcv\fP (int socketd, char *src, uint16_t port, void *data, size_t max, size_t *len)"
 .br
 .RI "\fIRecibe a traves del socket UDP\&. \fP"
 .in -1c
@@ -45,13 +61,15 @@ Daniel Perdices daniel.perdices@estudiante.uam.es
 .PP
 \fBFecha:\fP
 .RS 4
-2016/02/01 
+2016/04/16 
 .RE
 .PP
 
+.PP
+Definición en el archivo \fBG-2301-01-P1-udp\&.c\fP\&.
 .SH "Documentación de las funciones"
 .PP 
-.SS "int client_udpsocket_open (uint16_t port, int * socketd)"
+.SS "int client_udpsocket_open (uint16_tport, int *socketd)"
 
 .PP
 Abre un socket UDP para cliente\&. 
@@ -65,11 +83,13 @@ Abre un socket UDP para cliente\&.
 .PP
 \fBDevuelve:\fP
 .RS 4
-UDPOK si todo fue correcto UDPERR_ARGS/SOCKET/BIND/LISTEN en caso de error con estas funciones 
+UDPOK si todo fue correcto UDPERR_ARGS/SOCKET en caso de error con estas funciones 
 .RE
 .PP
 
-.SS "int server_udpsocket_open (uint16_t port, int * socketd)"
+.PP
+Definición en la línea 58 del archivo G-2301-01-P1-udp\&.c\&.
+.SS "int server_udpsocket_open (uint16_tport, int *socketd)"
 
 .PP
 Abre un socket UDP para servidor\&. 
@@ -87,7 +107,9 @@ UDPOK si todo funciono correctamente UDPERR_ARGS/SOCKET/BIND en caso de error co
 .RE
 .PP
 
-.SS "int udpsocket_rcv (int socketd, void * data, size_t max, size_t * len, udpsocket_side * src)"
+.PP
+Definición en la línea 25 del archivo G-2301-01-P1-udp\&.c\&.
+.SS "int udpsocket_rcv (intsocketd, char *src, uint16_tport, void *data, size_tmax, size_t *len)"
 
 .PP
 Recibe a traves del socket UDP\&. 
@@ -95,6 +117,10 @@ Recibe a traves del socket UDP\&.
 \fBParámetros:\fP
 .RS 4
 \fIsocketd\fP Descriptor del socket escuchado 
+.br
+\fIsrc\fP direccion INET de origen 
+.br
+\fIport\fP puerto INET de origen 
 .br
 \fIdata\fP puntero a donde se almacenan los datos 
 .br
@@ -109,7 +135,9 @@ UDPOK si todo fue correcto UDPERR_ARGS/RECV en caso de error con estas funciones
 .RE
 .PP
 
-.SS "int udpsocket_snd (int socketd, void * data, size_t len, udpsocket_side * dst)"
+.PP
+Definición en la línea 120 del archivo G-2301-01-P1-udp\&.c\&.
+.SS "int udpsocket_snd (intsocketd, char *dst, uint16_tport, void *data, size_tlen)"
 
 .PP
 Envia los datos a traves del socket UDP\&. 
@@ -117,6 +145,10 @@ Envia los datos a traves del socket UDP\&.
 \fBParámetros:\fP
 .RS 4
 \fIsocketd\fP Descriptor del socket escuchado 
+.br
+\fIdst\fP direccion INET de destino 
+.br
+\fIport\fP puerto INET de destino 
 .br
 \fIdata\fP puntero a los datos que se han de enviar 
 .br
@@ -129,6 +161,8 @@ UDPOK si todo fue correcto UDPERR_ARGS/SEND en caso de error con estas funciones
 .RE
 .PP
 
+.PP
+Definición en la línea 81 del archivo G-2301-01-P1-udp\&.c\&.
 .SH "Autor"
 .PP 
-Generado automáticamente por Doxygen para Practica 1 - Redes de Comunicaciones II del código fuente\&.
+Generado automáticamente por Doxygen para Practica 2 - Redes de Comunicaciones II del código fuente\&.

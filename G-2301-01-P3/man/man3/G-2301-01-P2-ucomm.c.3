@@ -1,8 +1,10 @@
-.TH "srclib/G-2301-01-P2-ucomm.c" 3 "Miércoles, 20 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
+.TH "srclib/G-2301-01-P2-ucomm.c" 3 "Viernes, 29 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-srclib/G-2301-01-P2-ucomm.c \- Libreria de manejo de comandos de usuario\&.  
+srclib/G-2301-01-P2-ucomm.c \- 
+.PP
+Libreria de manejo de comandos de usuario\&.  
 
 .SH SYNOPSIS
 .br
@@ -13,11 +15,11 @@ srclib/G-2301-01-P2-ucomm.c \- Libreria de manejo de comandos de usuario\&.
 .br
 \fC#include <syslog\&.h>\fP
 .br
-\fC#include <G\-2301\-01\-P1\-tools\&.h>\fP
+\fC#include <G-2301-01-P1-tools\&.h>\fP
 .br
-\fC#include <G\-2301\-01\-P2\-client\&.h>\fP
+\fC#include <G-2301-01-P2-client\&.h>\fP
 .br
-\fC#include <G\-2301\-01\-P2\-ucomm\&.h>\fP
+\fC#include <G-2301-01-P2-ucomm\&.h>\fP
 .br
 
 .SS "Funciones"
@@ -124,10 +126,10 @@ Daniel Perdices daniel.perdices@estudiante.uam.es
 .PP
 
 .PP
-Definición en el archivo \fBG\-2301\-01\-P2\-ucomm\&.c\fP\&.
+Definición en el archivo \fBG-2301-01-P2-ucomm\&.c\fP\&.
 .SH "Documentación de las funciones"
 .PP 
-.SS "void uAway (char * command)"
+.SS "void uAway (char *command)"
 
 .PP
 Atiende el comando de usuario UAWAY\&. 
@@ -139,10 +141,10 @@ Atiende el comando de usuario UAWAY\&.
 .PP
 
 .PP
-Definición en la línea 160 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 160 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd()\&.
-.SS "void uCycle (char * command)"
+.SS "void uCycle (char *command)"
 
 .PP
 Atiende el comando de usuario UCYCLE\&. 
@@ -154,10 +156,10 @@ Atiende el comando de usuario UCYCLE\&.
 .PP
 
 .PP
-Definición en la línea 238 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 238 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd()\&.
-.SS "void uHelp (char * command)"
+.SS "void uHelp (char *command)"
 
 .PP
 Atiende el comando de usuario UHELP\&. 
@@ -169,8 +171,8 @@ Atiende el comando de usuario UHELP\&.
 .PP
 
 .PP
-Definición en la línea 229 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
-.SS "void uInvite (char * command)"
+Definición en la línea 229 del archivo G-2301-01-P2-ucomm\&.c\&.
+.SS "void uInvite (char *command)"
 
 .PP
 Atiende el comando de usuario UINVITE\&. 
@@ -182,10 +184,10 @@ Atiende el comando de usuario UINVITE\&.
 .PP
 
 .PP
-Definición en la línea 173 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 173 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
-Hace referencia a client_socketsnd()\&.
-.SS "void uJoin (char * command)"
+Hace referencia a client_socketsnd() y nick()\&.
+.SS "void uJoin (char *command)"
 
 .PP
 Atiende el comando de usuario JOIN\&. 
@@ -197,10 +199,10 @@ Atiende el comando de usuario JOIN\&.
 .PP
 
 .PP
-Definición en la línea 23 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 23 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd()\&.
-.SS "void uKick (char * command)"
+.SS "void uKick (char *command)"
 
 .PP
 Atiende el comando de usuario UKICK\&. 
@@ -212,10 +214,10 @@ Atiende el comando de usuario UKICK\&.
 .PP
 
 .PP
-Definición en la línea 187 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 187 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd()\&.
-.SS "void uList (char * command)"
+.SS "void uList (char *command)"
 
 .PP
 Atiende el comando de usuario LIST\&. 
@@ -227,10 +229,10 @@ Atiende el comando de usuario LIST\&.
 .PP
 
 .PP
-Definición en la línea 40 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 40 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd()\&.
-.SS "void uMsg (char * command)"
+.SS "void uMsg (char *command)"
 
 .PP
 Atiende el comando de usuario UPRIV\&. 
@@ -242,10 +244,10 @@ Atiende el comando de usuario UPRIV\&.
 .PP
 
 .PP
-Definición en la línea 294 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 294 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd()\&.
-.SS "void uNames (char * command)"
+.SS "void uNames (char *command)"
 
 .PP
 Atiende el comando de usuario NAMES\&. 
@@ -257,10 +259,10 @@ Atiende el comando de usuario NAMES\&.
 .PP
 
 .PP
-Definición en la línea 76 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 76 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd()\&.
-.SS "void uNick (char * command)"
+.SS "void uNick (char *command)"
 
 .PP
 Atiende el comando de usuario NICK\&. 
@@ -272,10 +274,10 @@ Atiende el comando de usuario NICK\&.
 .PP
 
 .PP
-Definición en la línea 57 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 57 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
-Hace referencia a client_socketsnd()\&.
-.SS "void uNotice (char * command)"
+Hace referencia a client_socketsnd() y nick()\&.
+.SS "void uNotice (char *command)"
 
 .PP
 Atiende el comando de usuario UNOTICE\&. 
@@ -287,10 +289,10 @@ Atiende el comando de usuario UNOTICE\&.
 .PP
 
 .PP
-Definición en la línea 203 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 203 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd()\&.
-.SS "void uPart (char * command)"
+.SS "void uPart (char *command)"
 
 .PP
 Atiende el comando de usuario UPART\&. 
@@ -302,10 +304,10 @@ Atiende el comando de usuario UPART\&.
 .PP
 
 .PP
-Definición en la línea 147 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 147 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd()\&.
-.SS "void uPartAll (char * command)"
+.SS "void uPartAll (char *command)"
 
 .PP
 Atiende el comando de usuario UPARTALL\&. 
@@ -317,10 +319,10 @@ Atiende el comando de usuario UPARTALL\&.
 .PP
 
 .PP
-Definición en la línea 331 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 331 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
-Hace referencia a client_socketsnd(), uAway(), uCycle(), uInvite(), uJoin(), uKick(), uList(), uMsg(), uNames(), uNick(), uNotice(), uPart(), uPing(), uQuery(), uQuit(), uTopic(), uWho() y uWhoIs()\&.
-.SS "void uPing (char * command)"
+Hace referencia a client_socketsnd()\&.
+.SS "void uPing (char *command)"
 
 .PP
 Atiende el comando de usuario PING\&. 
@@ -332,10 +334,10 @@ Atiende el comando de usuario PING\&.
 .PP
 
 .PP
-Definición en la línea 106 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 106 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd()\&.
-.SS "void uPriv (char * command)"
+.SS "void uPriv (char *command)"
 
 .PP
 Atiende el comando de usuario UPRIV\&. 
@@ -347,10 +349,10 @@ Atiende el comando de usuario UPRIV\&.
 .PP
 
 .PP
-Definición en la línea 278 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 278 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd()\&.
-.SS "void uQuery (char * command)"
+.SS "void uQuery (char *command)"
 
 .PP
 Atiende el comando de usuario UQUERY\&. 
@@ -362,10 +364,10 @@ Atiende el comando de usuario UQUERY\&.
 .PP
 
 .PP
-Definición en la línea 260 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 260 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd() y get_unick()\&.
-.SS "void uQuit (char * command)"
+.SS "void uQuit (char *command)"
 
 .PP
 Atiende el comando de usuario UQUIT\&. 
@@ -377,10 +379,10 @@ Atiende el comando de usuario UQUIT\&.
 .PP
 
 .PP
-Definición en la línea 314 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 314 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd() y disconnect_client()\&.
-.SS "void uTopic (char * command)"
+.SS "void uTopic (char *command)"
 
 .PP
 Atiende el comando de usuario TOPIC\&. 
@@ -392,10 +394,10 @@ Atiende el comando de usuario TOPIC\&.
 .PP
 
 .PP
-Definición en la línea 115 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 115 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
-Hace referencia a client_socketsnd()\&.
-.SS "void uWho (char * command)"
+Hace referencia a client_socketsnd() y topic()\&.
+.SS "void uWho (char *command)"
 
 .PP
 Atiende el comando de usuario UWHO\&. 
@@ -407,10 +409,10 @@ Atiende el comando de usuario UWHO\&.
 .PP
 
 .PP
-Definición en la línea 128 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 128 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd()\&.
-.SS "void uWhoIs (char * command)"
+.SS "void uWhoIs (char *command)"
 
 .PP
 Atiende el comando de usuario WHOIS\&. 
@@ -422,9 +424,9 @@ Atiende el comando de usuario WHOIS\&.
 .PP
 
 .PP
-Definición en la línea 92 del archivo G\-2301\-01\-P2\-ucomm\&.c\&.
+Definición en la línea 92 del archivo G-2301-01-P2-ucomm\&.c\&.
 .PP
-Hace referencia a client_socketsnd()\&.
+Hace referencia a client_socketsnd() y nick()\&.
 .SH "Autor"
 .PP 
 Generado automáticamente por Doxygen para Practica 2 - Redes de Comunicaciones II del código fuente\&.

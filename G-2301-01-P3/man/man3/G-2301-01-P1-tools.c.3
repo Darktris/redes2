@@ -1,8 +1,10 @@
-.TH "srclib/G-2301-01-P1-tools.c" 3 "Martes, 15 de Marzo de 2016" "Practica 1 - Redes de Comunicaciones II" \" -*- nroff -*-
+.TH "srclib/G-2301-01-P1-tools.c" 3 "Viernes, 29 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-srclib/G-2301-01-P1-tools.c \- Libreria de utilidades\&.  
+srclib/G-2301-01-P1-tools.c \- 
+.PP
+Libreria de utilidades\&.  
 
 .SH SYNOPSIS
 .br
@@ -26,27 +28,13 @@ srclib/G-2301-01-P1-tools.c \- Libreria de utilidades\&.
 \fC#include <syslog\&.h>\fP
 .br
 
-.SS "'defines'"
-
-.in +1c
-.ti -1c
-.RI "#define \fBstrlen\fP   \fB_strlen\fP"
-.br
-.ti -1c
-.RI "#define \fBstrcmp\fP   \fB_strcmp\fP"
-.br
-.in -1c
 .SS "Funciones"
 
 .in +1c
 .ti -1c
 .RI "size_t \fB_strlen\fP (const char *s)"
 .br
-.RI "\fIFuncion strlen de strings\&.h\&. \fP"
-.ti -1c
-.RI "int \fB_strcmp\fP (const char *a, const char *b)"
-.br
-.RI "\fIFuncion strcmp de strings\&.h\&. \fP"
+.RI "\fIAbre un socket TCP para servidor\&. \fP"
 .in -1c
 .SH "Descripción detallada"
 .PP 
@@ -67,42 +55,30 @@ Daniel Perdices daniel.perdices@estudiante.uam.es
 .RE
 .PP
 
+.PP
+Definición en el archivo \fBG-2301-01-P1-tools\&.c\fP\&.
 .SH "Documentación de las funciones"
 .PP 
-.SS "int _strcmp (const char * a, const char * b)"
+.SS "size_t _strlen (const char *s)"
 
 .PP
-Funcion strcmp de strings\&.h\&. 
+Abre un socket TCP para servidor\&. 
 .PP
 \fBParámetros:\fP
 .RS 4
-\fIa\fP Puntero a la cadena de caracteres 
+\fIport\fP Puerto desde el que se desea escuchar 
 .br
-\fIb\fP Puntero a la cadena de caracteres 
+\fIsocketd\fP Puntero al descriptor del socket 
 .RE
 .PP
 \fBDevuelve:\fP
 .RS 4
-la diferencia entre ambas cadenas 
+TCPOK si todo funciono correctamente TCPERR_ARGS/SOCKET/BIND/LISTEN en caso de error con estas funciones 
 .RE
 .PP
 
-.SS "size_t _strlen (const char * s)"
-
 .PP
-Funcion strlen de strings\&.h\&. 
-.PP
-\fBParámetros:\fP
-.RS 4
-\fIs\fP Puntero a la cadena de caracteres 
-.RE
-.PP
-\fBDevuelve:\fP
-.RS 4
-la longitud 
-.RE
-.PP
-
+Definición en la línea 25 del archivo G-2301-01-P1-tools\&.c\&.
 .SH "Autor"
 .PP 
-Generado automáticamente por Doxygen para Practica 1 - Redes de Comunicaciones II del código fuente\&.
+Generado automáticamente por Doxygen para Practica 2 - Redes de Comunicaciones II del código fuente\&.

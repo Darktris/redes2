@@ -20,12 +20,13 @@
 #define SSL_FAIL -6
 #define MAX_FD 1024
 
-int inicializar_nivel_SSL();
+void inicializar_nivel_SSL();
 int fijar_contexto_SSL(char* pk, char* cert);
 int conectar_canal_seguro_SSL(int socketd);
 int aceptar_canal_seguro_SSL(int socketd);
 int evaluar_post_connectar_SSL(int socketd);
 int enviar_datos_SSL(int socketd, void* buf, int len);
 int recibir_datos_SSL(int socketd, void* buf, int max_len, int* len);
-int cerrar_canal_SSL(int socketd);
+void cerrar_canal_SSL(int socketd);
+void liberar_nivel_SSL();
 #endif

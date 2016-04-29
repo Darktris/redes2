@@ -1,15 +1,17 @@
-.TH "srclib/G-2301-01-P2-rtp.c" 3 "Miércoles, 20 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
+.TH "srclib/G-2301-01-P2-rtp.c" 3 "Viernes, 29 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-srclib/G-2301-01-P2-rtp.c \- Libreria de manejo de paquetes RTP\&.  
+srclib/G-2301-01-P2-rtp.c \- 
+.PP
+Libreria de manejo de paquetes RTP\&.  
 
 .SH SYNOPSIS
 .br
 .PP
-\fC#include <G\-2301\-01\-P2\-rtp\&.h>\fP
+\fC#include <G-2301-01-P2-rtp\&.h>\fP
 .br
-\fC#include <G\-2301\-01\-P1\-udp\&.h>\fP
+\fC#include <G-2301-01-P1-udp\&.h>\fP
 .br
 \fC#include <stdio\&.h>\fP
 .br
@@ -62,10 +64,10 @@ Daniel Perdices daniel.perdices@estudiante.uam.es
 .PP
 
 .PP
-Definición en el archivo \fBG\-2301\-01\-P2\-rtp\&.c\fP\&.
+Definición en el archivo \fBG-2301-01-P2-rtp\&.c\fP\&.
 .SH "Documentación de las funciones"
 .PP 
-.SS "int rtp_rcvpkg (int socketd, char * src, uint16_t port, rtpargs_t * args, void * data, size_t * len)"
+.SS "int rtp_rcvpkg (intsocketd, char *src, uint16_tport, rtpargs_t *args, void *data, size_t *len)"
 
 .PP
 Recibe un paquete RTP\&. 
@@ -92,10 +94,10 @@ RTPOK si todo funciono correctamente RTPERR en caso de error
 .PP
 
 .PP
-Definición en la línea 70 del archivo G\-2301\-01\-P2\-rtp\&.c\&.
+Definición en la línea 70 del archivo G-2301-01-P2-rtp\&.c\&.
 .PP
 Hace referencia a udpsocket_rcv()\&.
-.SS "int rtp_sndpkg (int socketd, char * dst, uint16_t port, rtpargs_t args, void * data, size_t len)"
+.SS "int rtp_sndpkg (intsocketd, char *dst, uint16_tport, rtpargs_targs, void *data, size_tlen)"
 
 .PP
 Envia un paquete RTP\&. 
@@ -122,7 +124,7 @@ RTPOK si todo funciono correctamente RTPERR en caso de error
 .PP
 
 .PP
-Definición en la línea 32 del archivo G\-2301\-01\-P2\-rtp\&.c\&.
+Definición en la línea 32 del archivo G-2301-01-P2-rtp\&.c\&.
 .PP
 Hace referencia a udpsocket_snd()\&.
 .SH "Autor"
