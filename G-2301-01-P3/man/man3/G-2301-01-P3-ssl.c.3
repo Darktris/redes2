@@ -1,0 +1,229 @@
+.TH "srclib/G-2301-01-P3-ssl.c" 3 "Sábado, 30 de Abril de 2016" "Practica 3 - Redes de Comunicaciones II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srclib/G-2301-01-P3-ssl.c \- Libreria de manejo de la capa SSL\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'G\-2301\-01\-P1\-tcp\&.h'\fP
+.br
+\fC#include 'G\-2301\-01\-P3\-ssl\&.h'\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <netdb\&.h>\fP
+.br
+\fC#include <pthread\&.h>\fP
+.br
+\fC#include <strings\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+\fC#include <syslog\&.h>\fP
+.br
+
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "void \fBinicializar_nivel_SSL\fP ()"
+.br
+.RI "\fIInicializa el nivel SSL\&. \fP"
+.ti -1c
+.RI "int \fBfijar_contexto_SSL\fP (char *pk, char *cert)"
+.br
+.RI "\fIFija el contexto SSL\&. \fP"
+.ti -1c
+.RI "int \fBconectar_canal_seguro_SSL\fP (int socketd)"
+.br
+.RI "\fIInicia el handshake SSL en el lado del cliente\&. \fP"
+.ti -1c
+.RI "int \fBaceptar_canal_seguro_SSL\fP (int socketd)"
+.br
+.RI "\fIInicia el handshake SSL en el lado del servidor\&. \fP"
+.ti -1c
+.RI "int \fBevaluar_post_connectar_SSL\fP (int socketd)"
+.br
+.RI "\fIEvalua si la conexion es segura (hay certificado y es valido) \fP"
+.ti -1c
+.RI "int \fBenviar_datos_SSL\fP (int socketd, void *buf, int len)"
+.br
+.RI "\fIEnvia un buffer por la capa SSL (cifrado) \fP"
+.ti -1c
+.RI "int \fBrecibir_datos_SSL\fP (int socketd, void *buf, int max_len, int *len)"
+.br
+.RI "\fIEvalua si la conexion es segura (hay certificado y es valido) \fP"
+.ti -1c
+.RI "void \fBcerrar_canal_SSL\fP (int socketd)"
+.br
+.RI "\fICierra la conexion SSL con el socketd\&. \fP"
+.ti -1c
+.RI "void \fBliberar_nivel_SSL\fP ()"
+.br
+.RI "\fILibera las estructuras SSL\&. \fP"
+.in -1c
+.SH "Descripción detallada"
+.PP 
+Libreria de manejo de la capa SSL\&. 
+
+
+.PP
+\fBAutor:\fP
+.RS 4
+Sergio Fuentes sergio.fuentesd@estudiante.uam.es 
+.PP
+Daniel Perdices daniel.perdices@estudiante.uam.es 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2016/04/21 
+.RE
+.PP
+
+.PP
+Definición en el archivo \fBG\-2301\-01\-P3\-ssl\&.c\fP\&.
+.SH "Documentación de las funciones"
+.PP 
+.SS "int aceptar_canal_seguro_SSL (int socketd)"
+
+.PP
+Inicia el handshake SSL en el lado del servidor\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP El socket asociado a la conexion con la que se quiere conectar con SSL 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SSL_FAIL, SSL_FD, SSLOK 
+.RE
+.PP
+
+.PP
+Definición en la línea 74 del archivo G\-2301\-01\-P3\-ssl\&.c\&.
+.SS "void cerrar_canal_SSL (int socketd)"
+
+.PP
+Cierra la conexion SSL con el socketd\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP El socket asociado a la conexion 
+.RE
+.PP
+
+.PP
+Definición en la línea 122 del archivo G\-2301\-01\-P3\-ssl\&.c\&.
+.SS "int conectar_canal_seguro_SSL (int socketd)"
+
+.PP
+Inicia el handshake SSL en el lado del cliente\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP El socket asociado a la conexion con la que se quiere conectar con SSL 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SSL_FAIL, SSL_FD, SSLOK 
+.RE
+.PP
+
+.PP
+Definición en la línea 62 del archivo G\-2301\-01\-P3\-ssl\&.c\&.
+.SS "int enviar_datos_SSL (int socketd, void * buf, int len)"
+
+.PP
+Envia un buffer por la capa SSL (cifrado) 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP El socket asociado a la conexion 
+.br
+\fIbuf\fP El buffer que se quiere enviar 
+.br
+\fIlen\fP La longitud del buffer 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SSL_FAIL, SSL_FD, SSLOK 
+.RE
+.PP
+
+.PP
+Definición en la línea 98 del archivo G\-2301\-01\-P3\-ssl\&.c\&.
+.SS "int evaluar_post_connectar_SSL (int socketd)"
+
+.PP
+Evalua si la conexion es segura (hay certificado y es valido) 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP El socket asociado a la conexion con la que se quiere conectar con SSL 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SSL_FAIL, SSL_FD, SSLOK 
+.RE
+.PP
+
+.PP
+Definición en la línea 86 del archivo G\-2301\-01\-P3\-ssl\&.c\&.
+.SS "int fijar_contexto_SSL (char * pk, char * cert)"
+
+.PP
+Fija el contexto SSL\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIpk\fP Clave privada 
+.br
+\fIcer\fP Certificado 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SSL_NOCTX, SSL_VERLOCATION, SSL_CERT, SSL_PKEY, SSLOK 
+.RE
+.PP
+
+.PP
+Definición en la línea 39 del archivo G\-2301\-01\-P3\-ssl\&.c\&.
+.SS "int recibir_datos_SSL (int socketd, void * buf, int max_len, int * len)"
+
+.PP
+Evalua si la conexion es segura (hay certificado y es valido) 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP El socket asociado a la conexion 
+.br
+\fIbuf\fP El buffer que se quiere llenar 
+.br
+\fImax_len\fP Longitud del buffer 
+.br
+\fIlen\fP La longitud del buffer que ha sido llenada 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+TCPERR_RECV, TCPCONN_CLOSED, TCPOK 
+.RE
+.PP
+
+.PP
+Definición en la línea 111 del archivo G\-2301\-01\-P3\-ssl\&.c\&.
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Practica 3 - Redes de Comunicaciones II del código fuente\&.

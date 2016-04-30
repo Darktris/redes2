@@ -1,0 +1,339 @@
+.TH "srclib/G-2301-01-P3-ssl-server.c" 3 "Sábado, 30 de Abril de 2016" "Practica 3 - Redes de Comunicaciones II" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+srclib/G-2301-01-P3-ssl-server.c \- Libreria de manejo de un servidor de sockets SSL\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <pthread\&.h>\fP
+.br
+\fC#include <sys/types\&.h>\fP
+.br
+\fC#include <sys/socket\&.h>\fP
+.br
+\fC#include <netinet/in\&.h>\fP
+.br
+\fC#include <sys/select\&.h>\fP
+.br
+\fC#include <sys/time\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+\fC#include <strings\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <signal\&.h>\fP
+.br
+\fC#include <arpa/inet\&.h>\fP
+.br
+\fC#include <G\-2301\-01\-P1\-tcp\&.h>\fP
+.br
+\fC#include <G\-2301\-01\-P3\-ssl\&.h>\fP
+.br
+\fC#include 'G\-2301\-01\-P3\-ssl\-server\&.h'\fP
+.br
+
+.SS "Funciones"
+
+.in +1c
+.ti -1c
+.RI "int \fBconnection_add_SSL\fP (int socketd)"
+.br
+.RI "\fIAñade una conexion al conjunto del select\&. \fP"
+.ti -1c
+.RI "int \fBconnection_rmv_SSL\fP (int socketd)"
+.br
+.RI "\fIBorra una conexion del conjunto del select\&. \fP"
+.ti -1c
+.RI "int \fBis_connected_SSL\fP (int socketd)"
+.br
+.RI "\fIIndica si hay una conexion abierta\&. \fP"
+.ti -1c
+.RI "int \fBis_readable_SSL\fP (int socketd)"
+.br
+.RI "\fIIndica si hay una conexion que requiere atencion\&. \fP"
+.ti -1c
+.RI "int \fBconnection_block_SSL\fP (int socketd)"
+.br
+.RI "\fIBloquea una conexion\&. \fP"
+.ti -1c
+.RI "int \fBconnection_unblock_SSL\fP (int socketd)"
+.br
+.RI "\fIDesbloquea una conexion\&. \fP"
+.ti -1c
+.RI "int \fBconnection_isblocked_SSL\fP (int socketd)"
+.br
+.RI "\fIComprueba si una conexion esta bloqueada\&. \fP"
+.ti -1c
+.RI "char * \fBget_ip_from_connection_SSL\fP (int socketd)"
+.br
+.RI "\fIDevuelve la ip asociada a un socked\&. \fP"
+.ti -1c
+.RI "void \fBsigint_handler_SSL\fP (int sig)"
+.br
+.RI "\fIManejador de la señal\&. \fP"
+.ti -1c
+.RI "int \fBserver_launch_SSL\fP (uint16_t port, void *(*\fBhandler\fP)(void *), void *more)"
+.br
+.RI "\fILanza un servidor que atiende cada mensaje recibido con la funcion handler\&. \fP"
+.ti -1c
+.RI "int \fBserver_stop_SSL\fP ()"
+.br
+.RI "\fIPara el servidor TCP\&. \fP"
+.ti -1c
+.RI "int \fBset_do_on_disconnect_SSL\fP (void(*\fBhandler\fP)(void *))"
+.br
+.RI "\fIAgrega un handler para desconexiones\&. \fP"
+.in -1c
+.SH "Descripción detallada"
+.PP 
+Libreria de manejo de un servidor de sockets SSL\&. 
+
+
+.PP
+\fBAutor:\fP
+.RS 4
+Sergio Fuentes sergio.fuentesd@estudiante.uam.es 
+.PP
+Daniel Perdices daniel.perdices@estudiante.uam.es 
+.RE
+.PP
+\fBFecha:\fP
+.RS 4
+2016/04/21 
+.RE
+.PP
+
+.PP
+Definición en el archivo \fBG\-2301\-01\-P3\-ssl\-server\&.c\fP\&.
+.SH "Documentación de las funciones"
+.PP 
+.SS "int connection_add_SSL (int socketd)"
+
+.PP
+Añade una conexion al conjunto del select\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK 
+.RE
+.PP
+
+.PP
+Definición en la línea 37 del archivo G\-2301\-01\-P3\-ssl\-server\&.c\&.
+.SS "int connection_block_SSL (int socketd)"
+
+.PP
+Bloquea una conexion\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK 
+.RE
+.PP
+
+.PP
+Definición en la línea 87 del archivo G\-2301\-01\-P3\-ssl\-server\&.c\&.
+.SS "int connection_isblocked_SSL (int socketd)"
+
+.PP
+Comprueba si una conexion esta bloqueada\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+0 si no esta bloqueada, otro valor si esta bloqueada 
+.RE
+.PP
+
+.PP
+Definición en la línea 111 del archivo G\-2301\-01\-P3\-ssl\-server\&.c\&.
+.SS "int connection_rmv_SSL (int socketd)"
+
+.PP
+Borra una conexion del conjunto del select\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK 
+.RE
+.PP
+
+.PP
+Definición en la línea 49 del archivo G\-2301\-01\-P3\-ssl\-server\&.c\&.
+.SS "int connection_unblock_SSL (int socketd)"
+
+.PP
+Desbloquea una conexion\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK 
+.RE
+.PP
+
+.PP
+Definición en la línea 99 del archivo G\-2301\-01\-P3\-ssl\-server\&.c\&.
+.SS "char* get_ip_from_connection_SSL (int socketd)"
+
+.PP
+Devuelve la ip asociada a un socked\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+La ip del socket en decimal 
+.RE
+.PP
+
+.PP
+Definición en la línea 124 del archivo G\-2301\-01\-P3\-ssl\-server\&.c\&.
+.SS "int is_connected_SSL (int socketd)"
+
+.PP
+Indica si hay una conexion abierta\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+0 si esta cerrada, cualquier valor en otro caso 
+.RE
+.PP
+
+.PP
+Definición en la línea 61 del archivo G\-2301\-01\-P3\-ssl\-server\&.c\&.
+.SS "int is_readable_SSL (int socketd)"
+
+.PP
+Indica si hay una conexion que requiere atencion\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsocketd\fP Descriptor del socket 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+0 si esta cerrada, cualquier valor en otro caso 
+.RE
+.PP
+
+.PP
+Definición en la línea 74 del archivo G\-2301\-01\-P3\-ssl\-server\&.c\&.
+.SS "int server_launch_SSL (uint16_t port, void *(*)(void *) handler, void * more)"
+
+.PP
+Lanza un servidor que atiende cada mensaje recibido con la funcion handler\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIport\fP Puerto en el que abrir el servidor 
+.br
+\fIhandler\fP Rutina de atencion de los mensajes 
+.br
+\fImore\fP Parametros adicionales que se necesiten en la rutina de atencion 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK en caso de que el servidor termine correctamente un numero negativo en caso de error 
+.RE
+.PP
+
+.PP
+Definición en la línea 147 del archivo G\-2301\-01\-P3\-ssl\-server\&.c\&.
+.PP
+Hace referencia a aceptar_canal_seguro_SSL(), cerrar_canal_SSL(), connection_add_SSL(), connection_block_SSL(), connection_isblocked_SSL(), connection_rmv_SSL(), connection_unblock_SSL(), evaluar_post_connectar_SSL(), fijar_contexto_SSL(), handler(), inicializar_nivel_SSL(), is_readable_SSL(), recibir_datos_SSL(), server_tcpsocket_open(), tcpsocket_accept() y tcpsocket_close()\&.
+.SS "int server_stop_SSL ()"
+
+.PP
+Para el servidor TCP\&. 
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK si el servidor se para, SERVERR_NRUN si no hay servidor 
+.RE
+.PP
+
+.PP
+Definición en la línea 279 del archivo G\-2301\-01\-P3\-ssl\-server\&.c\&.
+.SS "int set_do_on_disconnect_SSL (void(*)(void *) handler)"
+
+.PP
+Agrega un handler para desconexiones\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIhandler\fP El handler 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+SERVOK 
+.RE
+.PP
+
+.PP
+Definición en la línea 294 del archivo G\-2301\-01\-P3\-ssl\-server\&.c\&.
+.PP
+Hace referencia a handler()\&.
+.SS "void sigint_handler_SSL (int sig)"
+
+.PP
+Manejador de la señal\&. 
+.PP
+\fBParámetros:\fP
+.RS 4
+\fIsig\fP señal recibido 
+.RE
+.PP
+\fBDevuelve:\fP
+.RS 4
+0 si no esta bloqueada, otro valor si esta bloqueada 
+.RE
+.PP
+
+.PP
+Definición en la línea 134 del archivo G\-2301\-01\-P3\-ssl\-server\&.c\&.
+.SH "Autor"
+.PP 
+Generado automáticamente por Doxygen para Practica 3 - Redes de Comunicaciones II del código fuente\&.
