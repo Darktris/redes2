@@ -38,6 +38,12 @@ void repair_command(char* command) {
     i+=2;
     *i='\0';
 }
+/**
+  @brief Funcion de bypass para SSL
+  @param socketd: Socket
+  @param buf: Buffer
+  @param len: Tamaño del buffer
+*/
 #define tcpsocket_snd __ssl_bridge_snd
 int __ssl_bridge_snd(int socketd, char* buf, size_t len) {
     if(s_ssl) enviar_datos_SSL(socketd, buf, len);
@@ -440,10 +446,9 @@ int main(int argc, char** argv) {
         return 0;
     }
 
-    if(argc > 3 && strcmp(argv[2], "-ssl")==0) s_ssl=1;
+    if(strcmp(argc==2?"":argv[2], "-ssl")==0) s_ssl=1;
     else s_ssl=0;
 
-    s_ssl = 1;
     printf(COLOR_YELLOW "\t\tWelcome to %s\n" COLOR_RESET, IRCSVR_NAME);
     printf(COLOR_YELLOW "\tWe destroyed Alderaan due to a bug with QUIT\n" COLOR_RESET);
     init_commands();   
@@ -466,8 +471,7 @@ int main(int argc, char** argv) {
         return -2;
     }
     printf(COLOR_GREEN "<<Launching server in daemon mode>>\n" COLOR_RESET);
-    sleep(2);
-    //daemonize("G-2301-01-irc");
+    daemonize("G-2301-01-irc");
     ret = s_ssl? server_launch_SSL(port, handler, NULL):server_launch(port, handler, NULL);
     perror("ERROR");
     printf("Retorno del servidor: %d\n",ret);

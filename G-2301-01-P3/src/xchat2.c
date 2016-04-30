@@ -154,10 +154,12 @@ int _client_socketsnd(char * msg) {
 */
 int _client_socketrcv(char* msg, size_t size) {
     size_t len=0;
+    int ret;
     DOWN(&mutexrcv);
-    if(ssl) recibir_datos_SSL(socketd_client, msg, size, (int*) &len);
-    else tcpsocket_rcv(socketd_client, msg, size, &len);
+    if(ssl) ret = recibir_datos_SSL(socketd_client, msg, size, (int*) &len);
+    else ret = tcpsocket_rcv(socketd_client, msg, size, &len);
     UP(&mutexrcv);
+    if(ret==TCPCONN_CLOSED) receiving = 0;
     //syslog(LOG_INFO, "Receiving: %s", msg);
 }
 
@@ -1488,7 +1490,11 @@ long IRCInterface_Connect(char *nick, char *user, char *realname, char *password
             ERR_print_errors_fp(stderr);
             //return 0;
         }
-        conectar_canal_seguro_SSL(socketd_client);
+        if(conectar_canal_seguro_SSL(socketd_client)<0) {
+            printf("Error del handshake\n");
+            ERR_print_errors_fp(stderr);
+            return IRCERR_NOCONNECT;
+        }
         if(evaluar_post_connectar_SSL(socketd_client)) {
             printf("Error del certificador\n");
             ERR_print_errors_fp(stderr);
@@ -1532,7 +1538,9 @@ void* rcv_thread(void *d) {
     long ret;
     msg = malloc(8192*sizeof(char));
     while(receiving) {
-        client_socketrcv_thread(msg, 8191);
+        if(client_socketrcv_thread(msg, 8191)<=0) {
+            return NULL;
+        }
         next = IRC_UnPipelineCommands (msg, &command, NULL);
         do { 
             syslog(LOG_INFO,"%s", command);
@@ -1546,12 +1554,13 @@ void* rcv_thread(void *d) {
                     cdefault(command);
                     break;
                 default:
-                    ccommands[ret](command);
+                    if(ret>0 && ret < CCOMM_LEN) ccommands[ret](command);
             }
             if(command!=NULL) free(command); //??
             next = IRC_UnPipelineCommands(NULL, &command, next);
         } while(next!=NULL);
     }
+    IRCInterface_ChangeConectionSelectedThread();
 }
 
 /**

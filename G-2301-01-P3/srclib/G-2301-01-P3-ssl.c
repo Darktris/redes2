@@ -84,6 +84,7 @@ int aceptar_canal_seguro_SSL(int socketd) {
   @return SSL_FAIL, SSL_FD, SSLOK
 */
 int evaluar_post_connectar_SSL(int socketd) {
+    if(s_sockets[socketd] == NULL)  return 0;
     return SSL_get_peer_certificate(s_sockets[socketd]) && SSL_get_verify_result(s_sockets[socketd]);
 }
 
@@ -95,7 +96,7 @@ int evaluar_post_connectar_SSL(int socketd) {
   @return SSL_FAIL, SSL_FD, SSLOK
 */
 int enviar_datos_SSL(int socketd, void* buf, int len) {
-    if(!buf||len < 1) return -1;
+    if(!buf||len < 1||!s_sockets[socketd]) return -1;
     return SSL_write(s_sockets[socketd], buf, len);
 }
 
@@ -108,6 +109,7 @@ int enviar_datos_SSL(int socketd, void* buf, int len) {
   @return TCPERR_RECV, TCPCONN_CLOSED, TCPOK
 */
 int recibir_datos_SSL(int socketd, void* buf, int max_len, int* len) {
+    if(!s_sockets[socketd]) return TCPERR_RECV;
     bzero(buf, max_len);
     *len = SSL_read(s_sockets[socketd], buf, max_len);
     if(*len<0) return TCPERR_RECV;
@@ -118,6 +120,7 @@ int recibir_datos_SSL(int socketd, void* buf, int max_len, int* len) {
   @param socketd: El socket asociado a la conexion
 */
 void cerrar_canal_SSL(int socketd) {
+   if(!s_sockets[socketd]) return;
    SSL_shutdown(s_sockets[socketd]); 
    SSL_free(s_sockets[socketd]);
    s_sockets[socketd]=NULL;

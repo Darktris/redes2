@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;Avisos de la Práctica 2 de Redes de Comunicaciones II:;;;;;;;;;;;;;;
+;;;;;;;Avisos de la Práctica 3 de Redes de Comunicaciones II:;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 -La funcionalidad de envio de ficheros y la funcionalidad de chat de audio
@@ -14,3 +14,10 @@ entorno MANPATH. Para ello basta ejecutar
 en la terminal. El cambio es temporal, en caso de querer hacerlo permanente
 se puede modificar la variable de entorno directamente al igual que se
 podría instalar el programa en PATH.
+-Para que SSL funcione correctamente se debe ejecutar en el directorio 
+G-2301-01-P3, ya que muchas rutas son relativas a el en cuanto a certificados 
+y se considera inseguro mover las claves privadas a la carpeta /tmp/. En 
+una situacion real se deberia guardar en un contenedor del sistema operativo 
+la clave privada encriptada (mediante DES por ej), pero al ser una prueba de 
+funcionamiento se omite estas mejoras al considerarse intrusivas para la 
+correccion de la practica.

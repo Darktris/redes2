@@ -209,6 +209,8 @@ int server_launch_SSL(uint16_t port, void*(*handler)(void*), void* more) {
                         perror("Error");
                         printf("Error al abrir el canal seguro\n");
                         ERR_print_errors_fp(stdout);
+                        close(args.acceptd);
+                        continue;
                     }
                     if(evaluar_post_connectar_SSL(socketd)) {
 
