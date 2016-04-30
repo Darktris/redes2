@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -L$(LDIR) -I$(IDIR) -g `pkg-config --cflags gtk+-3.0` -DNOCHDIR -DNDEBUG 
+CFLAGS = -L$(LDIR) -I$(IDIR) -g `pkg-config --cflags gtk+-3.0` -DNOCHDIR -DNDEBUG -DNOCLOSEFD
 LDFLAGS = -lpthread -lircredes -lircinterface -lsoundredes -lirctad -lredes2-G-2301-01-P3 -lsoundredes -lpulse -lpulse-simple `pkg-config --libs gtk+-3.0` -lssl -lcrypto -rdynamic 
 AR = ar 
 

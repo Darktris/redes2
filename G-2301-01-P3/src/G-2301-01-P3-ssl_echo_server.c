@@ -22,10 +22,11 @@ void* echo(void* data) {
 	if(pthread_detach(pthread_self())!=0) {
 		perror("");
 	}
-	printf("Mensaje: %s\n",(char*) thread_data->msg);
+	//printf("Mensaje: %s\n",(char*) thread_data->msg);
 	syslog(LOG_INFO, "Mensaje: %s",(char*) thread_data->msg);
 	if(enviar_datos_SSL(thread_data->socketd, thread_data->msg, thread_data->len)<0) {
 		perror("");
+        syslog(LOG_INFO, "Error while sending");
 	}
 	connection_unblock_SSL(thread_data->socketd);
 	free(thread_data->msg);
@@ -47,8 +48,7 @@ int main(int argc, char** argv) {
         printf("Use: %s port [--nodaemon]\n", argv[0]);
     }
     puts("Launching server"); 
-	//if(argc == 2 || strcmp(argv[2], "--nodaemon"))daemonize("echo_server");
-    daemonize("");
+	if(argc == 2 || strcmp(argv[2], "--nodaemon"))daemonize("echo_server");
 	ret = server_launch_SSL(atoi(argv[1]), echo, NULL);
 	printf("Retorno del servidor: %d\n",ret);
 	syslog(LOG_INFO, "Retorno del servidor: %d",ret);
