@@ -1,26 +1,25 @@
-.TH "src/G-2301-01-P1-irc_server.c" 3 "Viernes, 29 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
+.TH "src/G-2301-01-P1-irc_server.c" 3 "Sábado, 30 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-src/G-2301-01-P1-irc_server.c \- 
-Servidor IRC\&.  
+src/G-2301-01-P1-irc_server.c \- Servidor IRC\&.  
 
 .SH SYNOPSIS
 .br
 .PP
-\fC#include 'G-2301-01-P1-server\&.h'\fP
+\fC#include 'G\-2301\-01\-P1\-server\&.h'\fP
 .br
-\fC#include <G-2301-01-P3-ssl-server\&.h>\fP
+\fC#include <G\-2301\-01\-P3\-ssl\-server\&.h>\fP
 .br
-\fC#include 'G-2301-01-P1-irc_server\&.h'\fP
+\fC#include 'G\-2301\-01\-P1\-irc_server\&.h'\fP
 .br
-\fC#include <G-2301-01-P1-irc\&.h>\fP
+\fC#include <G\-2301\-01\-P1\-irc\&.h>\fP
 .br
-\fC#include <G-2301-01-P1-tools\&.h>\fP
+\fC#include <G\-2301\-01\-P1\-tools\&.h>\fP
 .br
-\fC#include <G-2301-01-P1-daemon\&.h>\fP
+\fC#include <G\-2301\-01\-P1\-daemon\&.h>\fP
 .br
-\fC#include <G-2301-01-P3-ssl\&.h>\fP
+\fC#include <G\-2301\-01\-P3\-ssl\&.h>\fP
 .br
 \fC#include <redes2/irc\&.h>\fP
 .br
@@ -115,7 +114,7 @@ Daniel Perdices daniel.perdices@estudiante.uam.es
 .PP
 
 .PP
-Definición en el archivo \fBG-2301-01-P1-irc_server\&.c\fP\&.
+Definición en el archivo \fBG\-2301\-01\-P1\-irc_server\&.c\fP\&.
 .SH "Documentación de las funciones"
 .PP 
 .SS "char* get_motd_path ()"
@@ -130,8 +129,8 @@ Dicho path al fichero
 .PP
 
 .PP
-Definición en la línea 52 del archivo G-2301-01-P1-irc_server\&.c\&.
-.SS "char* get_nick (intsocketd)"
+Definición en la línea 52 del archivo G\-2301\-01\-P1\-irc_server\&.c\&.
+.SS "char* get_nick (int socketd)"
 
 .PP
 Devuelve el nick de un usuario\&. 
@@ -148,8 +147,8 @@ El nick del usuario
 .PP
 
 .PP
-Definición en la línea 170 del archivo G-2301-01-P1-irc_server\&.c\&.
-.SS "int get_socketd_bynick (char *nick)"
+Definición en la línea 170 del archivo G\-2301\-01\-P1\-irc_server\&.c\&.
+.SS "int get_socketd_bynick (char * nick)"
 
 .PP
 Busca el socket de un usuario por nick\&. 
@@ -166,8 +165,8 @@ el socket del usuario
 .PP
 
 .PP
-Definición en la línea 147 del archivo G-2301-01-P1-irc_server\&.c\&.
-.SS "int get_socketd_byuser (char *user)"
+Definición en la línea 147 del archivo G\-2301\-01\-P1\-irc_server\&.c\&.
+.SS "int get_socketd_byuser (char * user)"
 
 .PP
 Asocia a un socketd el nick\&. 
@@ -186,8 +185,8 @@ IRCSVROK en caso adecuado, IRCSVERR (<0) en otro caso
 .PP
 
 .PP
-Definición en la línea 123 del archivo G-2301-01-P1-irc_server\&.c\&.
-.SS "char* get_user (intsocketd)"
+Definición en la línea 123 del archivo G\-2301\-01\-P1\-irc_server\&.c\&.
+.SS "char* get_user (int socketd)"
 
 .PP
 Devuelve el user de un usuario\&. 
@@ -204,8 +203,8 @@ El user del usuario
 .PP
 
 .PP
-Definición en la línea 183 del archivo G-2301-01-P1-irc_server\&.c\&.
-.SS "void* handler (void *data)"
+Definición en la línea 183 del archivo G\-2301\-01\-P1\-irc_server\&.c\&.
+.SS "void* handler (void * data)"
 
 .PP
 Manejador de las conexiones\&. 
@@ -222,10 +221,10 @@ IRCSVR_OK
 .PP
 
 .PP
-Definición en la línea 207 del archivo G-2301-01-P1-irc_server\&.c\&.
+Definición en la línea 207 del archivo G\-2301\-01\-P1\-irc_server\&.c\&.
 .PP
-Hace referencia a connection_unblock(), process_command() y update_timeout()\&.
-.SS "int main (intargc, char **argv)"
+Hace referencia a connection_unblock(), connection_unblock_SSL(), process_command(), quit() y update_timeout()\&.
+.SS "int main (int argc, char ** argv)"
 
 .PP
 Llamada principal del servidor\&. 
@@ -244,10 +243,10 @@ Llamada principal del servidor\&.
 .PP
 
 .PP
-Definición en la línea 429 del archivo G-2301-01-P1-irc_server\&.c\&.
+Definición en la línea 429 del archivo G\-2301\-01\-P1\-irc_server\&.c\&.
 .PP
-Hace referencia a free_memspace(), handler(), init_commands(), init_memspace(), server_launch(), server_stop() y timeout_thread()\&.
-.SS "int process_command (char *command, void *data)"
+Hace referencia a free_memspace(), handler(), init_commands(), init_memspace(), server_launch(), server_launch_SSL(), server_stop(), server_stop_SSL(), set_do_on_disconnect_SSL() y timeout_thread()\&.
+.SS "int process_command (char * command, void * data)"
 
 .PP
 Procesa un comando\&. 
@@ -266,10 +265,10 @@ IRCSVROK en caso adecuado, IRCSVERR (<0) en otro caso
 .PP
 
 .PP
-Definición en la línea 332 del archivo G-2301-01-P1-irc_server\&.c\&.
+Definición en la línea 332 del archivo G\-2301\-01\-P1\-irc_server\&.c\&.
 .PP
 Hace referencia a get_nick() y tcpsocket_snd()\&.
-.SS "int set_nick (intsocketd, char *nick)"
+.SS "int set_nick (int socketd, char * nick)"
 
 .PP
 Asocia a un socketd el nick\&. 
@@ -288,8 +287,8 @@ IRCSVROK en caso adecuado, IRCSVERR (<0) en otro caso
 .PP
 
 .PP
-Definición en la línea 92 del archivo G-2301-01-P1-irc_server\&.c\&.
-.SS "int set_user (intsocketd, char *user)"
+Definición en la línea 92 del archivo G\-2301\-01\-P1\-irc_server\&.c\&.
+.SS "int set_user (int socketd, char * user)"
 
 .PP
 Asocia a un socketd el usuario\&. 
@@ -308,8 +307,8 @@ IRCSVROK en caso adecuado, IRCSVERR (<0) en otro caso
 .PP
 
 .PP
-Definición en la línea 61 del archivo G-2301-01-P1-irc_server\&.c\&.
-.SS "void* timeout_thread (void *data)"
+Definición en la línea 61 del archivo G\-2301\-01\-P1\-irc_server\&.c\&.
+.SS "void* timeout_thread (void * data)"
 
 .PP
 Hilo de desconexion por timeout\&. 
@@ -326,10 +325,10 @@ No devuelve ningun valor
 .PP
 
 .PP
-Definición en la línea 359 del archivo G-2301-01-P1-irc_server\&.c\&.
+Definición en la línea 359 del archivo G\-2301\-01\-P1\-irc_server\&.c\&.
 .PP
-Hace referencia a connection_block(), connection_unblock(), get_user(), quit() y tcpsocket_snd()\&.
-.SS "int update_timeout (intsocketd)"
+Hace referencia a connection_block(), connection_block_SSL(), connection_unblock(), connection_unblock_SSL(), get_user(), mode(), quit(), tcpsocket_snd() y topic()\&.
+.SS "int update_timeout (int socketd)"
 
 .PP
 Actualiza el contador de timeout de un socketd\&. 
@@ -346,7 +345,7 @@ IRCSVROK
 .PP
 
 .PP
-Definición en la línea 196 del archivo G-2301-01-P1-irc_server\&.c\&.
+Definición en la línea 196 del archivo G\-2301\-01\-P1\-irc_server\&.c\&.
 .SH "Autor"
 .PP 
 Generado automáticamente por Doxygen para Practica 2 - Redes de Comunicaciones II del código fuente\&.

@@ -1,10 +1,8 @@
-.TH "srclib/G-2301-01-P2-ccomm.c" 3 "Viernes, 29 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
+.TH "srclib/G-2301-01-P2-ccomm.c" 3 "Sábado, 30 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-srclib/G-2301-01-P2-ccomm.c \- 
-.PP
-Libreria de manejo de mensajes IRC\&.  
+srclib/G-2301-01-P2-ccomm.c \- Libreria de manejo de mensajes IRC\&.  
 
 .SH SYNOPSIS
 .br
@@ -15,13 +13,13 @@ Libreria de manejo de mensajes IRC\&.
 .br
 \fC#include <syslog\&.h>\fP
 .br
-\fC#include <G-2301-01-P1-tools\&.h>\fP
+\fC#include <G\-2301\-01\-P1\-tools\&.h>\fP
 .br
-\fC#include <G-2301-01-P1-tcp\&.h>\fP
+\fC#include <G\-2301\-01\-P1\-tcp\&.h>\fP
 .br
-\fC#include <G-2301-01-P2-client\&.h>\fP
+\fC#include <G\-2301\-01\-P2\-client\&.h>\fP
 .br
-\fC#include <G-2301-01-P2-ccomm\&.h>\fP
+\fC#include <G\-2301\-01\-P2\-ccomm\&.h>\fP
 .br
 
 .SS "Funciones"
@@ -220,10 +218,10 @@ Daniel Perdices daniel.perdices@estudiante.uam.es
 .PP
 
 .PP
-Definición en el archivo \fBG-2301-01-P2-ccomm\&.c\fP\&.
+Definición en el archivo \fBG\-2301\-01\-P2\-ccomm\&.c\fP\&.
 .SH "Documentación de las funciones"
 .PP 
-.SS "void cdefault (char *command)"
+.SS "void cdefault (char * command)"
 
 .PP
 Atiende el comando con una accion por defecto\&. 
@@ -235,8 +233,8 @@ Atiende el comando con una accion por defecto\&.
 .PP
 
 .PP
-Definición en la línea 88 del archivo G-2301-01-P2-ccomm\&.c\&.
-.SS "void cDoNothing (char *command)"
+Definición en la línea 88 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cDoNothing (char * command)"
 
 .PP
 Ignora el comando\&. 
@@ -248,8 +246,8 @@ Ignora el comando\&.
 .PP
 
 .PP
-Definición en la línea 871 del archivo G-2301-01-P2-ccomm\&.c\&.
-.SS "void cErrBadChannelKey (char *command)"
+Definición en la línea 871 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cErrBadChannelKey (char * command)"
 
 .PP
 Atiende el comando NICK\&. 
@@ -261,8 +259,8 @@ Atiende el comando NICK\&.
 .PP
 
 .PP
-Definición en la línea 670 del archivo G-2301-01-P2-ccomm\&.c\&.
-.SS "void cErrBannedFromChannel (char *command)"
+Definición en la línea 670 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cErrBannedFromChannel (char * command)"
 
 .PP
 Atiende el comando ERR_BANNEDFROMCHANNEL\&. 
@@ -274,8 +272,8 @@ Atiende el comando ERR_BANNEDFROMCHANNEL\&.
 .PP
 
 .PP
-Definición en la línea 730 del archivo G-2301-01-P2-ccomm\&.c\&.
-.SS "void cErrChanOpPrivIsNeeded (char *command)"
+Definición en la línea 730 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cErrChanOpPrivIsNeeded (char * command)"
 
 .PP
 Atiende el comando ERR_CHANOPPRIVISNEEDED\&. 
@@ -287,10 +285,10 @@ Atiende el comando ERR_CHANOPPRIVISNEEDED\&.
 .PP
 
 .PP
-Definición en la línea 586 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 586 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cErrConnection (char *command)"
+.SS "void cErrConnection (char * command)"
 
 .PP
 Atiende el comandos de error en la conexion\&. 
@@ -302,8 +300,8 @@ Atiende el comandos de error en la conexion\&.
 .PP
 
 .PP
-Definición en la línea 681 del archivo G-2301-01-P2-ccomm\&.c\&.
-.SS "void cErrNoSuchChannel (char *command)"
+Definición en la línea 681 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cErrNoSuchChannel (char * command)"
 
 .PP
 Atiende el comando ERR_NOSUCHCHANNEL\&. 
@@ -315,10 +313,10 @@ Atiende el comando ERR_NOSUCHCHANNEL\&.
 .PP
 
 .PP
-Definición en la línea 710 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 710 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cErrNoSuchNick (char *command)"
+.SS "void cErrNoSuchNick (char * command)"
 
 .PP
 Atiende el comando ERR_NOSUCHNICK\&. 
@@ -330,10 +328,10 @@ Atiende el comando ERR_NOSUCHNICK\&.
 .PP
 
 .PP
-Definición en la línea 690 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 690 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cJoin (char *command)"
+.SS "void cJoin (char * command)"
 
 .PP
 Atiende el comando JOIN\&. 
@@ -345,10 +343,10 @@ Atiende el comando JOIN\&.
 .PP
 
 .PP
-Definición en la línea 132 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 132 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd_thread(), nick() y user()\&.
-.SS "void cKick (char *command)"
+.SS "void cKick (char * command)"
 
 .PP
 Atiende el comando KICK\&. 
@@ -360,10 +358,10 @@ Atiende el comando KICK\&.
 .PP
 
 .PP
-Definición en la línea 545 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 545 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick() y user()\&.
-.SS "void cMode (char *command)"
+.SS "void cMode (char * command)"
 
 .PP
 Atiende el comando MODE\&. 
@@ -375,10 +373,10 @@ Atiende el comando MODE\&.
 .PP
 
 .PP
-Definición en la línea 778 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 778 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a mode() y user()\&.
-.SS "void cNick (char *command)"
+.SS "void cNick (char * command)"
 
 .PP
 Atiende el comando NICK\&. 
@@ -390,10 +388,10 @@ Atiende el comando NICK\&.
 .PP
 
 .PP
-Definición en la línea 24 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 24 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick() y user()\&.
-.SS "void cNotice (char *command)"
+.SS "void cNotice (char * command)"
 
 .PP
 Atiende el comando NOTICE\&. 
@@ -405,10 +403,10 @@ Atiende el comando NOTICE\&.
 .PP
 
 .PP
-Definición en la línea 638 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 638 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick(), rcvThread_file(), set_audio_host(), set_audio_port(), unlock_audio() y user()\&.
-.SS "void cPart (char *command)"
+.SS "void cPart (char * command)"
 
 .PP
 Atiende el comando PART\&. 
@@ -420,10 +418,10 @@ Atiende el comando PART\&.
 .PP
 
 .PP
-Definición en la línea 443 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 443 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick() y user()\&.
-.SS "void cPing (char *command)"
+.SS "void cPing (char * command)"
 
 .PP
 Atiende el comandoi PING\&. 
@@ -435,10 +433,10 @@ Atiende el comandoi PING\&.
 .PP
 
 .PP
-Definición en la línea 317 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 317 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a client_socketsnd_thread()\&.
-.SS "void cPrivMsg (char *command)"
+.SS "void cPrivMsg (char * command)"
 
 .PP
 Atiende el comando PRIVMSG\&. 
@@ -450,10 +448,10 @@ Atiende el comando PRIVMSG\&.
 .PP
 
 .PP
-Definición en la línea 165 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 165 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick() y user()\&.
-.SS "void cQuit (char *command)"
+.SS "void cQuit (char * command)"
 
 .PP
 Atiende el comando QUIT\&. 
@@ -465,10 +463,10 @@ Atiende el comando QUIT\&.
 .PP
 
 .PP
-Definición en la línea 751 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 751 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick() y user()\&.
-.SS "void cRplAway (char *command)"
+.SS "void cRplAway (char * command)"
 
 .PP
 Atiende el comando RPL_AWAY\&. 
@@ -480,10 +478,10 @@ Atiende el comando RPL_AWAY\&.
 .PP
 
 .PP
-Definición en la línea 477 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 477 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cRplChannelModeIs (char *command)"
+.SS "void cRplChannelModeIs (char * command)"
 
 .PP
 Atiende el comando RPL_CHANNELMODEIS\&. 
@@ -495,10 +493,10 @@ Atiende el comando RPL_CHANNELMODEIS\&.
 .PP
 
 .PP
-Definición en la línea 853 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 853 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a mode() y nick()\&.
-.SS "void cRplEndOfMotd (char *command)"
+.SS "void cRplEndOfMotd (char * command)"
 
 .PP
 Atiende el comando RPL_ENDOFMOTD\&. 
@@ -510,7 +508,7 @@ Atiende el comando RPL_ENDOFMOTD\&.
 .PP
 
 .PP
-Definición en la línea 74 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 74 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
 .SS "void cRplEndOfNames ()"
@@ -525,8 +523,8 @@ Atiende el comando RPL_ENDOFNAMES\&.
 .PP
 
 .PP
-Definición en la línea 537 del archivo G-2301-01-P2-ccomm\&.c\&.
-.SS "void cRplEndOfWho (char *command)"
+Definición en la línea 537 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplEndOfWho (char * command)"
 
 .PP
 Atiende el comando RPL_ENDOFWHO\&. 
@@ -538,8 +536,8 @@ Atiende el comando RPL_ENDOFWHO\&.
 .PP
 
 .PP
-Definición en la línea 600 del archivo G-2301-01-P2-ccomm\&.c\&.
-.SS "void cRplEndOfWhois (char *command)"
+Definición en la línea 600 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplEndOfWhois (char * command)"
 
 .PP
 Atiende el comando RPL_ENDOFWHOIS\&. 
@@ -551,10 +549,10 @@ Atiende el comando RPL_ENDOFWHOIS\&.
 .PP
 
 .PP
-Definición en la línea 285 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 285 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cRplList (char *command)"
+.SS "void cRplList (char * command)"
 
 .PP
 Atiende el comando RPL_LIST\&. 
@@ -566,10 +564,10 @@ Atiende el comando RPL_LIST\&.
 .PP
 
 .PP
-Definición en la línea 101 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 101 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick() y topic()\&.
-.SS "void cRplListEnd (char *command)"
+.SS "void cRplListEnd (char * command)"
 
 .PP
 Atiende el comando RPL_LISTEND\&. 
@@ -581,10 +579,10 @@ Atiende el comando RPL_LISTEND\&.
 .PP
 
 .PP
-Definición en la línea 119 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 119 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cRplMotd (char *command)"
+.SS "void cRplMotd (char * command)"
 
 .PP
 Atiende el comando RPL_MOTD\&. 
@@ -596,10 +594,10 @@ Atiende el comando RPL_MOTD\&.
 .PP
 
 .PP
-Definición en la línea 60 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 60 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cRplMotdStart (char *command)"
+.SS "void cRplMotdStart (char * command)"
 
 .PP
 Atiende el comando RPL_MOTDSTART\&. 
@@ -611,8 +609,8 @@ Atiende el comando RPL_MOTDSTART\&.
 .PP
 
 .PP
-Definición en la línea 376 del archivo G-2301-01-P2-ccomm\&.c\&.
-.SS "void cRplNamReply (char *command)"
+Definición en la línea 376 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplNamReply (char * command)"
 
 .PP
 Atiende el comando RPL_NAMREPLY\&. 
@@ -624,10 +622,10 @@ Atiende el comando RPL_NAMREPLY\&.
 .PP
 
 .PP
-Definición en la línea 384 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 384 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cRplNoTopic (char *command)"
+.SS "void cRplNoTopic (char * command)"
 
 .PP
 Atiende el comando RPL_NOTOPIC\&. 
@@ -639,10 +637,10 @@ Atiende el comando RPL_NOTOPIC\&.
 .PP
 
 .PP
-Definición en la línea 520 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 520 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a topic()\&.
-.SS "void cRplNowAway (char *command)"
+.SS "void cRplNowAway (char * command)"
 
 .PP
 Atiende el comando RPL_NOWAWAY\&. 
@@ -654,10 +652,10 @@ Atiende el comando RPL_NOWAWAY\&.
 .PP
 
 .PP
-Definición en la línea 493 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 493 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cRplTopic (char *command)"
+.SS "void cRplTopic (char * command)"
 
 .PP
 Atiende el comando RPL_TOPIC\&. 
@@ -669,10 +667,10 @@ Atiende el comando RPL_TOPIC\&.
 .PP
 
 .PP
-Definición en la línea 337 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 337 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick() y topic()\&.
-.SS "void cRplTopicWhoTime (char *command)"
+.SS "void cRplTopicWhoTime (char * command)"
 
 .PP
 Atiende el comando RPL_TOPICWHOTIME\&. 
@@ -684,8 +682,8 @@ Atiende el comando RPL_TOPICWHOTIME\&.
 .PP
 
 .PP
-Definición en la línea 353 del archivo G-2301-01-P2-ccomm\&.c\&.
-.SS "void cRplUnAway (char *command)"
+Definición en la línea 353 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplUnAway (char * command)"
 
 .PP
 Atiende el comando RPL_UNAWAY\&. 
@@ -697,8 +695,8 @@ Atiende el comando RPL_UNAWAY\&.
 .PP
 
 .PP
-Definición en la línea 509 del archivo G-2301-01-P2-ccomm\&.c\&.
-.SS "void cRplWelcome (char *command)"
+Definición en la línea 509 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplWelcome (char * command)"
 
 .PP
 Atiende el comando RPL_WELCOME\&. 
@@ -710,10 +708,10 @@ Atiende el comando RPL_WELCOME\&.
 .PP
 
 .PP
-Definición en la línea 361 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 361 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cRplWhoisChannels (char *command)"
+.SS "void cRplWhoisChannels (char * command)"
 
 .PP
 Atiende el comando RPL_WHOISCHANNELS\&. 
@@ -725,10 +723,10 @@ Atiende el comando RPL_WHOISCHANNELS\&.
 .PP
 
 .PP
-Definición en la línea 212 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 212 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cRplWhoisIdle (char *command)"
+.SS "void cRplWhoisIdle (char * command)"
 
 .PP
 Atiende el comando RPL_WHOISIDLE\&. 
@@ -740,10 +738,10 @@ Atiende el comando RPL_WHOISIDLE\&.
 .PP
 
 .PP
-Definición en la línea 265 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 265 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cRplWhoisOperator (char *command)"
+.SS "void cRplWhoisOperator (char * command)"
 
 .PP
 Atiende el comando RPL_WHOISOPERATOR\&. 
@@ -755,8 +753,8 @@ Atiende el comando RPL_WHOISOPERATOR\&.
 .PP
 
 .PP
-Definición en la línea 230 del archivo G-2301-01-P2-ccomm\&.c\&.
-.SS "void cRplWhoisServer (char *command)"
+Definición en la línea 230 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
+.SS "void cRplWhoisServer (char * command)"
 
 .PP
 Atiende el comando RPL_WHOISSERVER\&. 
@@ -768,10 +766,10 @@ Atiende el comando RPL_WHOISSERVER\&.
 .PP
 
 .PP
-Definición en la línea 246 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 246 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cRplWhoisUser (char *command)"
+.SS "void cRplWhoisUser (char * command)"
 
 .PP
 Atiende el comando RPL_WHOISUSER\&. 
@@ -783,10 +781,10 @@ Atiende el comando RPL_WHOISUSER\&.
 .PP
 
 .PP
-Definición en la línea 191 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 191 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick()\&.
-.SS "void cRplWhoReply (char *command)"
+.SS "void cRplWhoReply (char * command)"
 
 .PP
 Atiende el comando RPL_WHORPLY\&. 
@@ -798,10 +796,10 @@ Atiende el comando RPL_WHORPLY\&.
 .PP
 
 .PP
-Definición en la línea 419 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 419 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick() y user()\&.
-.SS "void cTopic (char *command)"
+.SS "void cTopic (char * command)"
 
 .PP
 Atiende el comando TOPIC\&. 
@@ -813,10 +811,10 @@ Atiende el comando TOPIC\&.
 .PP
 
 .PP
-Definición en la línea 302 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 302 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a nick() y topic()\&.
-.SS "void* rcvThread_file (void *msg)"
+.SS "void* rcvThread_file (void * msg)"
 
 .PP
 Hilo de recepcion del fichero\&. 
@@ -828,7 +826,7 @@ Hilo de recepcion del fichero\&.
 .PP
 
 .PP
-Definición en la línea 608 del archivo G-2301-01-P2-ccomm\&.c\&.
+Definición en la línea 608 del archivo G\-2301\-01\-P2\-ccomm\&.c\&.
 .PP
 Hace referencia a client_tcpsocket_open(), nick(), tcpsocket_close(), tcpsocket_rcv() y user()\&.
 .SH "Autor"

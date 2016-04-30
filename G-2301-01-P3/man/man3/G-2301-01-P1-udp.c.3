@@ -1,15 +1,13 @@
-.TH "srclib/G-2301-01-P1-udp.c" 3 "Viernes, 29 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
+.TH "srclib/G-2301-01-P1-udp.c" 3 "Sábado, 30 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-srclib/G-2301-01-P1-udp.c \- 
-.PP
-Libreria de manejo de sockets UDP\&.  
+srclib/G-2301-01-P1-udp.c \- Libreria de manejo de sockets UDP\&.  
 
 .SH SYNOPSIS
 .br
 .PP
-\fC#include <G-2301-01-P1-udp\&.h>\fP
+\fC#include <G\-2301\-01\-P1\-udp\&.h>\fP
 .br
 \fC#include <stdio\&.h>\fP
 .br
@@ -66,10 +64,10 @@ Daniel Perdices daniel.perdices@estudiante.uam.es
 .PP
 
 .PP
-Definición en el archivo \fBG-2301-01-P1-udp\&.c\fP\&.
+Definición en el archivo \fBG\-2301\-01\-P1\-udp\&.c\fP\&.
 .SH "Documentación de las funciones"
 .PP 
-.SS "int client_udpsocket_open (uint16_tport, int *socketd)"
+.SS "int client_udpsocket_open (uint16_t port, int * socketd)"
 
 .PP
 Abre un socket UDP para cliente\&. 
@@ -88,8 +86,8 @@ UDPOK si todo fue correcto UDPERR_ARGS/SOCKET en caso de error con estas funcion
 .PP
 
 .PP
-Definición en la línea 58 del archivo G-2301-01-P1-udp\&.c\&.
-.SS "int server_udpsocket_open (uint16_tport, int *socketd)"
+Definición en la línea 58 del archivo G\-2301\-01\-P1\-udp\&.c\&.
+.SS "int server_udpsocket_open (uint16_t port, int * socketd)"
 
 .PP
 Abre un socket UDP para servidor\&. 
@@ -108,8 +106,8 @@ UDPOK si todo funciono correctamente UDPERR_ARGS/SOCKET/BIND en caso de error co
 .PP
 
 .PP
-Definición en la línea 25 del archivo G-2301-01-P1-udp\&.c\&.
-.SS "int udpsocket_rcv (intsocketd, char *src, uint16_tport, void *data, size_tmax, size_t *len)"
+Definición en la línea 25 del archivo G\-2301\-01\-P1\-udp\&.c\&.
+.SS "int udpsocket_rcv (int socketd, char * src, uint16_t port, void * data, size_t max, size_t * len)"
 
 .PP
 Recibe a traves del socket UDP\&. 
@@ -136,8 +134,8 @@ UDPOK si todo fue correcto UDPERR_ARGS/RECV en caso de error con estas funciones
 .PP
 
 .PP
-Definición en la línea 120 del archivo G-2301-01-P1-udp\&.c\&.
-.SS "int udpsocket_snd (intsocketd, char *dst, uint16_tport, void *data, size_tlen)"
+Definición en la línea 120 del archivo G\-2301\-01\-P1\-udp\&.c\&.
+.SS "int udpsocket_snd (int socketd, char * dst, uint16_t port, void * data, size_t len)"
 
 .PP
 Envia los datos a traves del socket UDP\&. 
@@ -162,7 +160,7 @@ UDPOK si todo fue correcto UDPERR_ARGS/SEND en caso de error con estas funciones
 .PP
 
 .PP
-Definición en la línea 81 del archivo G-2301-01-P1-udp\&.c\&.
+Definición en la línea 81 del archivo G\-2301\-01\-P1\-udp\&.c\&.
 .SH "Autor"
 .PP 
 Generado automáticamente por Doxygen para Practica 2 - Redes de Comunicaciones II del código fuente\&.

@@ -1,29 +1,27 @@
-.TH "src/xchat2.c" 3 "Viernes, 29 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
+.TH "src/xchat2.c" 3 "Sábado, 30 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-src/xchat2.c \- 
-.PP
-Programa principal del cliente IRC\&.  
+src/xchat2.c \- Programa principal del cliente IRC\&.  
 
 .SH SYNOPSIS
 .br
 .PP
 \fC#include <redes2/ircxchat\&.h>\fP
 .br
-\fC#include <G-2301-01-P2-client\&.h>\fP
+\fC#include <G\-2301\-01\-P2\-client\&.h>\fP
 .br
-\fC#include <G-2301-01-P2-ucomm\&.h>\fP
+\fC#include <G\-2301\-01\-P2\-ucomm\&.h>\fP
 .br
-\fC#include <G-2301-01-P2-ccomm\&.h>\fP
+\fC#include <G\-2301\-01\-P2\-ccomm\&.h>\fP
 .br
-\fC#include <G-2301-01-P1-tools\&.h>\fP
+\fC#include <G\-2301\-01\-P1\-tools\&.h>\fP
 .br
-\fC#include <G-2301-01-P1-tcp\&.h>\fP
+\fC#include <G\-2301\-01\-P1\-tcp\&.h>\fP
 .br
-\fC#include <G-2301-01-P2-rtp\&.h>\fP
+\fC#include <G\-2301\-01\-P2\-rtp\&.h>\fP
 .br
-\fC#include <G-2301-01-P3-ssl\&.h>\fP
+\fC#include <G\-2301\-01\-P3\-ssl\&.h>\fP
 .br
 \fC#include <syslog\&.h>\fP
 .br
@@ -144,7 +142,7 @@ Daniel Perdices daniel.perdices@estudiante.uam.es
 Definición en el archivo \fBxchat2\&.c\fP\&.
 .SH "Documentación de las funciones"
 .PP 
-.SS "int _client_socketrcv (char *msg, size_tsize)"
+.SS "int _client_socketrcv (char * msg, size_t size)"
 
 .PP
 Recibe el comando en msg\&. 
@@ -165,8 +163,8 @@ Ningun valor concreto
 .PP
 Definición en la línea 155 del archivo xchat2\&.c\&.
 .PP
-Hace referencia a tcpsocket_rcv()\&.
-.SS "int _client_socketsnd (char *msg)"
+Hace referencia a recibir_datos_SSL() y tcpsocket_rcv()\&.
+.SS "int _client_socketsnd (char * msg)"
 
 .PP
 Envia el comando del cliente\&. Es segura para concurrencia\&. 
@@ -185,8 +183,8 @@ Ningun valor concreto
 .PP
 Definición en la línea 141 del archivo xchat2\&.c\&.
 .PP
-Hace referencia a tcpsocket_snd()\&.
-.SS "void* audiorcv_t (void *d)"
+Hace referencia a enviar_datos_SSL() y tcpsocket_snd()\&.
+.SS "void* audiorcv_t (void * d)"
 
 .PP
 Recibe y reproduce audio para la funcionalidad de chat de voz\&. 
@@ -205,8 +203,8 @@ NULL
 .PP
 Definición en la línea 1247 del archivo xchat2\&.c\&.
 .PP
-Hace referencia a rtp_rcvpkg()\&.
-.SS "void* audiosnd_t (void *d)"
+Hace referencia a audiosnd_t(), client_socketsnd(), client_tcpsocket_open(), conectar_canal_seguro_SSL(), disconnect_client(), evaluar_post_connectar_SSL(), fijar_contexto_SSL(), get_uhost(), get_unick(), inicializar_nivel_SSL(), nick(), rcv_thread(), rtp_rcvpkg() y user()\&.
+.SS "void* audiosnd_t (void * d)"
 
 .PP
 Graba y envia audio para la funcionalidad de chat de voz\&. 
@@ -226,7 +224,7 @@ NULL
 Definición en la línea 1225 del archivo xchat2\&.c\&.
 .PP
 Hace referencia a rtp_sndpkg()\&.
-.SS "int client_socketrcv (char *msg, size_tsize)"
+.SS "int client_socketrcv (char * msg, size_t size)"
 
 .PP
 Recibe el comando en msg\&. 
@@ -248,7 +246,7 @@ Ningun valor concreto
 Definición en la línea 190 del archivo xchat2\&.c\&.
 .PP
 Hace referencia a _client_socketrcv()\&.
-.SS "int client_socketrcv_thread (char *msg, size_tsize)"
+.SS "int client_socketrcv_thread (char * msg, size_t size)"
 
 .PP
 Recibe el comando en msg\&. 
@@ -269,8 +267,8 @@ Ningun valor concreto
 .PP
 Definición en la línea 203 del archivo xchat2\&.c\&.
 .PP
-Hace referencia a _client_socketrcv()\&.
-.SS "int client_socketsnd (char *msg)"
+Hace referencia a _client_socketrcv(), client_socketsnd(), get_unick() y nick()\&.
+.SS "int client_socketsnd (char * msg)"
 
 .PP
 Envia el comando del cliente\&. Es segura para concurrencia\&. 
@@ -290,7 +288,7 @@ Ningun valor concreto
 Definición en la línea 169 del archivo xchat2\&.c\&.
 .PP
 Hace referencia a _client_socketsnd()\&.
-.SS "int client_socketsnd_thread (char *msg)"
+.SS "int client_socketsnd_thread (char * msg)"
 
 .PP
 Envia el comando del cliente\&. Es segura para concurrencia y es la version para ser llamada desde hilos\&. 
@@ -330,7 +328,7 @@ NULL
 Definición en la línea 1562 del archivo xchat2\&.c\&.
 .PP
 Hace referencia a tcpsocket_close()\&.
-.SS "void* fileThread (void *d)"
+.SS "void* fileThread (void * d)"
 
 .PP
 El hilo del envio de fichero\&. 
@@ -349,7 +347,7 @@ NULL
 .PP
 Definición en la línea 1147 del archivo xchat2\&.c\&.
 .PP
-Hace referencia a tcpsocket_accept() y tcpsocket_snd()\&.
+Hace referencia a client_socketsnd(), get_uhost(), get_unick(), nick(), tcpsocket_accept() y tcpsocket_snd()\&.
 .SS "char* get_uhost ()"
 
 .PP
@@ -378,7 +376,7 @@ el nick
 Definición en la línea 53 del archivo xchat2\&.c\&.
 .PP
 Hace referencia a nick() y user()\&.
-.SS "int main (intargc, char *argv[])"
+.SS "int main (int argc, char * argv[])"
 
 .PP
 : Funcion principal del programa MMMMMMMMMM MMMMM AAAAAAA IIIIIII NNNNNNNNNN NNNNNN MMMMMMMMMM MMMMM AAAAAAAA IIIII NNNNNNNNNN NNNN MMMMM MMMM MM MM AAAAA AA III NNNNN NNNN NN MMMMM MMMM MM MM AAAAA AA III NNNNN NNNN NN MMMMM MMMM MM MM AAAAA AA III NNNNN NNNN NN MMMMM MMMM MM MM AAAAA AA III NNNNN NNNN NN MMMMM MMMM MM MM AAAAA AA III NNNNN NNNN NN MMMMM MMMM MM MM AAAAAAAAAAAAAA III NNNNN NNNN NN MMMMM MMMMM MM AAAAA AA III NNNNN NNNN NN MMMMM MMM MM AAAAA AA III NNNNN NNNN NN MMMMM MM AAAAA AA III NNNNN NNNN NN MMMMM MM AAAAA AA III NNNNN NNNN NN MMMMMMM MMMM AAAAAA AAAA IIIII NNNNNN NNNNNNN MMMMMMMMM MMMMMM AAAAAAAA AAAAAA IIIIIII NNNNNNN NNNNNNN 
@@ -400,7 +398,7 @@ Hace referencia a nick() y user()\&.
 Definición en la línea 1619 del archivo xchat2\&.c\&.
 .PP
 Hace referencia a init_ccomm() y timeout_t()\&.
-.SS "void* rcv_thread (void *d)"
+.SS "void* rcv_thread (void * d)"
 
 .PP
 Recibe y atiende comandos IRC\&. 
@@ -420,7 +418,7 @@ NULL
 Definición en la línea 1530 del archivo xchat2\&.c\&.
 .PP
 Hace referencia a cdefault() y client_socketrcv_thread()\&.
-.SS "void set_audio_host (char *c)"
+.SS "void set_audio_host (char * c)"
 
 .PP
 Configura el host destino de la comunicacion de audio\&. 
@@ -433,7 +431,7 @@ Configura el host destino de la comunicacion de audio\&.
 
 .PP
 Definición en la línea 68 del archivo xchat2\&.c\&.
-.SS "void set_audio_port (unsigned longp)"
+.SS "void set_audio_port (unsigned long p)"
 
 .PP
 Configura el puerto destino de la comunicacion de audio\&. 
@@ -446,7 +444,7 @@ Configura el puerto destino de la comunicacion de audio\&.
 
 .PP
 Definición en la línea 76 del archivo xchat2\&.c\&.
-.SS "void* timeout_t (void *a)"
+.SS "void* timeout_t (void * a)"
 
 .PP
 Hilo de timeout\&. 

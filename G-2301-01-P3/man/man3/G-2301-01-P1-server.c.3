@@ -1,10 +1,8 @@
-.TH "srclib/G-2301-01-P1-server.c" 3 "Viernes, 29 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
+.TH "srclib/G-2301-01-P1-server.c" 3 "Sábado, 30 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-srclib/G-2301-01-P1-server.c \- 
-.PP
-Libreria de manejo de un servidor de sockets\&.  
+srclib/G-2301-01-P1-server.c \- Libreria de manejo de un servidor de sockets\&.  
 
 .SH SYNOPSIS
 .br
@@ -35,9 +33,9 @@ Libreria de manejo de un servidor de sockets\&.
 .br
 \fC#include <arpa/inet\&.h>\fP
 .br
-\fC#include <G-2301-01-P1-tcp\&.h>\fP
+\fC#include <G\-2301\-01\-P1\-tcp\&.h>\fP
 .br
-\fC#include 'G-2301-01-P1-server\&.h'\fP
+\fC#include 'G\-2301\-01\-P1\-server\&.h'\fP
 .br
 
 .SS "Funciones"
@@ -96,7 +94,7 @@ Libreria de manejo de un servidor de sockets\&.
 .PP 
 Libreria de manejo de un servidor de sockets\&. 
 
-Libreria de manejo de un servidor de sockets SSL\&.
+
 .PP
 \fBAutor:\fP
 .RS 4
@@ -112,10 +110,10 @@ Daniel Perdices daniel.perdices@estudiante.uam.es
 .PP
 
 .PP
-Definición en el archivo \fBG-2301-01-P1-server\&.c\fP\&.
+Definición en el archivo \fBG\-2301\-01\-P1\-server\&.c\fP\&.
 .SH "Documentación de las funciones"
 .PP 
-.SS "int connection_add (intsocketd)"
+.SS "int connection_add (int socketd)"
 
 .PP
 Añade una conexion al conjunto del select\&. 
@@ -132,8 +130,8 @@ SERVOK
 .PP
 
 .PP
-Definición en la línea 36 del archivo G-2301-01-P1-server\&.c\&.
-.SS "int connection_block (intsocketd)"
+Definición en la línea 36 del archivo G\-2301\-01\-P1\-server\&.c\&.
+.SS "int connection_block (int socketd)"
 
 .PP
 Bloquea una conexion\&. 
@@ -150,8 +148,8 @@ SERVOK
 .PP
 
 .PP
-Definición en la línea 86 del archivo G-2301-01-P1-server\&.c\&.
-.SS "int connection_isblocked (intsocketd)"
+Definición en la línea 86 del archivo G\-2301\-01\-P1\-server\&.c\&.
+.SS "int connection_isblocked (int socketd)"
 
 .PP
 Comprueba si una conexion esta bloqueada\&. 
@@ -168,8 +166,8 @@ Comprueba si una conexion esta bloqueada\&.
 .PP
 
 .PP
-Definición en la línea 110 del archivo G-2301-01-P1-server\&.c\&.
-.SS "int connection_rmv (intsocketd)"
+Definición en la línea 110 del archivo G\-2301\-01\-P1\-server\&.c\&.
+.SS "int connection_rmv (int socketd)"
 
 .PP
 Borra una conexion del conjunto del select\&. 
@@ -186,8 +184,8 @@ SERVOK
 .PP
 
 .PP
-Definición en la línea 48 del archivo G-2301-01-P1-server\&.c\&.
-.SS "int connection_unblock (intsocketd)"
+Definición en la línea 48 del archivo G\-2301\-01\-P1\-server\&.c\&.
+.SS "int connection_unblock (int socketd)"
 
 .PP
 Desbloquea una conexion\&. 
@@ -204,8 +202,8 @@ SERVOK
 .PP
 
 .PP
-Definición en la línea 98 del archivo G-2301-01-P1-server\&.c\&.
-.SS "char* get_ip_from_connection (intsocketd)"
+Definición en la línea 98 del archivo G\-2301\-01\-P1\-server\&.c\&.
+.SS "char* get_ip_from_connection (int socketd)"
 
 .PP
 Devuelve la ip asociada a un socked\&. 
@@ -222,8 +220,8 @@ La ip del socket en decimal
 .PP
 
 .PP
-Definición en la línea 123 del archivo G-2301-01-P1-server\&.c\&.
-.SS "int is_connected (intsocketd)"
+Definición en la línea 123 del archivo G\-2301\-01\-P1\-server\&.c\&.
+.SS "int is_connected (int socketd)"
 
 .PP
 Indica si hay una conexion abierta\&. 
@@ -240,8 +238,8 @@ Indica si hay una conexion abierta\&.
 .PP
 
 .PP
-Definición en la línea 60 del archivo G-2301-01-P1-server\&.c\&.
-.SS "int is_readable (intsocketd)"
+Definición en la línea 60 del archivo G\-2301\-01\-P1\-server\&.c\&.
+.SS "int is_readable (int socketd)"
 
 .PP
 Indica si hay una conexion que requiere atencion\&. 
@@ -258,8 +256,8 @@ Indica si hay una conexion que requiere atencion\&.
 .PP
 
 .PP
-Definición en la línea 73 del archivo G-2301-01-P1-server\&.c\&.
-.SS "int server_launch (uint16_tport, void *(*)(void *)handler, void *more)"
+Definición en la línea 73 del archivo G\-2301\-01\-P1\-server\&.c\&.
+.SS "int server_launch (uint16_t port, void *(*)(void *) handler, void * more)"
 
 .PP
 Lanza un servidor que atiende cada mensaje recibido con la funcion handler\&. 
@@ -280,7 +278,7 @@ SERVOK en caso de que el servidor termine correctamente un numero negativo en ca
 .PP
 
 .PP
-Definición en la línea 146 del archivo G-2301-01-P1-server\&.c\&.
+Definición en la línea 146 del archivo G\-2301\-01\-P1\-server\&.c\&.
 .PP
 Hace referencia a connection_add(), connection_block(), connection_isblocked(), connection_rmv(), handler(), is_readable(), server_stop(), server_tcpsocket_open(), sigint_handler(), tcpsocket_accept(), tcpsocket_close() y tcpsocket_rcv()\&.
 .SS "int server_stop ()"
@@ -295,8 +293,8 @@ SERVOK si el servidor se para, SERVERR_NRUN si no hay servidor
 .PP
 
 .PP
-Definición en la línea 249 del archivo G-2301-01-P1-server\&.c\&.
-.SS "int set_do_on_disconnect (void(*)(void *)handler)"
+Definición en la línea 249 del archivo G\-2301\-01\-P1\-server\&.c\&.
+.SS "int set_do_on_disconnect (void(*)(void *) handler)"
 
 .PP
 Para el servidor TCP\&. 
@@ -308,10 +306,10 @@ SERVOK si el servidor se para, SERVERR_NRUN si no hay servidor
 .PP
 
 .PP
-Definición en la línea 263 del archivo G-2301-01-P1-server\&.c\&.
+Definición en la línea 263 del archivo G\-2301\-01\-P1\-server\&.c\&.
 .PP
 Hace referencia a handler()\&.
-.SS "void sigint_handler (intsig)"
+.SS "void sigint_handler (int sig)"
 
 .PP
 Manejador de la señal\&. 
@@ -328,7 +326,7 @@ Manejador de la señal\&.
 .PP
 
 .PP
-Definición en la línea 133 del archivo G-2301-01-P1-server\&.c\&.
+Definición en la línea 133 del archivo G\-2301\-01\-P1\-server\&.c\&.
 .SH "Autor"
 .PP 
 Generado automáticamente por Doxygen para Practica 2 - Redes de Comunicaciones II del código fuente\&.

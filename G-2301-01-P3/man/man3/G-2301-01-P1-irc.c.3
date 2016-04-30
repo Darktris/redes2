@@ -1,27 +1,25 @@
-.TH "srclib/G-2301-01-P1-irc.c" 3 "Viernes, 29 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
+.TH "srclib/G-2301-01-P1-irc.c" 3 "Sábado, 30 de Abril de 2016" "Practica 2 - Redes de Comunicaciones II" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-srclib/G-2301-01-P1-irc.c \- 
-.PP
-Libreria de manejo de mensajes IRC\&.  
+srclib/G-2301-01-P1-irc.c \- Libreria de manejo de mensajes IRC\&.  
 
 .SH SYNOPSIS
 .br
 .PP
-\fC#include <G-2301-01-P1-irc\&.h>\fP
+\fC#include <G\-2301\-01\-P1\-irc\&.h>\fP
 .br
 \fC#include <redes2/irc\&.h>\fP
 .br
 \fC#include <syslog\&.h>\fP
 .br
-\fC#include <G-2301-01-P1-server\&.h>\fP
+\fC#include <G\-2301\-01\-P1\-server\&.h>\fP
 .br
-\fC#include <G-2301-01-P1-tools\&.h>\fP
+\fC#include <G\-2301\-01\-P1\-tools\&.h>\fP
 .br
-\fC#include 'G-2301-01-P1-irc_server\&.h'\fP
+\fC#include 'G\-2301\-01\-P1\-irc_server\&.h'\fP
 .br
-\fC#include <G-2301-01-P3-ssl\&.h>\fP
+\fC#include <G\-2301\-01\-P3\-ssl\&.h>\fP
 .br
 
 .SS "Funciones"
@@ -128,10 +126,10 @@ Daniel Perdices daniel.perdices@estudiante.uam.es
 .PP
 
 .PP
-Definición en el archivo \fBG-2301-01-P1-irc\&.c\fP\&.
+Definición en el archivo \fBG\-2301\-01\-P1\-irc\&.c\fP\&.
 .SH "Documentación de las funciones"
 .PP 
-.SS "int away (char *command, void *more)"
+.SS "int away (char * command, void * more)"
 
 .PP
 Atiende el comando AWAY\&. 
@@ -150,10 +148,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 763 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 763 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a get_nick(), get_user() y tcpsocket_snd()\&.
-.SS "int join (char *command, void *more)"
+.SS "int join (char * command, void * more)"
 
 .PP
 Atiende el comando JOIN\&. 
@@ -172,10 +170,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 197 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 197 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a get_nick(), get_user(), list(), tcpsocket_snd() y topic()\&.
-.SS "int kick (char *command, void *more)"
+.SS "int kick (char * command, void * more)"
 
 .PP
 Atiende el comando KICK\&. 
@@ -194,10 +192,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 788 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 788 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a connection_block(), connection_unblock(), get_nick(), get_socketd_byuser(), get_user(), list(), mode(), tcpsocket_snd() y user()\&.
-.SS "int list (char *command, void *more)"
+.SS "int list (char * command, void * more)"
 
 .PP
 Atiende el comando LIST\&. 
@@ -216,10 +214,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 123 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 123 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a get_nick(), mode(), tcpsocket_snd() y topic()\&.
-.SS "int mode (char *command, void *more)"
+.SS "int mode (char * command, void * more)"
 
 .PP
 Atiende el comando MODE\&. 
@@ -238,10 +236,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 349 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 349 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a get_nick(), get_socketd_byuser(), get_user(), tcpsocket_snd() y user()\&.
-.SS "int motd (char *command, void *more)"
+.SS "int motd (char * command, void * more)"
 
 .PP
 Atiende el comando MOTD\&. 
@@ -260,10 +258,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 721 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 721 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a get_nick(), nick() y tcpsocket_snd()\&.
-.SS "int names (char *command, void *more)"
+.SS "int names (char * command, void * more)"
 
 .PP
 Atiende el comando NAMES\&. 
@@ -282,10 +280,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 475 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 475 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a get_nick(), list() y tcpsocket_snd()\&.
-.SS "int nick (char *command, void *more)"
+.SS "int nick (char * command, void * more)"
 
 .PP
 Atiende el comando NICK\&. 
@@ -304,10 +302,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 31 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 31 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a get_nick(), get_user(), set_nick() y tcpsocket_snd()\&.
-.SS "int no_command (char *command, void *more)"
+.SS "int no_command (char * command, void * more)"
 
 .PP
 Atiende comandos desconocidos\&. 
@@ -326,10 +324,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 531 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 531 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a get_nick() y tcpsocket_snd()\&.
-.SS "int notice (char *command, void *more)"
+.SS "int notice (char * command, void * more)"
 
 .PP
 Atiende el comando NOTICE\&. 
@@ -348,10 +346,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 856 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 856 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a away(), connection_block(), connection_unblock(), get_nick(), get_socketd_bynick(), get_socketd_byuser(), get_user(), list() y tcpsocket_snd()\&.
-.SS "int part (char *command, void *more)"
+.SS "int part (char * command, void * more)"
 
 .PP
 Atiende el comando PART\&. 
@@ -370,10 +368,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 434 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 434 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a connection_block(), connection_unblock(), get_nick(), get_socketd_byuser(), get_user(), list() y tcpsocket_snd()\&.
-.SS "int ping (char *command, void *more)"
+.SS "int ping (char * command, void * more)"
 
 .PP
 Atiende el comando PING\&. 
@@ -392,10 +390,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 170 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 170 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a tcpsocket_snd()\&.
-.SS "int pong (char *command, void *more)"
+.SS "int pong (char * command, void * more)"
 
 .PP
 'Atiende' el comando PONG 
@@ -414,8 +412,8 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 187 del archivo G-2301-01-P1-irc\&.c\&.
-.SS "int privmsg (char *command, void *more)"
+Definición en la línea 187 del archivo G\-2301\-01\-P1\-irc\&.c\&.
+.SS "int privmsg (char * command, void * more)"
 
 .PP
 Atiende el comando PRIVMSG\&. 
@@ -434,10 +432,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 299 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 299 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a away(), connection_block(), connection_unblock(), get_nick(), get_socketd_bynick(), get_socketd_byuser(), get_user(), list() y tcpsocket_snd()\&.
-.SS "int quit (char *command, void *more)"
+.SS "int quit (char * command, void * more)"
 
 .PP
 Atiende el comando QUIT\&. 
@@ -456,10 +454,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 666 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 666 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a connection_rmv(), get_nick(), get_user(), list(), set_nick(), set_user(), tcpsocket_close() y tcpsocket_snd()\&.
-.SS "int time_c (char *command, void *more)"
+.SS "int time_c (char * command, void * more)"
 
 .PP
 Atiende el comando TIME\&. 
@@ -478,10 +476,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 827 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 827 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a get_nick() y tcpsocket_snd()\&.
-.SS "int topic (char *command, void *more)"
+.SS "int topic (char * command, void * more)"
 
 .PP
 Atiende el comando TOPIC\&. 
@@ -500,10 +498,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 548 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 548 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a get_nick(), get_user(), mode() y tcpsocket_snd()\&.
-.SS "int user (char *command, void *more)"
+.SS "int user (char * command, void * more)"
 
 .PP
 Atiende el comando USER\&. 
@@ -522,10 +520,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 74 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 74 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a get_ip_from_connection(), get_nick(), get_user(), motd(), nick(), set_user() y tcpsocket_snd()\&.
-.SS "int version (char *command, void *more)"
+.SS "int version (char * command, void * more)"
 
 .PP
 Atiende el comando VERSION\&. 
@@ -544,10 +542,10 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 842 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 842 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a get_nick() y tcpsocket_snd()\&.
-.SS "int whois (char *command, void *more)"
+.SS "int whois (char * command, void * more)"
 
 .PP
 Atiende el comando WHOIS\&. 
@@ -566,7 +564,7 @@ Ningún valor definido, la función controlan el error de manera interna
 .PP
 
 .PP
-Definición en la línea 602 del archivo G-2301-01-P1-irc\&.c\&.
+Definición en la línea 602 del archivo G\-2301\-01\-P1\-irc\&.c\&.
 .PP
 Hace referencia a away(), get_nick(), list(), mode() y tcpsocket_snd()\&.
 .SH "Autor"
