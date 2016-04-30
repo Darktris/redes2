@@ -41,8 +41,14 @@ void* echo(void* data) {
 */
 int main(int argc, char** argv) {
 	int ret;
-	if(argc!=2) return -1;
-	//daemonize("echo_server");
+    char* host;
+	if(argc!=2 && argc!=3) {
+        printf("%d", argc);
+        printf("Use: %s port [--nodaemon]\n", argv[0]);
+    }
+    puts("Launching server"); 
+	//if(argc == 2 || strcmp(argv[2], "--nodaemon"))daemonize("echo_server");
+    daemonize("");
 	ret = server_launch_SSL(atoi(argv[1]), echo, NULL);
 	printf("Retorno del servidor: %d\n",ret);
 	syslog(LOG_INFO, "Retorno del servidor: %d",ret);

@@ -41,14 +41,17 @@ int daemonize(char* srvcid) {
         return DMNERR_SID;
     }
 
+#ifndef NOCHDIR
     if(chdir("/")<0) {
         syslog(LOG_ERR, "Error changing working directory.");
         return DMNERR_CWD;
     }
+#endif
 
+#ifndef NOCLOSEFD
     close(STDIN_FILENO);
     close(STDOUT_FILENO);
     close(STDERR_FILENO);
-
+#endif
     return DMNOK;
 }
