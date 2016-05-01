@@ -1,2 +1,2 @@
-V	170430112253Z		01	unknown	/C=ES/ST=Madrid/O=UAM/OU=EPS/CN=client.uam.es
-V	170430112253Z		02	unknown	/C=ES/ST=Madrid/O=UAM/OU=EPS/CN=server.uam.es
+V	170501103252Z		01	unknown	/C=ES/ST=Madrid/O=UAM/OU=EPS/CN=client.uam.es
+V	170501103252Z		02	unknown	/C=ES/ST=Madrid/O=UAM/OU=EPS/CN=server.uam.es

@@ -33,7 +33,7 @@ void inicializar_nivel_SSL() {
 /**
   @brief Fija el contexto SSL
   @param pk: Clave privada
-  @param cer: Certificado
+  @param cert: Certificado
   @return SSL_NOCTX, SSL_VERLOCATION, SSL_CERT, SSL_PKEY, SSLOK
 */
 int fijar_contexto_SSL(char* pk, char* cert) {
@@ -101,7 +101,7 @@ int enviar_datos_SSL(int socketd, void* buf, int len) {
 }
 
 /**
-  @brief Evalua si la conexion es segura (hay certificado y es valido)
+  @brief Recibe un buffer por la capa SSL
   @param socketd: El socket asociado a la conexion
   @param buf: El buffer que se quiere llenar
   @param max_len: Longitud del buffer
