@@ -44,8 +44,8 @@ int main(int argc, char** argv) {
 	int ret;
     char* host;
 	if(argc!=2 && argc!=3) {
-        printf("%d", argc);
         printf("Use: %s port [--nodaemon]\n", argv[0]);
+        return 0;
     }
     puts("Launching server"); 
 	if(argc == 2 || strcmp(argv[2], "--nodaemon"))daemonize("echo_server");

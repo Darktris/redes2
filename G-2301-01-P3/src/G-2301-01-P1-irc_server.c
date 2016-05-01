@@ -437,12 +437,12 @@ int main(int argc, char** argv) {
     char sh_comm[512];
     unsigned long port;
     if(argc!=3 && argc!=2) {
-        printf("Use: %s <Port> [-ssl]", argv[0]);
+        printf("Use: %s <Port> [-ssl]\n", argv[0]);
         return 0;
     }
 
     if(sscanf(argv[1],"%lu", &port)!=1) {
-        printf("Use: %s <Port> [-ssl]", argv[0]);
+        printf("Use: %s <Port> [-ssl]\n", argv[0]);
         return 0;
     }
 

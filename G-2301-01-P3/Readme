@@ -21,3 +21,8 @@ una situacion real se deberia guardar en un contenedor del sistema operativo
 la clave privada encriptada (mediante DES por ej), pero al ser una prueba de 
 funcionamiento se omite estas mejoras al considerarse intrusivas para la 
 correccion de la practica.
+-El nombre de los ejecutables es:
+    -xchat2 : cliente IRC (nombre original por el autor de la GUI)
+    -G-2301-01-P1-irc_server: servidor IRC con SSL añadido
+    -G-2301-01-P3-ssl_client: cliente de echo SSL para prueba de uso
+    -G-2301-01-P3_ssl_echo_server: servidor de echo para pruebas
